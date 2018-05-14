@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Problem;
+use App\ProblemTag;
 use Illuminate\Http\Request;
 
 class ProblemController extends Controller
@@ -15,6 +16,9 @@ class ProblemController extends Controller
     public function index()
     {
         //
+        $problem = Problem::all();
+        $problemTag = ProblemTag::groupBy('name')->paginate(50);
+        return view('problem.index',compact('problemTag','problem'));
     }
 
     /**
