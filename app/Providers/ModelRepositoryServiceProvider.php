@@ -5,8 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Problem;
 use App\ProblemTag;
-use App\Repository\ProblemEloquent;
-use App\Repository\ProblemTagEloquent;
+use App\Repository\Problem\ProblemEloquent;
+use App\Repository\ProblemTag\ProblemTagEloquent;
 
 class ModelRepositoryServiceProvider extends ServiceProvider
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Problem;
-use App\ProblemTag;
+use Problem;
+use ProblemTag;
 use Illuminate\Http\Request;
 
 class ProblemController extends Controller
@@ -17,7 +17,7 @@ class ProblemController extends Controller
     {
         //
         $problem = Problem::all();
-        $problemTag = ProblemTag::groupBy('name')->paginate(50);
+        $problemTag = ProblemTag::all();
         if($request->is('admin/problems')){
             return view('admin.problem.index',compact('problemTag','problem'));
         }

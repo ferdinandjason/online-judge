@@ -176,6 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ModelRepositoryServiceProvider::class,
+        App\Providers\ModelServicesServiceProvider::class
 
     ],
 
@@ -226,6 +228,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Problem' => App\Service\Problem\ProblemFacade::class,
+        'ProblemTag' => App\Service\ProblemTag\ProblemTagFacade::class,
     ],
 
 ];

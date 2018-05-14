@@ -27,10 +27,9 @@
             "app/Repository",
             "app/Repository/Problem",
             "app/Repository/ProblemTag",
-            "app/Services",
-            "app/Services/Problem",
-            "app/Services/ProblemTag",
-
+            "app/Service",
+            "app/Service/Problem",
+            "app/Service/ProblemTag"
         ],
         "psr-4": {
             "App\\": "app/"

@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Services\Problem;
+namespace App\Service\Problem;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use App\Repository\ProblemRepository;
 
 class ProblemServices
 {
 	protected $repo;
 
-	public function __construct(ProblemRepository $problemRepo)
+	public function __construct(\ProblemRepository $problemRepo)
 	{
 		$this->repo = $problemRepo;
 	}

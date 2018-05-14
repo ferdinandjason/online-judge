@@ -41,7 +41,7 @@ class ProblemTagEloquent implements \ProblemTagRepository
     public function allPaginate($n)
     {
         // TODO: Implement allPaginate() method.
-        return $this->model->paginate($n);
+        return $this->model->groupBy('name')->paginate($n);
     }
 
     public function create($request)
