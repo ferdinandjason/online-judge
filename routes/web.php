@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('admin/problems','ProblemController');
+
 Route::resource('problems','ProblemController');
 
 Auth::routes();

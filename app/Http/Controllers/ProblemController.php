@@ -13,11 +13,14 @@ class ProblemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $problem = Problem::all();
         $problemTag = ProblemTag::groupBy('name')->paginate(50);
+        if($request->is('admin/problems')){
+            return view('admin.problem.index',compact('problemTag','problem'));
+        }
         return view('problem.index',compact('problemTag','problem'));
     }
 
