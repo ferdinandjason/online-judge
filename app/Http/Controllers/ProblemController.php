@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Problem;
 use ProblemTag;
 use Illuminate\Http\Request;
@@ -13,15 +14,17 @@ class ProblemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
         $problem = Problem::all();
         $problemTag = ProblemTag::allPaginate(50);
-        if($request->is('admin/problems')){
+        if(Auth::user()->isAdmin){
             return view('admin.problem.index',compact('problemTag','problem'));
         }
-        return view('problem.index',compact('problemTag','problem'));
+        else {
+            return view('problem.index', compact('problemTag', 'problem'));
+        }
     }
 
     /**
@@ -32,6 +35,9 @@ class ProblemController extends Controller
     public function create()
     {
         //
+        if(Auth::user()->isAdmin) {
+            return view('admin.problem.create');
+        }
     }
 
     /**
@@ -42,7 +48,18 @@ class ProblemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!isset($request['active'])){
+            $request->merge(['contest_only'=>0]);
+        }
+        else{
+            $request->merge(['contest_only'=>1]);
+        }
+        if(Auth::user()->isAdmin) {
+            Problem::validate($request);
+            Problem::create($request->except('tags'));
+            ProblemTag::create($request['tags'],$request);
+            return back();
+        }
     }
 
     /**
@@ -51,9 +68,17 @@ class ProblemController extends Controller
      * @param  \App\Problem  $problem
      * @return \Illuminate\Http\Response
      */
-    public function show(Problem $problem)
+    public function show($problemId)
     {
         //
+        $problem = Problem::getProblem($problemId);
+        $problemTag = ProblemTag::getProblemTag($problemId);
+        if(Auth::user()->isAdmin){
+            return view('admin.problem.show',compact('problem','problemTag'));
+        }
+        else{
+            return view('problem.show',compact('problem','problemTag'));
+        }
     }
 
     /**
@@ -62,9 +87,12 @@ class ProblemController extends Controller
      * @param  \App\Problem  $problem
      * @return \Illuminate\Http\Response
      */
-    public function edit(Problem $problem)
+    public function edit($problemId)
     {
         //
+        $problem = Problem::getProblem($problemId);
+        $tags = ProblemTag::getProblemTag($problemId);
+        return view('admin.problem.edit',compact('problem','tags'));
     }
 
     /**
@@ -74,9 +102,22 @@ class ProblemController extends Controller
      * @param  \App\Problem  $problem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Problem $problem)
+    public function update(Request $request, $problemId)
     {
         //
+        if(!isset($request['active'])){
+            $request->merge(['contest_only'=>0]);
+        }
+        else{
+            $request->merge(['contest_only'=>1]);
+        }
+        if(Auth::user()->isAdmin) {
+            Problem::validate($request);
+            Problem::udpate($problemId,$request->except('tags'));
+            ProblemTag::update($problemId,$request['tags'],$request);
+            return redirect('/admin/problems');
+        }
+
     }
 
     /**
@@ -85,8 +126,10 @@ class ProblemController extends Controller
      * @param  \App\Problem  $problem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Problem $problem)
+    public function destroy($problemId)
     {
         //
+        Problem::delete($problemId);
+        return back();
     }
 }

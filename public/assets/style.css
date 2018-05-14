@@ -261,7 +261,7 @@ blockquote {
     color: #333;
 }
 #navigator .ui.breadcrumb a {
-    color: #333;
+    color: #333 !important;
 }
 
 /**

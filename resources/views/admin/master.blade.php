@@ -6,29 +6,23 @@
     @yield('head')
 </head>
 <body style="background-color: #EDECEC">
-    {{--@include('admin.navigator')--}}
-    <div class="ui left fixed vertical menu">
+    <div class="ui left fixed vertical menu" style="z-index: 1000;">
         <div class="item">
-            <img class="ui centered mini image" src="/images/logo.png">
+            <img class="ui centered tiny image" src="/images/logo.png">
         </div>
-        <a class="item">Features</a>
-        <a class="item">Testimonials</a>
-        <a class="item">Sign-in</a>
         <div class="ui dropdown item">
-            More
+            Problem
             <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item"><i class="edit icon"></i> Edit Profile</a>
-                <a class="item"><i class="globe icon"></i> Choose Language</a>
-                <a class="item"><i class="settings icon"></i> Account Settings</a>
+                <a class="item" href="/admin/problems"><i class="list icon"></i> List Problem</a>
+                <a class="item" href="/admin/problems/create"><i class="add icon"></i> Add Problem</a>
             </div>
         </div>
     </div>
-    <div style="margin-left: 230px;margin-right: 30px;">
+    @include('admin.navigator')
+    <div style="margin-left: 230px;margin-right: 30px;margin-top: 80px;margin-bottom: 20px;">
         @yield('content')
     </div>
-    <script>
-        @yield('script')
-    </script>
+    @yield('script')
 </body>
 </html>

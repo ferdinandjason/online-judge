@@ -230,6 +230,7 @@ return [
 
         'Problem' => App\Service\Problem\ProblemFacade::class,
         'ProblemTag' => App\Service\ProblemTag\ProblemTagFacade::class,
+        'Testcase' => App\Service\Testcase\TestcaseFacade::class
     ],
 
 ];

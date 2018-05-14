@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Service\Problem\ProblemServices;
 use App\Service\ProblemTag\ProblemTagServices;
+use App\Service\Testcase\TestcaseServices;
 
 class ModelServicesServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,10 @@ class ModelServicesServiceProvider extends ServiceProvider
 
         $this->app->bind('ProblemTagServices',function ($app){
             return new ProblemTagServices($app->make('App\Repository\ProblemTag\ProblemTagRepository'));
+        });
+
+        $this->app->bind('TestcaseServices',function ($app){
+            return new TestcaseServices($app->make('App\Repository\Testcase\TestcaseRepository'));
         });
     }
 }

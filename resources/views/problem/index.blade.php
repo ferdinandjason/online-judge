@@ -13,19 +13,10 @@
         <h4 class="ui header">Tags List</h4>
         <div class="ui divider"></div>
         @foreach($problemTag as $tag)
-            <div class="ui label">
-                $tag->name
+            <div class="ui tag label">
+                {{$tag->name}}
             </div>
         @endforeach
-        <div class="ui label">
-            DP
-        </div>
-        <div class="ui label">
-            greedy
-        </div>
-        <div class="ui label">
-            asd
-        </div>
     </div>
 @stop
 @section('content')
@@ -55,8 +46,10 @@
     </table>
 @stop
 @section('script')
-    $('.dropdown').dropdown()
-    $(document).ready(function(){
-        $('#problemTable').DataTable();
-    });
+    <script>
+        $('.dropdown').dropdown()
+        $(document).ready(function(){
+            $('#problemTable').DataTable();
+        });
+    </script>
 @stop

@@ -10,7 +10,6 @@ namespace App\Repository\Problem;
 
 
 use App\Problem;
-use Illuminate\Http\Request;
 
 class ProblemEloquent implements \ProblemRepository
 {
@@ -45,13 +44,13 @@ class ProblemEloquent implements \ProblemRepository
         return $this->model->paginate($n);
     }
 
-    public function create(Request $request)
+    public function create(Array $request)
     {
         // TODO: Implement create() method.
         $this->model->create($request);
     }
 
-    public function update($id,Request $request)
+    public function update($id,Array $request)
     {
         // TODO: Implement update() method.
         $this->mode->where('id',$id)->update($request->except('_method','_token','tags'));

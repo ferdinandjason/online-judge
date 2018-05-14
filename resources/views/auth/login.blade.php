@@ -1,69 +1,51 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+<!DOCTYPE html>
+<html>
+<head>
+    @include('template.head')
+    <title>Moe Online Judge</title>
+</head>
+<body style="background-color: #EDECEC">
+    <div class="ui column centered grid" style="height: 100vh;">
+        <div style="vertical-align: middle;align-self: center !important;">
+            <h2 class="ui blue image header">
+                <img src="/images/logo.png" class="image">
+                <div class="content">
+                    Log-in to the World!
                 </div>
+            </h2>
+            <div class="centered row">
+                <form class="ui large form" action="{{route('login')}}" method="POST">
+                    {!! csrf_field() !!}
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input name="email" placeholder="E-mail address" type="email">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input name="password" placeholder="Password" type="password">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox" style="min-width: 50%;">
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                            </div>
+                        </div>
+                        <button class="ui fluid large blue submit button">Login</button>
+                    </div>
+                    <div class="ui error message"></div>
+                </form>
+            </div>
+            <div class="ui message">
+                New to us? <a href="{{route('register')}}">Sign Up</a>
             </div>
         </div>
     </div>
-</div>
-@endsection
+</body>
+<script>
+    $('.checkbox').checkbox();
+</script>
+</html>

@@ -23,8 +23,6 @@
         </div>
     </div>
     @include('template.footer')
-    <script>
-        @yield('script')
-    </script>
+    @yield('script')
 </body>
 </html>

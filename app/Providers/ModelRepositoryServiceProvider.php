@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\Testcase\TestcaseEloquent;
+use App\Testcase;
 use Illuminate\Support\ServiceProvider;
 use App\Problem;
 use App\ProblemTag;
@@ -34,6 +36,10 @@ class ModelRepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind('App\Repository\ProblemTag\ProblemTagRepository',function($app){
             return new ProblemTagEloquent(new ProblemTag());
+        });
+
+        $this->app->bind('App\Repository\Testcase\TestcaseRepository',function($app){
+            return new TestcaseEloquent(new Testcase());
         });
     }
 }

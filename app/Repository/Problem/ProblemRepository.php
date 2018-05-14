@@ -13,7 +13,7 @@ interface ProblemRepository{
     public function findFirst($id);
     public function all();
     public function allPaginate($n);
-    public function create(Request $request);
-    public function update($id,Request $request);
+    public function create(Array $request);
+    public function update($id,Array $request);
     public function delete($id);
 }

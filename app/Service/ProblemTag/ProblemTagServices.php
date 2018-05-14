@@ -25,4 +25,16 @@ class ProblemTagServices
     public function allPaginate($n){
         return $this->repo->allPaginate($n);
     }
+
+    public function create($data,$request){
+        $this->repo->create(explode(',',$data),$request);
+    }
+
+    public function update($request,$id){
+        return $this->repo->update($request,$id);
+    }
+
+    public function getProblemTag($problemId){
+        return $this->repo->find($problemId);
+    }
 }

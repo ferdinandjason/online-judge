@@ -15,10 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::resource('admin/problems','ProblemController');
+Route::resource('admin/problems/{id}/testcase','TestcaseController');
 
 Route::resource('problems','ProblemController');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
