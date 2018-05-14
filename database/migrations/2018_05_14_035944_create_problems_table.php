@@ -20,7 +20,7 @@ class CreateProblemsTable extends Migration
             $table->longText('description');
             $table->text('sample_input');
             $table->text('sample_output');
-            $table->timestamps('time_limit');
+            $table->integer('time_limit');
             $table->integer('memory_limit');
             $table->boolean('contest_only');
             $table->integer('total_submit')->default(0);
@@ -32,6 +32,7 @@ class CreateProblemsTable extends Migration
             $table->integer('total_mle')->default(0);
             $table->integer('total_fsc')->default(0);
             $table->integer('total_tl')->default(0);
+            $table->timestamps();
         });
     }
 
