@@ -8,7 +8,6 @@
 
 namespace App\Repository\ProblemTag;
 
-
 use App\ProblemTag;
 
 class ProblemTagEloquent implements \ProblemTagRepository

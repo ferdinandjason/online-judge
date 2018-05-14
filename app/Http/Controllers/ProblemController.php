@@ -17,7 +17,7 @@ class ProblemController extends Controller
     {
         //
         $problem = Problem::all();
-        $problemTag = ProblemTag::all();
+        $problemTag = ProblemTag::allPaginate(50);
         if($request->is('admin/problems')){
             return view('admin.problem.index',compact('problemTag','problem'));
         }

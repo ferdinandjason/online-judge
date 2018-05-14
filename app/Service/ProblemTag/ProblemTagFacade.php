@@ -8,8 +8,9 @@
 
 namespace App\Service\ProblemTag;
 
+use Illuminate\Support\Facades\Facade;
 
-class ProblemTagFacade
+class ProblemTagFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
