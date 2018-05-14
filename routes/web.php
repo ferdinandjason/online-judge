@@ -22,5 +22,7 @@ Route::resource('admin/problems','ProblemController');
 Route::resource('admin/problems/{id}/testcase','TestcaseController');
 
 Route::resource('problems','ProblemController');
+Route::resource('submissions','SubmissionController');
+Route::get('problems/{id}/submit','SubmissionController@create');
 
 

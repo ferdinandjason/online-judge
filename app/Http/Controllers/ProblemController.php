@@ -72,12 +72,11 @@ class ProblemController extends Controller
     {
         //
         $problem = Problem::getProblem($problemId);
-        $problemTag = ProblemTag::getProblemTag($problemId);
         if(Auth::user()->isAdmin){
-            return view('admin.problem.show',compact('problem','problemTag'));
+            return view('admin.problem.show',compact('problem'));
         }
         else{
-            return view('problem.show',compact('problem','problemTag'));
+            return view('problem.show',compact('problem'));
         }
     }
 

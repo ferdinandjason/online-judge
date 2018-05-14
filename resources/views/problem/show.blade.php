@@ -6,23 +6,48 @@
     <div class="ui piled segment">
         <h4 class="ui header">Problem {{$problem->title}}</h4>
         <div class="ui divider"></div>
-
+        @include('problem.navigator')
+    </div>
+    <div class="ui piled segment">
+        <h4 class="ui header">Export Problem</h4>
+        <div class="ui divider"></div>
+        <div class="ui labeled button" tabindex="0" style="margin: 2px;">
+            <div class="ui button">
+                <i class="file excel outline icon"></i> Export to
+            </div>
+            <a class="ui basic left pointing label">
+                CSV
+            </a>
+        </div>
+        <div class="ui labeled button" tabindex="0" style="margin: 2px;">
+            <div class="ui button">
+                <i class="file alternate outline icon"></i> Export to
+            </div>
+            <a class="ui basic left pointing label">
+                HTML
+            </a>
+        </div>
     </div>
 @stop
 @section('right-segment')
     <div class="ui piled segment">
         <h4 class="ui header">Tags</h4>
         <div class="ui divider"></div>
-        @foreach($problemTag as $tag)
+        @foreach($problem->tags as $tag)
             <div class="ui tag label">
                 {{$tag->name}}
             </div>
         @endforeach
     </div>
+    <div class="ui piled segment">
+        <h4 class="ui header">Statistic</h4>
+        <div class="ui divider"></div>
+
+    </div>
 @stop
 @section('content')
     {{--@include('problems.navigator', ['problem_id' => $problem->problem_id ])--}}
-    <div class="ui bottom attached segment">
+    {{--<div class="ui bottom attached segment">--}}
         <table class="ui celled padded single line table segment unstackable">
             <thead><tr>
                 <th>Time Limit</th>
@@ -73,7 +98,7 @@
         </div>
         <div class="ui horizontal divider">Comments</div>
     </div>
-    </div>
+    {{--</div>--}}
 @stop
 @section('script')
     <script>
