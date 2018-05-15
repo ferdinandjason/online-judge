@@ -2,22 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use \Problem;
 use \Submission;
 use Illuminate\Http\Request;
 
 class SubmissionController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $submission = Submission::all();
-        return view('submission.index',compact('submission'));
+        $link = (explode('/',$request->url()));
+        if(Auth::user()->isAdmin){
+            if($link[3] === 'submission'){
+                return redirect('admin/submission');
+            }
+            return view('admin.submission.index',compact('submission'));
+        }
+        else{
+            if($link[3] === 'admin'){
+                return redirect('submission');
+            }
+            return view('submission.index',compact('submission'));
+        }
     }
 
     /**

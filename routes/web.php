@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('admin/problems','ProblemController');
+Route::resource('admin/submissions','SubmissionController');
 Route::resource('admin/problems/{id}/testcase','TestcaseController');
 
 Route::resource('problems','ProblemController');
@@ -27,3 +28,5 @@ Route::resource('submissions','SubmissionController');
 Route::get('problems/{id}/submit','SubmissionController@create');
 
 
+// API
+Route::post('/api/v1/statistics/problems/{id}','APIController@problems');

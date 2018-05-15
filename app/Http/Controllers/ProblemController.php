@@ -25,15 +25,15 @@ class ProblemController extends Controller
         //
         $problem = Problem::all();
         $problemTag = ProblemTag::allPaginate(50);
-        $arr = (explode('/',$request->url()));
+        $link = (explode('/',$request->url()));
         if(Auth::user()->isAdmin){
-            if($arr[3] === 'problems'){
+            if($link[3] === 'problems'){
                 return redirect('admin/problems');
             }
             return view('admin.problem.index',compact('problemTag','problem'));
         }
         else {
-            if($arr[3] === 'admin'){
+            if($link[3] === 'admin'){
                 return redirect('problems');
             }
             return view('problem.index', compact('problemTag', 'problem'));
