@@ -14,15 +14,23 @@ class ProblemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+    public function index(Request $request)
     {
         //
         $problem = Problem::all();
         $problemTag = ProblemTag::allPaginate(50);
+        $arr = (explode('/',$request->url()));
         if(Auth::user()->isAdmin){
+            if($arr[3] === 'problems'){
+                return redirect('admin/problems');
+            }
             return view('admin.problem.index',compact('problemTag','problem'));
         }
         else {
+            if($arr[3] === 'admin'){
+                return redirect('problems');
+            }
             return view('problem.index', compact('problemTag', 'problem'));
         }
     }
@@ -38,6 +46,7 @@ class ProblemController extends Controller
         if(Auth::user()->isAdmin) {
             return view('admin.problem.create');
         }
+        return redirect('problems');
     }
 
     /**
