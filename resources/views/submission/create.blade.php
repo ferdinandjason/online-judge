@@ -47,9 +47,8 @@
 @stop
 @section('content')
     <?php
-        $array_lang = ['C++','C','Python'];
-        $var = 'C++';
-        $theme = ['chrome'=>'Chrome','monokai'=>'Monokai','solarized'=>'Solarized'];
+        $array_lang = ['C++','C'];
+        $theme = ['chrome'=>'Chrome','monokai'=>'Monokai','solarized_dark'=>'Solarized Dark'];
     ?>
     {!! Form::open(['url' => action('SubmissionController@store'), 'class' => 'ui form submit']) !!}
 
@@ -60,7 +59,7 @@
         </div>
         <div class="two wide column field column-label">Theme</div>
         <div class="six wide column field">
-            {!! Form::select('theme', $theme, 'chrome++', ['class' => 'ui search selection dropdown','id'=>'theme']) !!}
+            {!! Form::select('theme', $theme, 'chrome', ['class' => 'ui search selection dropdown','id'=>'theme']) !!}
         </div>
     </div>
     <div class="ui stackable grid">

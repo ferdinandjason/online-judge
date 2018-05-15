@@ -1,12 +1,21 @@
 <div class="ui vertical menu">
-    <a class="active blue item">
+
+    <a class="{{(Request::is('problems/*') && !Request::is('problems/*/submit') && !Request::is('problems/*/rank'))?'active ':''}}blue item" href="/problems/{{$problem->id}}">
         Description
-        <div class="ui blue left pointing label">&nbsp;</div>
+        @if(Request::is('problems/*') && !Request::is('problems/*/submit') && !Request::is('problems/*/rank'))
+            <div class="ui blue left pointing label">&nbsp;</div>
+        @endif
     </a>
-    <a class="blue item">
+    <a class="{{(Request::is('problems/*/rank'))?'active ':''}}blue item">
         Rank
+        @if(Request::is('problems/*/rank'))
+            <div class="ui blue left pointing label">&nbsp;</div>
+        @endif
     </a>
-    <a class="blue item" href="/problems/{{$problem->id}}/submit">
+    <a class="{{(Request::is('problems/*/submit'))?'active ':''}}blue item" href="/problems/{{$problem->id}}/submit">
         Submit
+        @if(Request::is('problems/*/submit'))
+            <div class="ui blue left pointing label">&nbsp;</div>
+        @endif
     </a>
 </div>
