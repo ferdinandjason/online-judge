@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use \Problem;
-use App\Submission;
+use \Submission;
 use Illuminate\Http\Request;
 
 class SubmissionController extends Controller
@@ -16,6 +16,8 @@ class SubmissionController extends Controller
     public function index()
     {
         //
+        $submission = Submission::all();
+        return view('submission.index',compact('submission'));
     }
 
     /**
@@ -38,26 +40,7 @@ class SubmissionController extends Controller
      */
     public function store(Request $request)
     {
-        // ULANG
-        $array_lang = ['C++','C','Python'];
-        $_POST['lang'] = $array_lang[$request['lang']];
-
-        Submissions::create($_POST);
-
-        $id = Submissions::orderBy('id','desc')->first()->id;
-
-        DB::table('codes')->insert(Array('code'=>$request['codes'],'id'=>$id) );
-
-        $temp = DB::table('users')->where('id',$request->get('user_id'))->first()->total_submit;
-        DB::table('users')->where('id',$request->get('user_id'))->update(["total_submit"=>$temp+1]);
-
-        $temp = DB::table('problems')->where('problem_id',$request->get('problem_id'))->first()->submit;
-        DB::table('problems')->where('problem_id',$request->get('problem_id'))->update(["submit"=>$temp+1]);
-
-        if(isset($_POST['contest_id'])){
-            return redirect('contest/'.$_POST['contest_id'].'/submissions');
-        }
-
+        Submission::create($request);
         return redirect('/submissions');
     }
 
@@ -67,9 +50,11 @@ class SubmissionController extends Controller
      * @param  \App\Submission  $submission
      * @return \Illuminate\Http\Response
      */
-    public function show(Submission $submission)
+    public function show($id)
     {
         //
+        $submission = Submission::getSubmission($id);
+        return view('submission.show',compact('submission'));
     }
 
     /**

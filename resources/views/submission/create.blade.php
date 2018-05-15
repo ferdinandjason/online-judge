@@ -47,7 +47,7 @@
 @stop
 @section('content')
     <?php
-        $array_lang = ['C++','C'];
+        $array_lang = ['C++'];
         $theme = ['chrome'=>'Chrome','monokai'=>'Monokai','solarized_dark'=>'Solarized Dark'];
     ?>
     {!! Form::open(['url' => action('SubmissionController@store'), 'class' => 'ui form submit']) !!}
@@ -73,7 +73,7 @@
         </div>
     </div>
     {!! Form::textarea('codes', old('code'), ['style'=>'display:none;']) !!}
-    {!! Form::hidden('problem_id', $problem->problem_id) !!}
+    {!! Form::hidden('problem_id', $problem->id) !!}
     {!! Form::hidden('user_id', Auth::user()->id) !!}
     {!! Form::close() !!}
 @stop

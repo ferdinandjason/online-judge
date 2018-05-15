@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repository\Submission\SubmissionEloquent;
 use App\Repository\Testcase\TestcaseEloquent;
+use App\Submission;
 use App\Testcase;
 use Illuminate\Support\ServiceProvider;
 use App\Problem;
@@ -40,6 +42,10 @@ class ModelRepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind('App\Repository\Testcase\TestcaseRepository',function($app){
             return new TestcaseEloquent(new Testcase());
+        });
+
+        $this->app->bind('App\Repository\Submission\SubmissionRepository',function($app){
+            return new SubmissionEloquent(new Submission());
         });
     }
 }

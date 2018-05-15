@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Service\Submission\SubmissionServices;
 use Illuminate\Support\ServiceProvider;
 use App\Service\Problem\ProblemServices;
 use App\Service\ProblemTag\ProblemTagServices;
@@ -37,6 +38,10 @@ class ModelServicesServiceProvider extends ServiceProvider
 
         $this->app->bind('TestcaseServices',function ($app){
             return new TestcaseServices($app->make('App\Repository\Testcase\TestcaseRepository'));
+        });
+
+        $this->app->bind('SubmissionServices',function ($app){
+            return new SubmissionServices($app->make('App\Repository\Submission\SubmissionRepository'));
         });
     }
 }

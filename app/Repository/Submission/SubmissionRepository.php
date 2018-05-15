@@ -8,5 +8,9 @@
 
 interface SubmissionRepository
 {
-
+    public function findFirst($id);
+    public function findContest($id);
+    public function all();
+    public function create($request);
+    public function findLast();
 }
