@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Contest;
+use App\ContestMember;
+use App\ContestProblem;
+use App\Repository\Contest\ContestEloquent;
+use App\Repository\ContestMember\ContestMemberEloquent;
+use App\Repository\ContestProblem\ContestProblemEloquent;
 use App\Repository\Submission\SubmissionEloquent;
 use App\Repository\Testcase\TestcaseEloquent;
 use App\Submission;
@@ -46,6 +52,17 @@ class ModelRepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind('App\Repository\Submission\SubmissionRepository',function($app){
             return new SubmissionEloquent(new Submission());
+        });
+
+        $this->app->bind('App\Repository\Contest\ContestRepository',function($app){
+            return new ContestEloquent(new Contest());
+        });
+
+        $this->app->bind('App\Repository\ContestProblem\ContestProblemRepository',function($app){
+            return new ContestProblemEloquent(new ContestProblem());
+        });
+        $this->app->bind('App\Repository\ContestMember\ContestMemberRepository',function($app){
+            return new ContestMemberEloquent(new ContestMember());
         });
     }
 }

@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -232,6 +232,9 @@ return [
         'ProblemTag' => App\Service\ProblemTag\ProblemTagFacade::class,
         'Testcase' => App\Service\Testcase\TestcaseFacade::class,
         'Submission' => App\Service\Submission\SubmissionFacade::class,
+        'Contest' => App\Service\Contest\ContestFacade::class,
+        'ContestProblem' => App\Service\ContestProblem\ContestProblemFacade::class,
+        'ContestMember' => App\Service\ContestMember\ContestMemberFacade::class,
     ],
 
 ];

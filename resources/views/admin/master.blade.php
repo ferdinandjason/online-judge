@@ -23,6 +23,13 @@
                 <a class="item" href="/admin/submissions"><i class="list icon"></i> List Submission</a>
             </div>
         </div>
+        <div class="item">
+            Contest
+            <div class="menu">
+                <a class="item" href="/admin/contest"><i class="list icon"></i> List Contest</a>
+                <a class="item" href="/admin/contest/create"><i class="add icon"></i> Add Contest</a>
+            </div>
+        </div>
     </div>
     @include('admin.navigator')
     <div style="margin-left: 19%;margin-right: 20px;margin-top: 80px;margin-bottom: 20px;">

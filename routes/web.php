@@ -16,16 +16,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Webpages
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('admin/problems','ProblemController');
 Route::resource('admin/submissions','SubmissionController');
 Route::resource('admin/problems/{id}/testcase','TestcaseController');
+Route::resource('admin/contest','ContestController');
+Route::get('admin/contest/{id}/add_problem','ContestProblemController@create');
+Route::post('admin/contest/{id}/add_problem','ContestProblemController@store');
 
 Route::resource('problems','ProblemController');
 Route::resource('submissions','SubmissionController');
 Route::get('problems/{id}/submit','SubmissionController@create');
+Route::resource('contest','ContestController');
+Route::post('','ContestMemberController@store')->name('contestmember.store');
 
 
 // API

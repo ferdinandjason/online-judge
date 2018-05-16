@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Service\Contest\ContestServices;
+use App\Service\ContestMember\ContestMemberServices;
+use App\Service\ContestProblem\ContestProblemServices;
 use App\Service\Submission\SubmissionServices;
 use Illuminate\Support\ServiceProvider;
 use App\Service\Problem\ProblemServices;
@@ -42,6 +45,18 @@ class ModelServicesServiceProvider extends ServiceProvider
 
         $this->app->bind('SubmissionServices',function ($app){
             return new SubmissionServices($app->make('App\Repository\Submission\SubmissionRepository'));
+        });
+
+        $this->app->bind('ContestServices',function($app){
+            return new ContestServices($app->make('App\Repository\Contest\ContestRepository'));
+        });
+
+        $this->app->bind('ContestProblemServices',function($app){
+            return new ContestProblemServices($app->make('App\Repository\ContestProblem\ContestProblemRepository'));
+        });
+
+        $this->app->bind('ContestMemberServices',function($app){
+            return new ContestMemberServices($app->make('App\Repository\ContestMember\ContestMemberRepository'));
         });
     }
 }
