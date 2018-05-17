@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use ContestMember;
 use Illuminate\Http\Request;
 
 class ContestMemberController extends Controller

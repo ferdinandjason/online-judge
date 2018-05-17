@@ -24,5 +24,51 @@ function getContestLength($start,$end){
 }
 
 function countPeopleJoin($id){
-    return \ContestMember::countPeopleJoin($id)->member;
+    try{
+        return \ContestMember::countPeopleJoin($id)->member;
+    }
+    catch (Exception $e){
+        return 0;
+    }
+}
+
+function getCurrentPercentageTime($contestStartTime,$contestEndTime){
+    $contestEndTime = \Carbon\Carbon::parse($contestEndTime);
+    $nowTime = \Carbon\Carbon::now();
+    $currentTime = $nowTime->min($contestEndTime);
+
+    $elapsed = $currentTime->diffInSeconds($contestStartTime);
+    $end = $contestEndTime->diffInSeconds($contestStartTime);
+
+    return $elapsed/$end*100;
+}
+
+function getElapsedTime($contestStartTime,$contestEndTime){
+    $contestEndTime = \Carbon\Carbon::parse($contestEndTime);
+    $nowTime = \Carbon\Carbon::now();
+    $currentTime = $nowTime->min($contestEndTime);
+
+    $elapsed = $currentTime->diffInMinutes($contestStartTime);
+    return $elapsed;
+}
+
+function getRemainingTime($contestStartTime,$contestEndTime){
+    $contestEndTime = \Carbon\Carbon::parse($contestEndTime);
+    $nowTime = \Carbon\Carbon::now();
+    $currentTime = $nowTime->min($contestEndTime);
+
+    $remainingTime = $currentTime->diffInMinutes($contestEndTime);
+    return $remainingTime;
+}
+
+function get_verdict($verdict){
+    if ($verdict == 0 ) return "Judging";
+    else if($verdict == 1) return "COMPILE ERROR";
+    else if($verdict == 2) return "ACCEPTED";
+    else if($verdict == 3) return "WRONG ANSWER";
+    else if($verdict == 4) return "RUN TIME ERROR";
+    else if($verdict == 5) return "TIME LIMIT EXCEDEED";
+    else if($verdict == 6) return "MEMORY LIMIT EXCEDEED";
+    else if($verdict == 7) return "FORBIDDEN SYSTEM CALL";
+    else if($verdict == 8) return "TOO LATE";
 }

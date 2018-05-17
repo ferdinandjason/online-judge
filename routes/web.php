@@ -32,7 +32,13 @@ Route::resource('submissions','SubmissionController');
 Route::get('problems/{id}/submit','SubmissionController@create');
 Route::resource('contest','ContestController');
 Route::post('','ContestMemberController@store')->name('contestmember.store');
+Route::get('contest/{id}/problems','ContestController@problemIndex');
+Route::get('contest/{id}/submission','ContestController@submissionIndex');
+Route::get('contest/{id}/scoreboard','ContestController@scoreboard');
 
 
 // API
 Route::post('/api/v1/statistics/problems/{id}','APIController@problems');
+Route::post('/api/v1/statistics/contest/percent/{id}','APIController@contestPercentage');
+Route::post('/api/v1/statistics/contest/elapsed/{id}','APIController@contestElapsed');
+Route::post('/api/v1/statistics/contest/remaining/{id}','APIController@contestRemaining');

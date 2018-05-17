@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Response;
+use Contest;
 
 class APIController extends Controller
 {
@@ -45,6 +46,21 @@ class APIController extends Controller
                 'datasets'=>[['data'=>$data,'backgroundColor'=>$color]],
                 'labels'=>$labels,
                 ]);
+    }
+
+    public function contestPercentage($id){
+        $contest = Contest::getContest($id);
+        return getCurrentPercentageTime($contest->start_time,$contest->end_time);
+    }
+
+    public function contestElapsed($id){
+        $contest = Contest::getContest($id);
+        return getElapsedTime($contest->start_time,$contest->end_time);
+    }
+
+    public function contestRemaining($id){
+        $contest = Contest::getContest($id);
+        return getRemainingTime($contest->start_time,$contest->end_time);
     }
 }
 

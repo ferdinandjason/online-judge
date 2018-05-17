@@ -8,7 +8,7 @@
 
 namespace App\Repository\ContestMember;
 
-
+use Illuminate\Support\Facades\DB;
 use App\ContestMember;
 
 class ContestMemberEloquent implements \ContestMemberRepository
@@ -35,7 +35,7 @@ class ContestMemberEloquent implements \ContestMemberRepository
     public function countPeopleJoin($id)
     {
         // TODO: Implement countPeopleJoin() method.
-        return $this->model->select('contest_id',DB::raw('count(*) as member'))->where('contest_id',$id)->first();
+        return $this->model->select('contest_id',DB::raw('count(*) as member'))->groupBy('contest_id')->where('contest_id',$id)->first();
     }
 
 

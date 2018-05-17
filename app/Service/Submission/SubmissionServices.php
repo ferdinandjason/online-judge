@@ -21,7 +21,7 @@ class SubmissionServices
 
     public function getContestSubmission($contest)
     {
-        return $this->repo->findContest($contest,20);
+        return $this->repo->findContest($contest);
     }
 
     public function getSubmission($id)

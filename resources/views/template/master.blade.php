@@ -21,6 +21,7 @@
             <p></p>
             <p></p>
         </div>
+        @yield('contest-only')
     </div>
     @include('template.footer')
     @yield('script')

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Contest;
+use ContestMember;
+use ContestProblem;
+use Submission;
 
 class ContestController extends Controller
 {
@@ -27,7 +30,7 @@ class ContestController extends Controller
             return view('admin.contest.index',compact('contest','contestMember'));
         }
         else{
-            return view('contest.index',compact('contest'));
+            return view('contest.index',compact('contest','contestMember'));
         }
     }
 
@@ -68,9 +71,11 @@ class ContestController extends Controller
      * @param  \App\Contest  $contest
      * @return \Illuminate\Http\Response
      */
-    public function show(Contest $contest)
+    public function show($id)
     {
         //
+        $contest = Contest::getContest($id);
+        return view('contest.show',compact('contest'));
     }
 
     /**
@@ -79,11 +84,11 @@ class ContestController extends Controller
      * @param  \App\Contest  $contest
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contest $contest)
+    public function edit($id)
     {
         //
-        $contest = Contest::find($contest);
-        return view('contest.edit',compact('contest'));
+        $contest = Contest::getContest($id);
+        return view('admin.contest.edit',compact('contest'));
     }
 
     /**
@@ -93,7 +98,7 @@ class ContestController extends Controller
      * @param  \App\Contest  $contest
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contest $contest)
+    public function update(Request $request,$contest)
     {
         //
         if(!isset($_POST['active'])){
@@ -102,7 +107,7 @@ class ContestController extends Controller
         else{
             $_POST['active'] = 1;
         }
-        Contest::validator($contest);
+        Contest::validator($request);
         Contest::update($contest,Contest::prosesPostData($_POST));
         return redirect('contest');
     }
@@ -126,5 +131,17 @@ class ContestController extends Controller
             'required'=>'The :attribute field is required',
             'string'=>'The :attribute value :input is not string'
         ];
+    }
+
+    public function problemIndex($id){
+        $contest = Contest::getContest($id);
+        $contestProblem = ContestProblem::getContestProblem($id);
+        return view('contest.problem.index',compact('contestProblem','contest'));
+    }
+
+    public function submissionIndex($id){
+        $contest = Contest::getContest($id);
+        $contestSubmission = Submission::getContestSubmission($id);
+        return view('contest.submission.index',compact('contestSubmission','contest'));
     }
 }

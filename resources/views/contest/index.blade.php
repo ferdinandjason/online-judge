@@ -27,7 +27,7 @@
         @foreach($contest as $c)
             <tr>
                 <td>{{$c->id}}</td>
-                <td><a href="">{{$c->name}}</a></td>
+                <td><a href="/contest/{{$c->id}}">{{$c->name}}</a></td>
                 <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)->DiffForHumans()}}</td>
                 <td>{{getContestLength($c->start_time,$c->end_time)}} Hours</td>
                 <td>{{countPeopleJoin($c->id)}}</td>
