@@ -34,7 +34,7 @@
                 <select class="ui fluid selection dropdown" name="problem_id" id="problem_id" value="">
                     <option value="-">------ - --------------------</option>
                     @foreach($problem as $p)
-                        <option value="{{$p->problem_id}}">{{$p->problem_id}} | {{$p->problem_title}}</option>
+                        <option value="{{$p->id}}">{{$p->id}} | {{$p->title}}</option>
                     @endforeach
                 </select>
             </div>

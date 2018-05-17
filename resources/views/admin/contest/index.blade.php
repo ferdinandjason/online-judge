@@ -34,7 +34,7 @@
                             {{ Form::hidden('_method', 'DELETE') }}
                             <button class='ui red  basic button' type='submit' data-tooltip="Delete Contest"><i class="far fa-trash-alt" style="color:red"></i></button>
                             {{ Form::close() }}
-                            <a class="ui green basic button" href="admin/contest/{{$c->id}}/add_problem" data-tooltip="Add Contest Problems"><i class="fas fa-plus" style="color: green"></i></a>
+                            <a class="ui green basic button" href="contest/{{$c->id}}/add_problem" data-tooltip="Add Contest Problems"><i class="fas fa-plus" style="color: green"></i></a>
                         </div>
                     </td>
                 </tr>

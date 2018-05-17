@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Contest;
+use ContestMember;
 
 class ContestController extends Controller
 {
@@ -18,15 +19,22 @@ class ContestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $link = (explode('/',$request->url()));
         $contest = Contest::all();
         $contestMember = ContestMember::getContestMember();
         if(Auth::user()->isAdmin){
+            if($link[3] === 'contest'){
+                return redirect('admin/contest');
+            }
             return view('admin.contest.index',compact('contest','contestMember'));
         }
         else{
+            if($link[3] === 'admin'){
+                return redirect('contest');
+            }
             return view('contest.index',compact('contest'));
         }
     }
