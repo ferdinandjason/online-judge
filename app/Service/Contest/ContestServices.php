@@ -65,4 +65,8 @@ class ContestServices
     public function delete($id){
         $this->repo->delete($id);
     }
+
+    public function stop($id){
+        $this->repo->update($id,['visible'=>0]);
+    }
 }

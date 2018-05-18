@@ -100,5 +100,9 @@ class APIController extends Controller
         return Response::json($datasets);
     }
 
+    public function stop($contestId){
+        Contest::stop($contestId);
+    }
+
 }
 

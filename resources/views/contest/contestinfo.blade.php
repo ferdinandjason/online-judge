@@ -63,13 +63,21 @@
         });
         if(a==100){
             updateLabelTime();
-            return;
+            $.ajax({
+                type: "POST",
+                url: '/api/v1/statistics/contest/endcontest/{{$contest->id}}',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         }
         updateLabelTime();
+        return a;
     }
 
     function update(){
-        updateContestTime();
+        var a = updateContestTime();
+        if(a == 100) return;
         setTimeout(update,1000);
     }
 

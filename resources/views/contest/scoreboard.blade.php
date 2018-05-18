@@ -4,7 +4,7 @@
 @stop
 @section('left-segment')
     <div class="ui piled segment">
-        <h4 class="ui header">Contest</h4>
+        <h4 class="ui header">Contest {{$contest->name}}</h4>
         <div class="ui divider"></div>
         @include('contest.navigator')
     </div>
@@ -90,7 +90,19 @@
                     options:{
                         showLine:1,
                         responsive: false,
-                        maintainAspectRatio: false
+                        maintainAspectRatio: false,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }],
+                            xAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        },
                     }
                 });
             }
