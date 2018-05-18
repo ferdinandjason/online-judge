@@ -149,7 +149,8 @@ class ContestController extends Controller
 
     public function submissionIndex($id){
         $contest = Contest::getContest($id);
+        $contestProblem = ContestProblem::getContestProblem($id);
         $contestSubmission = Submission::getContestSubmission($id);
-        return view('contest.submission.index',compact('contestSubmission','contest'));
+        return view('contest.submission.index',compact('contestSubmission','contest','contestProblem'));
     }
 }
