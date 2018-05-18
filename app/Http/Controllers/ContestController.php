@@ -82,7 +82,8 @@ class ContestController extends Controller
     {
         //
         $contest = Contest::getContest($id);
-        return view('contest.show',compact('contest'));
+        $contestProblem = ContestProblem::getContestProblem($id);
+        return view('contest.show',compact('contest','contestProblem'));
     }
 
     /**
