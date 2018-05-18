@@ -41,6 +41,8 @@ Route::get('contest/{id}/problems/{pid}/submit','ContestController@submit');
 Route::get('contest/{id}/submissions/{sid}','ContestController@submission');
 
 
+Route::resource('/user','UserController');
+
 // API
 Route::post('/api/v1/statistics/problems/{id}','APIController@problems');
 Route::post('/api/v1/statistics/contest/percent/{id}','APIController@contestPercentage');
