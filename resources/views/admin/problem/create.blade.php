@@ -58,9 +58,13 @@
                             <p>Untuk setiap testcase </p>
                             <br>
                             <p style="text-align: center;"><strong>Constraint</strong></p>
-                            <br><br>
+                            <br>
+                            <p>0 < N < 1000</p>
+                            <br>
                             <p style="text-align: center;"><strong>Explanation</strong></p>
-                            <br><br>
+                            <br>
+                            <p>Deskripsi lebih detail tentang testcase</p>
+                            <br>
                     </textarea>
                 @if ($errors->has('description'))
                     <p style="color:red"><strong>{{$errors->first('description')}}</strong><p>

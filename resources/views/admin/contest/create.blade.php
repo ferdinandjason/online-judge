@@ -25,26 +25,26 @@
             <div class="three fields">
                 <div class="field{{($errors->has('start_time'))?' error':''}}">
                     {!! Form::label('start_time','Start Time') !!}
-                    {!! Form::date('start_time',null,array('placeholder'=>'Start Time')) !!}
+                    <p style="margin-bottom: 10px">{!! Form::date('start_time',null,array('placeholder'=>'Start Time')) !!}</p>
                     {!! Form::time('start_time_',null,array('placeholder'=>'Start Time')) !!}
                     @if ($errors->has('start_time'))
-                        <p style="color:red"><strong>{{$errors->first('start_time')}}</strong><p>
+                        <p style="color:red"><strong>{{$errors->first('start_time')}}</strong></p>
                     @endif
                 </div>
                 <div class="field{{($errors->has('freeze_time'))?' error':''}}">
                     {!! Form::label('freeze_time','Freeze Time') !!}
-                    {!! Form::date('freeze_time',null,array('placeholder'=>'Freeze Time')) !!}
+                    <p style="margin-bottom: 10px">{!! Form::date('freeze_time',null,array('placeholder'=>'Freeze Time')) !!}</p>
                     {!! Form::time('freeze_time_',null,array('placeholder'=>'Freeze Time')) !!}
                     @if ($errors->has('freeze_time'))
-                        <p style="color:red"><strong>{{$errors->first('freeze_time')}}</strong><p>
+                        <p style="color:red"><strong>{{$errors->first('freeze_time')}}</strong></p>
                     @endif
                 </div>
                 <div class="field{{($errors->has('end_time'))?' error':''}}">
                     {!! Form::label('end_time','End Time') !!}
-                    {!! Form::date('end_time',null,array('placeholder'=>'End Time')) !!}
+                    <p style="margin-bottom: 10px">{!! Form::date('end_time',null,array('placeholder'=>'End Time')) !!}</p>
                     {!! Form::time('end_time_',null,array('placeholder'=>'End Time')) !!}
                     @if ($errors->has('end_time'))
-                        <p style="color:red"><strong>{{$errors->first('end_time')}}</strong><p>
+                        <p style="color:red"><strong>{{$errors->first('end_time')}}</strong></p>
                     @endif
                 </div>
             </div>
