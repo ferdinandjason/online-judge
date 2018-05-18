@@ -2,6 +2,7 @@
 @section('head')
 
 @stop
+
 @section('left-segment')
     <div class="ui piled segment">
         <h4 class="ui header">Problem</h4>

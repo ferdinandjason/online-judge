@@ -6,21 +6,21 @@
     @yield('head')
 </head>
 <body style="background-color: #EDECEC">
-    <div class="ui left fixed vertical menu" style="z-index: 1000;font-size: large;min-width: 18%">
-        <div class="item">
+    <div class="ui left fixed vertical menu" style="z-index: 1000;font-size: large;min-width: 18%;background: rgba(221, 221, 221, 0.1);">
+        <div class="item" style="background-color: white;">
             <img class="ui centered tiny image" src="/images/logo.png">
         </div>
         <div class="item">
             Problem
             <div class="menu">
-                <a class="item" href="/admin/problems"><i class="list icon"></i> List Problem</a>
-                <a class="item" href="/admin/problems/create"><i class="add icon"></i> Add Problem</a>
+                <a class="item" href="/admin/problems"><i class="list icon" style="color: blue;"></i> List Problem</a>
+                <a class="item" href="/admin/problems/create"><i class="add icon" style="color: green;"></i> Add Problem</a>
             </div>
         </div>
         <div class="item">
             Submission
             <div class="menu">
-                <a class="item" href="/admin/submissions"><i class="list icon"></i> List Submission</a>
+                <a class="item" href="/admin/submissions"><i class="list icon" style="color: blue;"></i> List Submission</a>
             </div>
         </div>
         <div class="item">

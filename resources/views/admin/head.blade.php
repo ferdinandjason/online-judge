@@ -12,7 +12,7 @@
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.semanticui.min.js"></script>
 
-<link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 {{--<link rel="stylesheet" href="/fonts/nanumbarungothic.css" />--}}
 
 <script type="text/javascript" src="/assets/semantic-ui/semantic.min.js"></script>
