@@ -42,3 +42,4 @@ Route::post('/api/v1/statistics/problems/{id}','APIController@problems');
 Route::post('/api/v1/statistics/contest/percent/{id}','APIController@contestPercentage');
 Route::post('/api/v1/statistics/contest/elapsed/{id}','APIController@contestElapsed');
 Route::post('/api/v1/statistics/contest/remaining/{id}','APIController@contestRemaining');
+Route::post('/api/v1/statistics/contest/linecharts/{id}','APIController@getLineCharts');

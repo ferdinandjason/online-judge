@@ -20,11 +20,18 @@ class ContestMemberEloquent implements \ContestMemberRepository
         $this->model = $contestMember;
     }
 
-    public function all()
+    public function all($id)
     {
-        return $this->model->all();
+        return $this->model->where('contest_id',$id)->get();
         // TODO: Implement all() method.
     }
+
+    public function allContest()
+    {
+        return $this->model->all();
+        // TODO: Implement allContest() method.
+    }
+
 
     public function create($request)
     {

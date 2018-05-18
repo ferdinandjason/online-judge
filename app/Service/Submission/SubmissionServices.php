@@ -50,4 +50,34 @@ class SubmissionServices
         $temp = DB::table('problems')->where('id',$request->get('problem_id'))->first()->total_submit;
         DB::table('problems')->where('id',$request->get('problem_id'))->update(["total_submit"=>$temp+1]);
     }
+
+    public function hasNewSubmission()
+    {
+        return $this->repo->newSubmission()->take(1)->get();
+    }
+
+    public function getNewSubmission()
+    {
+        return $this->repo->newSubmission()->orderBy('id','asc')->first();
+    }
+
+    public function updateCompileResult($id,$compileResult)
+    {
+        $this->repo->updateCOmpileResult($id,$compileResult);
+    }
+
+    public function updateVerdictResult($id,$verdictResult)
+    {
+        $this->repo->updateVerdictResult($id,$verdictResult);
+    }
+
+    public function updateTimeResult($id,$verdictResult)
+    {
+        $this->repo->updateTimeResult($id,$verdictResult);
+    }
+
+    public function updateMemoryResult($id,$verdictResult)
+    {
+        $this->repo->updateMemoryResult($id,$verdictResult);
+    }
 }

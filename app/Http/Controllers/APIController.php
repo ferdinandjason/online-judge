@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Response;
 use Contest;
+use Scoreboard;
+use ContestProblem;
 
 class APIController extends Controller
 {
@@ -62,5 +64,41 @@ class APIController extends Controller
         $contest = Contest::getContest($id);
         return getRemainingTime($contest->start_time,$contest->end_time);
     }
+
+    public function getLineCharts($contestId)
+    {
+        $scoreboard = Scoreboard::getScoreboard($contestId);
+        $contestProblem = ContestProblem::getContestProblem($contestId);
+        $userTopAcc = array();
+        $data = array();
+        for($i=0;$i<min(10,count($scoreboard));$i++)
+        {
+            $userTopAcc[] = $scoreboard[$i]['name'];
+            $data[$scoreboard[$i]['name']] = $scoreboard[$i]['score'];
+        }
+        $datasets = array();
+        foreach ($userTopAcc as $c){
+            $ds = array();
+            $temp = $data[$c];
+            $data = array();
+            foreach ($contestProblem as $p){
+                if($temp[$p->problem_id]['is_accepted']) {
+                    $x = \Carbon\Carbon::parse($temp[$p->problem_id]['accepted_in'])->diffInMinutes(Contest::getContest($contestId)->start_time);
+                    $y = 1;
+                    array_push($data,Array('x'=>$x,'y'=>$y));
+                }
+            }
+            usort($data,'line_cmp');
+            if(count($data)>1) {
+                for($i=1;$i<count($data);$i++){
+                    $data[$i]['y'] += $data[$i-1]['y'];
+                }
+            }
+            $ds[] = Array('label'=>$c,'data'=>$data);
+            $datasets[] = $ds;
+        }
+        return Response::json($datasets);
+    }
+
 }
 

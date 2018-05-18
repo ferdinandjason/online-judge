@@ -46,5 +46,11 @@ class TestcaseEloquent implements \TestcaseRepository
         $this->model->where('id',$id)->delete();
     }
 
+    public function getTestcase($id)
+    {
+        // TODO: Implement getTestcase() method.
+        return $this->model->where('problem_id',$id)->get();
+    }
+
 
 }

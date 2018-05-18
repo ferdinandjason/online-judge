@@ -18,8 +18,12 @@ class ContestMemberServices
         $this->repo = $contestMemberRepository;
     }
 
-    public function getContestMember(){
-        return $this->repo->all();
+    public function getContestMember($id){
+        return $this->repo->all($id);
+    }
+
+    public function getAllContestMember(){
+        return $this->repo->allContest();
     }
 
     public function create($request){

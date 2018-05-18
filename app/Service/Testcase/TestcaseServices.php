@@ -33,4 +33,9 @@ class TestcaseServices
     public function delete($id){
         $this->repo->delete($id);
     }
+
+    public function getTestcase($id)
+    {
+        return $this->repo->getTestcase($id);
+    }
 }

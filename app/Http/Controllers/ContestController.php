@@ -8,6 +8,7 @@ use Contest;
 use ContestMember;
 use ContestProblem;
 use Submission;
+use Scoreboard;
 
 class ContestController extends Controller
 {
@@ -26,7 +27,7 @@ class ContestController extends Controller
         //
         $link = (explode('/',$request->url()));
         $contest = Contest::all();
-        $contestMember = ContestMember::getContestMember();
+        $contestMember = ContestMember::getAllContestMember();
         if(Auth::user()->isAdmin){
             if($link[3] === 'contest'){
                 return redirect('admin/contest');
@@ -152,5 +153,12 @@ class ContestController extends Controller
         $contestProblem = ContestProblem::getContestProblem($id);
         $contestSubmission = Submission::getContestSubmission($id);
         return view('contest.submission.index',compact('contestSubmission','contest','contestProblem'));
+    }
+
+    public function scoreboard($id){
+        $contest = Contest::getContest($id);
+        $contestProblem = ContestProblem::getContestProblem($id);
+        $scoreboard = Scoreboard::getScoreboard($id);
+        return view('contest.scoreboard',compact('scoreboard','contest','contestProblem'));
     }
 }

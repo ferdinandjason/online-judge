@@ -50,4 +50,9 @@ class ProblemServices
         ]);
     }
 
+    public function increment($id,$table)
+    {
+        $this->repo->increment($id,$table);
+    }
+
 }

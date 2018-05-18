@@ -62,5 +62,11 @@ class ProblemEloquent implements \ProblemRepository
         $this->model->where('id',$id)->delete();
     }
 
+    public function increment($id, $table)
+    {
+        // TODO: Implement increment() method.
+        $this->model->where('id',$id)->increment($table);
+    }
+
 
 }

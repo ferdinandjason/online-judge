@@ -13,4 +13,9 @@ interface SubmissionRepository
     public function all();
     public function create($request);
     public function findLast();
+    public function newSubmission();
+    public function updateCompileResult($id,$compileResult);
+    public function updateVerdictResult($id,$verdictResult);
+    public function updateTimeResult($id,$time);
+    public function updateMemoryResult($id,$memo);
 }

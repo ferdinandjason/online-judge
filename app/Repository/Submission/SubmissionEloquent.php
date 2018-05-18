@@ -46,4 +46,36 @@ class SubmissionEloquent implements \SubmissionRepository
         // TODO: Implement findLast() method.
         return $this->model->orderBy('id','desc')->first();
     }
+
+    public function newSubmission()
+    {
+        // TODO: Implement newSubmission() method.
+        return $this->model->where('verdict','<=',0);
+    }
+
+    public function updateCompileResult($id, $compileResult)
+    {
+        // TODO: Implement updateCOmpileResult() method.
+        $this->model->where('id',$id)->update(['compile_result'=>$compileResult]);
+    }
+
+    public function updateVerdictResult($id, $verdictResult)
+    {
+        // TODO: Implement updateVerdictResult() method.
+        $this->model->where('id',$id)->update(['verdict'=>$verdictResult]);
+    }
+
+    public function updateTimeResult($id, $time)
+    {
+        // TODO: Implement updateTimeResult() method.
+        $this->model->where('id',$id)->update(['time'=>$time]);
+    }
+
+    public function updateMemoryResult($id, $memo)
+    {
+        // TODO: Implement updateMemoryResult() method.
+        $this->model->where('id',$id)->update(['memory'=>$memo]);
+    }
+
+
 }

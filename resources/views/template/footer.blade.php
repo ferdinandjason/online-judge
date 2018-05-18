@@ -1,3 +1,16 @@
+<div id="footer-navbar" class="ui inverted segment fixed" style="margin:0;width: 100vw;position: fixed;z-index: 100;top: calc(100vh - 47px);">
+    <div style="text-decoration-color: white;text-align: center;">
+        <div style="display: flex;float: left;">&nbsp;&nbsp;&nbsp;© 2018 Moe Online Judge</div>
+        <div class="ui horizontal inverted small divided link list" style="margin: 0;">
+            <a class="item" href="/about" target="_blank">About</a>
+            <a class="item" href="/problems">Problems</a>
+            <a class="item" href="/submissions">Submissions</a>
+            <a class="item" href="/rank">Rank</a>
+            <a class="item" href="/contest">Contest</a>
+        </div>
+        <div style="display: flex;float: right;">Version 0.6.5&nbsp;&nbsp;&nbsp;</div>
+    </div>
+</div>
 <div id="footer" class="ui black inverted vertical footer segment" style="margin-top:0;">
     <div class="ui center aligned container">
         <div class="ui stackable inverted grid">

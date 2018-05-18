@@ -17,7 +17,7 @@
             <div class="ui blue left pointing label">&nbsp;</div>
         @endif
     </a>
-    <a class="{{(Request::is('contest/*/scoreboard'))?' active':''}}blue item" href="/contest/{{$contest->id}}/scoreboard">
+    <a class="{{(Request::is('contest/*/scoreboard'))?'active ':''}}blue item" href="/contest/{{$contest->id}}/scoreboard">
         Scoreboard
         @if(Request::is('contest/*/scoreboard'))
             <div class="ui blue left pointing label">&nbsp;</div>

@@ -8,8 +8,10 @@ use App\ContestProblem;
 use App\Repository\Contest\ContestEloquent;
 use App\Repository\ContestMember\ContestMemberEloquent;
 use App\Repository\ContestProblem\ContestProblemEloquent;
+use App\Repository\Scoreboard\ScoreboardEloquent;
 use App\Repository\Submission\SubmissionEloquent;
 use App\Repository\Testcase\TestcaseEloquent;
+use App\Scoreboard;
 use App\Submission;
 use App\Testcase;
 use Illuminate\Support\ServiceProvider;
@@ -61,8 +63,13 @@ class ModelRepositoryServiceProvider extends ServiceProvider
         $this->app->bind('App\Repository\ContestProblem\ContestProblemRepository',function($app){
             return new ContestProblemEloquent(new ContestProblem());
         });
+
         $this->app->bind('App\Repository\ContestMember\ContestMemberRepository',function($app){
             return new ContestMemberEloquent(new ContestMember());
+        });
+
+        $this->app->bind('App\Repository\Scoreboard\ScoreboardRepository',function($app){
+           return new ScoreboardEloquent(new Scoreboard());
         });
     }
 }

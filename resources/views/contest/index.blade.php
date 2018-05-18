@@ -10,9 +10,8 @@
 @stop
 @section('right-segment')
     <div class="ui piled segment">
-        <h4 class="ui header">Problem</h4>
+        <h4 class="ui header"></h4>
         <div class="ui divider"></div>
-        @include('contest.problem.contestproblem')
     </div>
 @stop
 @section('content')
@@ -41,7 +40,7 @@
                         {!! Form::button('<i class="fa fa-user-plus"></i>'. ' Join', array('type' => 'submit', 'class' => 'small ui primary button','style'=>'margin:4px'))!!}
                         {!! Form::close() !!}
                     @else
-                        <button class="ui basic blue button"><a href="/contest/{{$c->id}}"><i class="fa fa-user-plus"></i> Masuk</a></button>
+                        <a href="/contest/{{$c->id}}"><button class="ui basic blue button"><i class="fa fa-user-plus"></i> Masuk</button></a>
                     @endif
                 </td>
             </tr>
