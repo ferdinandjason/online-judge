@@ -16,6 +16,6 @@ class ContestProblem extends Model
     ];
 
     public function problem(){
-        $this->belongsTo('App\Problem');
+        return $this->hasOne('App\Problem','id','problem_id');
     }
 }

@@ -31,7 +31,10 @@
 
     function updateContestTime(){
         let a = $('#progress').progress('get percent');
-        if(a==100) return;
+        if(a==100){
+            updateLabelTime();
+            return;
+        }
         $.ajax({
             type: "POST",
             url: '/api/v1/statistics/contest/percent/{{$contest->id}}',

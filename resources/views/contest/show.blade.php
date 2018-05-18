@@ -11,7 +11,9 @@
 @stop
 @section('right-segment')
     <div class="ui piled segment">
-
+        <h4 class="ui header">Problem</h4>
+        <div class="ui divider"></div>
+        @include('contest.problem.contestproblem')
     </div>
 @stop
 @section('content')

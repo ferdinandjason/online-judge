@@ -11,7 +11,9 @@
 @stop
 @section('right-segment')
     <div class="ui piled segment">
-
+        <h4 class="ui header">Problem</h4>
+        <div class="ui divider"></div>
+        @include('contest.problem.contestproblem')
     </div>
 @stop
 @section('content')
@@ -23,7 +25,7 @@
             <thead>
             <tr>
                 <th class="one wide">#</th>
-                <th class="ten wide">Problem</th>
+                <th class="six wide">Problem</th>
                 <th class="one wide">Alias</th>
                 <th class="one wide">Submit</th>
             </tr>
@@ -31,12 +33,12 @@
             <tbody>
             @foreach($contestProblem as $p)
                 <tr>
-                    <td>{{ $p->problem_id }}</td>
+                    <td>{{ $p->problem->id }}</td>
                     <td class="left aligned">
-                        <a href="contest/{{$contest->id}}/problems/{{$p->id}}" style="vertical-align: middle">{{ $p->problem->title }}</a>
+                        <a href="/contest/{{$contest->id}}/problems/{{$p->problem->id}}" style="vertical-align: middle">{{ $p->problem->title }}</a>
                     </td>
                     <td><a>{{$p->alias}}</a></td>
-                    <td><a> tombol submit </a></td>
+                    <td><button class="ui basic blue button"><a href="/contest/{{$contest->id}}/problems/{{$p->problem->id}}"><i class="fa fa-user-plus"></i> Masuk</a></button></td>
                 </tr>
             @endforeach
             </tbody>
