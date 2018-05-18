@@ -6,21 +6,7 @@
     <div class="ui segment">
         <h3 class="ui header" style="margin: 10px !important;">Submission List</h3>
         <div class="ui divider"></div>
-        <?php
-        function get_verdict($verdict){
-            if ($verdict == 0 ) return "Judging";
-            else if($verdict == 1) return "COMPILE ERROR";
-            else if($verdict == 2) return "ACCEPTED";
-            else if($verdict == 3) return "WRONG ANSWER";
-            else if($verdict == 4) return "RUN TIME ERROR";
-            else if($verdict == 5) return "TIME LIMIT EXCEDEED";
-            else if($verdict == 6) return "MEMORY LIMIT EXCEDEED";
-            else if($verdict == 7) return "FORBIDDEN SYSTEM CALL";
-            else if($verdict == 8) return "TOO LATE";
-        }
-        // dd(Auth::user());
-        // dd($submissions[0]->user());
-        ?>
+        
         <table class="ui striped blue table compact single line unstackable" id="submissionTable">
             <thead>
             <tr>
