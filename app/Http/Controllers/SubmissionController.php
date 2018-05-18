@@ -60,7 +60,7 @@ class SubmissionController extends Controller
     public function store(Request $request)
     {
         Submission::create($request);
-        return redirect('/submissions');
+        return back();
     }
 
     /**
@@ -108,5 +108,11 @@ class SubmissionController extends Controller
     public function destroy(Submission $submission)
     {
         //
+    }
+
+    public function regrade($id)
+    {
+        Submission::regrade($id);
+        return back();
     }
 }

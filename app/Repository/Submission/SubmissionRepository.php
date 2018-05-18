@@ -18,4 +18,6 @@ interface SubmissionRepository
     public function updateVerdictResult($id,$verdictResult);
     public function updateTimeResult($id,$time);
     public function updateMemoryResult($id,$memo);
+    public function update($id,$data);
+    public function getSubmissionContestWithProblem($id,$pid);
 }

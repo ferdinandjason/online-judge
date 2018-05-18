@@ -10,6 +10,7 @@ namespace App\Service\Scoreboard;
 
 use ContestMember;
 use ContestProblem;
+use Contest;
 
 class ScoreboardServices
 {
@@ -23,7 +24,7 @@ class ScoreboardServices
     public function addToScoreboard($contestId,$problemId,$userId,$verdict,$submission)
     {
         $scoreboard = $this->repo->find($contestId,$problemId,$userId);
-        if($scoreboard == null)
+        if($scoreboard->first() == null)
         {
             if($verdict !=2){
                 $this->repo->create([
@@ -49,9 +50,9 @@ class ScoreboardServices
         else
         {
             $time = \Carbon\Carbon::parse($submission->created_at)->diffInMinutes(Contest::getContest($contestId)->created_at);
-            if($scoreboard->get()->is_accepted == 0){
+            if($scoreboard->first()->is_accepted == 0){
                 if($verdict != 2){
-                    $scoreboard->increment('time_penalty',$time);
+                    $scoreboard->increment('penalty',$time);
                     $scoreboard->increment('submission_count');
                 }
                 else{
@@ -92,9 +93,9 @@ class ScoreboardServices
             if(isset($board[$s->user_id]['score'][$s->problem_id]))
             {
                 $board[$s->user_id]['score'][$s->problem_id]['submission_count'] = $s->submission_count;
-                $board[$s->user_id]['score'][$s->problem_id]['time_penalty'] = $s->time_penalty;
+                $board[$s->user_id]['score'][$s->problem_id]['time_penalty'] = $s->penalty;
                 $board[$s->user_id]['score'][$s->problem_id]['is_accepted'] = $s->is_accepted;
-                $board[$s->user_id]['score'][$s->problem_id]['accepted_in'] = $s->update_at;
+                $board[$s->user_id]['score'][$s->problem_id]['accepted_in'] = \Carbon\Carbon::parse($s->updated_at)->diffInMinutes(Contest::getContest($contestId)->start_time);
 
                 if($board[$s->user_id]['score'][$s->problem_id]['is_accepted'])
                 {
@@ -106,5 +107,18 @@ class ScoreboardServices
 
         usort($board,'score_cmp');
         return $board;
+    }
+
+    public function regrade($submission,$verdict){
+        $submissions = Submission::getSubmissionContestWithProblem($submission->contest_id,$submission->problem_id);
+        $this->repo->find($submission->contest_id,$submission->problem_id,$submission->user_id)->delete();
+        foreach ($submissions as $s){
+            if($s != $submission){
+                $this->addToScoreboard($s->contest_id,$s->problem_id,$s->user_id,$s->verdict,$s);
+            }
+            else{
+                $this->addToScoreboard($s->contest_id,$s->problem_id,$s->user_id,$verdict,$s);
+            }
+        }
     }
 }

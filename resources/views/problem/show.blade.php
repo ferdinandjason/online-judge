@@ -99,7 +99,6 @@
                 </div>
             </div>
         </div>
-        <div class="ui horizontal divider">Comments</div>
     </div>
     {{--</div>--}}
 

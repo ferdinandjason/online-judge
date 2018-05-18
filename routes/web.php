@@ -26,6 +26,7 @@ Route::resource('admin/problems/{id}/testcase','TestcaseController');
 Route::resource('admin/contest','ContestController');
 Route::get('admin/contest/{id}/add_problem','ContestProblemController@create');
 Route::post('admin/contest/{id}/add_problem','ContestProblemController@store');
+Route::get('admin/submissions/{id}/regrade','SubmissionController@regrade');
 
 Route::resource('problems','ProblemController');
 Route::resource('submissions','SubmissionController');
@@ -35,6 +36,9 @@ Route::post('','ContestMemberController@store')->name('contestmember.store');
 Route::get('contest/{id}/problems','ContestController@problemIndex');
 Route::get('contest/{id}/submission','ContestController@submissionIndex');
 Route::get('contest/{id}/scoreboard','ContestController@scoreboard');
+Route::get('contest/{id}/problems/{pid}','ContestProblemController@show');
+Route::get('contest/{id}/problems/{pid}/submit','ContestController@submit');
+Route::get('contest/{id}/submissions/{sid}','ContestController@submission');
 
 
 // API

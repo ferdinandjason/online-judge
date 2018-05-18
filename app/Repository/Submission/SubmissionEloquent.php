@@ -77,5 +77,17 @@ class SubmissionEloquent implements \SubmissionRepository
         $this->model->where('id',$id)->update(['memory'=>$memo]);
     }
 
+    public function update($id, $data)
+    {
+        // TODO: Implement update() method.
+        $this->model->where('id',$id)->update($data);
+    }
+
+    public function getSubmissionContestWithProblem($id, $pid)
+    {
+        // TODO: Implement getSubmissionContestWithProblem() method.
+        return $this->model->where('contest_id',$id)->where('problem_id',$id)->get();
+    }
+
 
 }

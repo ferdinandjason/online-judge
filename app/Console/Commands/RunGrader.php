@@ -2,12 +2,18 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Support\Facades\DB;
 use App\User;
+use Submission;
+use Contest;
+use Problem;
+use Testcase;
+use Scoreboard;
 use Illuminate\Console\Command;
 
 class RunGrader extends Command
 {
-    protected $home = '/home/ferdinand/Code/';
+    protected $home = '/home/ferdinand/Code/OnlineJudge';
     /**
      * The name and signature of the console command.
      *
@@ -61,7 +67,7 @@ class RunGrader extends Command
 
     private function gradeSubmission($submission)
     {
-        $problem = Problemm::getProblem($submission->problem_id);
+        $problem = Problem::getProblem($submission->problem_id);
         $msg  = "Found new submision!\n";
         $msg .= '                   Submission  : '.$submission->id." \n";
         $msg .= '                   User        : '.$submission->user_id." \n";
@@ -117,7 +123,7 @@ class RunGrader extends Command
             return $verdict;
         }
 
-        $problemPath = $this->home . '/storage/app/public/testcase/' / $submission->problem_id;
+        $problemPath = $this->home . '/storage/app/public/testcase/' . $submission->problem_id;
         $testcase = Testcase::getTestcase($submission->problem_id);
         $overallVerdict = 2; // Accepted;
 
@@ -130,7 +136,7 @@ class RunGrader extends Command
 
         $verdictResult = '';
         foreach ($testcase as $t) {
-            $tcPath = '/home/ferdinand/oj/storage/app/public';
+            $tcPath = $this->home.'/storage/app/public';
             $outPath = $submissionPath . '/judging/' . $t->id;
 
             if (!is_dir($submissionPath)) {
@@ -189,7 +195,7 @@ class RunGrader extends Command
 
             $run_result_time = ((float)$run_result['time-wall']) * 100;
             $run_result_memory = (float)$run_result['mem'] / (1024);
-            $verdictResult .= getVerdict($verdict) . ',';
+            $verdictResult .= $this->getVerdict($verdict) . ',';
             $runTime += $run_result_time;
             $runMemo += $run_result_memory;
 
@@ -202,14 +208,14 @@ class RunGrader extends Command
         }
         if($count == 0){
             $overallVerdict = 2;
-            Submissions::updateVerdictResult($submission->id,$overallVerdict);
-            Submissions::updateTimeResult($submission->id,0.0);
-            Submissions::updateMemoryResult($submission->id,0,0);
+            Submission::updateVerdictResult($submission->id,$overallVerdict);
+            Submission::updateTimeResult($submission->id,0.0);
+            Submission::updateMemoryResult($submission->id,0,0);
         }
         else{
-            Submissions::updateVerdictResult($submission->id,$overallVerdict);
-            Submissions::updateTimeResult($submission->id,(float)$runTime/$count);
-            Submissions::updateMemoryResult($submission->id,$runMemo/$count);
+            Submission::updateVerdictResult($submission->id,$overallVerdict);
+            Submission::updateTimeResult($submission->id,(float)$runTime/$count);
+            Submission::updateMemoryResult($submission->id,$runMemo/$count);
         }
 
         if($submission->contest_id == 0)
@@ -230,8 +236,25 @@ class RunGrader extends Command
         }
         else
         {
-            Scoreboard::addToScoreboard($submission->contest_id,$submission->problem_id,$submission->user_id,$submission);
+            if($submission->verdict == -1){
+                Scoreboard::regrade($submission,$overallVerdict);
+            }
+            else{
+                Scoreboard::addToScoreboard($submission->contest_id,$submission->problem_id,$submission->user_id,$overallVerdict,$submission);
+            }
         }
         return $overallVerdict;
+    }
+
+    private function getVerdict($verdict){
+        if ($verdict == 0 ) return "Judging";
+        else if($verdict == 1) return "COMPILE ERROR";
+        else if($verdict == 2) return "ACCEPTED";
+        else if($verdict == 3) return "WRONG ANSWER";
+        else if($verdict == 4) return "RUN TIME ERROR";
+        else if($verdict == 5) return "TIME LIMIT EXCEDEED";
+        else if($verdict == 6) return "MEMORY LIMIT EXCEDEED";
+        else if($verdict == 7) return "FORBIDDEN SYSTEM CALL";
+        else if($verdict == 8) return "TOO LATE";
     }
 }

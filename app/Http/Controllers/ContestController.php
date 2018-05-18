@@ -9,6 +9,7 @@ use ContestMember;
 use ContestProblem;
 use Submission;
 use Scoreboard;
+use Problem;
 
 class ContestController extends Controller
 {
@@ -160,5 +161,19 @@ class ContestController extends Controller
         $contestProblem = ContestProblem::getContestProblem($id);
         $scoreboard = Scoreboard::getScoreboard($id);
         return view('contest.scoreboard',compact('scoreboard','contest','contestProblem'));
+    }
+
+    public function submit($id,$pid){
+        $contest = Contest::getContest($id);
+        $contestProblem = ContestProblem::getContestProblem($id);
+        $problem = Problem::getProblem($pid);
+        return view('contest.submission.create',compact('contest','contestProblem','problem'));
+    }
+
+    public function submission($id,$sid){
+        $submission = Submission::getSubmission($id);
+        $contest = Contest::getContest($id);
+        $contestProblem = ContestProblem::getContestProblem($id);
+        return view('contest.submission.show',compact('submission','contest','contestProblem'));
     }
 }

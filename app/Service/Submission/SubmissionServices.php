@@ -53,7 +53,7 @@ class SubmissionServices
 
     public function hasNewSubmission()
     {
-        return $this->repo->newSubmission()->take(1)->get();
+        return $this->repo->newSubmission()->take(1)->first();
     }
 
     public function getNewSubmission()
@@ -79,5 +79,13 @@ class SubmissionServices
     public function updateMemoryResult($id,$verdictResult)
     {
         $this->repo->updateMemoryResult($id,$verdictResult);
+    }
+
+    public function regrade($id){
+        $this->repo->update($id,['verdict'=>-1]);
+    }
+
+    public function getSubmissionContestWithProblem($id,$pid){
+        $this->repo->getSubmissionContestWithProblem($id,$pid);
     }
 }

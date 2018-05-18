@@ -52,9 +52,14 @@ class ContestProblemController extends Controller
      * @param  \App\ContestProblem  $contestProblem
      * @return \Illuminate\Http\Response
      */
-    public function show(ContestProblem $contestProblem)
+    public function show($contestId,$id)
     {
         //
+        $contest = Contest::getContest($contestId);
+        $contestProblem = ContestProblem::getContestProblem($contestId);
+        $problem = Problem::getProblem($id);
+        return view('contest.problem.show',compact('contest','contestProblem','problem'));
+
     }
 
     /**

@@ -48,10 +48,13 @@
                     <td>{{$c['total_penalty']}}</td>
                     @foreach($contestProblem as $x)
                         @if($c['score'][$x->problem_id]['is_accepted']>0)
-                            @if(isFirstAccepted($c['score'][$x->problem_id]['time_penalty'],$first_acc))
-                                <td style="background: #33CC99;">{{$c['score'][$x->problem_id]['time_penalty']}}<br>{{$c['score'][$x->problem_id]['accepted_in']}}</td>
+                            @if(isFirstAccepted($c['score'][$x->problem_id]['accepted_in'],$first_acc,$x->problem_id))
+                                <?php
+                                    unset($first_acc[$x->problem_id]);
+                                ?>
+                                <td style="background: #33CC99;">{{$c['score'][$x->problem_id]['accepted_in']}}</td>
                             @else
-                                <td style="background: #DFF0D8;">{{$c['score'][$x->problem_id]['time_penalty']}}<br>{{$c['score'][$x->problem_id]['accepted_in']}}</td>
+                                <td style="background: #DFF0D8;">{{$c['score'][$x->problem_id]['accepted_in']}}</td>
                             @endif
                         @elseif($c['score'][$x->problem_id]['submission_count']>0)
                             <td style="background: #F2DEDE;">(-{{$c['score'][$x->problem_id]['submission_count']}})</td>

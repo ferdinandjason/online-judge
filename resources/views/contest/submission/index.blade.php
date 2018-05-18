@@ -37,28 +37,28 @@
             <tbody>
             @foreach($contestSubmission as $solution)
                 <tr>
-                    <td><a href="contest/{{$contest->id}}/submissions/{{$solution->id}}">{{ $solution->id }}</a></td>
+                    <td><a href="/contest/{{$contest->id}}/submissions/{{$solution->id}}">{{ $solution->id }}</a></td>
                     <td>
                         <a href="/user/{{ $solution->user->id }}">{{ $solution->user->real_name }}</a>
                     </td>
                     <td>
-                        <a href="contest/{{$contest->id}}/problems/{{ $solution->problem_id }}">{{ $solution->problem_id }}</a>
+                        <a href="/contest/{{$contest->id}}/problems/{{ $solution->problem_id }}">{{ $solution->problem_id }}</a>
                     </td>
-                    @if(get_verdict($solution->status) == "ACCEPTED" || get_verdict($solution->status) == "WRONG ANSWER")
-                        @if(get_verdict($solution->status) == "ACCEPTED")
-                            <td style="color:green;text-align: center;">{{get_verdict($solution->status)}}</td>
+                    @if(get_verdict($solution->verdict) == "ACCEPTED" || get_verdict($solution->verdict) == "WRONG ANSWER")
+                        @if(get_verdict($solution->verdict) == "ACCEPTED")
+                            <td style="color:green;text-align: center;">{{get_verdict($solution->verdict)}}</td>
                         @else
-                            <td style="color:red;text-align: center;">{{get_verdict($solution->status)}}</td>
+                            <td style="color:red;text-align: center;">{{get_verdict($solution->verdict)}}</td>
                         @endif
                         <td>{{number_format($solution->time, 2, ',', '')}} s</td>
                         <td>{{number_format((float)$solution->memory/1024.0,2, ',', '')}} MB</td>
                     @else
-                        @if(get_verdict($solution->status) == "RUN TIME ERROR")
-                            <td style="color:yellow;text-align: center;">{{get_verdict($solution->status)}}</td>
+                        @if(get_verdict($solution->verdict) == "RUN TIME ERROR")
+                            <td style="color:yellow;text-align: center;">{{get_verdict($solution->verdict)}}</td>
                         @elseif($solution->status == "COMPILE ERROR")
-                            <td style="text-align: center;">{{get_verdict($solution->status)}}</td>
+                            <td style="text-align: center;">{{get_verdict($solution->verdict)}}</td>
                         @else
-                            <td style="color:blue;text-align: center;">{{get_verdict($solution->status)}}</td>
+                            <td style="color:blue;text-align: center;">{{get_verdict($solution->verdict)}}</td>
                         @endif
                         <td>-</td>
                         <td>-</td>

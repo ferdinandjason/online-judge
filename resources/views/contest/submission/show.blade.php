@@ -1,30 +1,27 @@
 @extends('template.master')
 @section('head')
-    <link href='https://fonts.googleapis.com/css?family=Consolas' rel='stylesheet'>
+
 @stop
 @section('left-segment')
     <div class="ui piled segment">
-        <h4 class="ui header">Submission #{{$submission->id}}</h4>
+        <h4 class="ui header">Contest {{$contest->name}}</h4>
         <div class="ui divider"></div>
-    </div>
-    <div class="ui piled segment">
-
+        @include('contest.navigator')
     </div>
 @stop
 @section('right-segment')
     <div class="ui piled segment">
-
-    </div>
-    <div class="ui piled segment">
-        <h4 class="ui header">Statistic</h4>
+        <h4 class="ui header">Problem</h4>
         <div class="ui divider"></div>
-
+        @include('contest.problem.contestproblem')
     </div>
 @stop
 @section('content')
+    @include('contest.contestinfo')
+@stop
+@section('contest-only')
     <div class="ui container">
         <div class="ui horizontal divider"><i class="file icon"></i>  Submissions</div>
-
         <table class="ui celled padded single line table segment unstackable">
             <thead><tr>
                 <th>User</th>
@@ -54,7 +51,7 @@
         <div class="ui horizontal divider"><i class="code icon"></i>  Compile Result</div>
         @if(Auth::user()!=null && (Auth::user()->id == $submission->user->id))
             <div id="compile"  style="font-family:Ubuntu\ Mono !important;font-size:12pt !important;">
-                <div class="ui segment code" >
+                <div class="ui segment code">
                     <pre><code><?php echo $submission->compile_result ?></code></pre>
                 </div>
             </div>
@@ -64,28 +61,5 @@
 @section('script')
     <script>
         $('.dropdown').dropdown()
-        $(document).ready(function(){
-            $('#problemTable').DataTable();
-        });
-    </script>
-    <script src="/assets/editor/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/assets/editor.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-        $(function(){
-            var lang = $('#editor').attr('data-lang');
-            var editor = ace.edit('editor');
-            initialize_editor(editor, getLanguageClass(lang), $('#editor').attr('data-theme'));
-            editor.setReadOnly(true);
-            editor.setOptions({
-                minLines: 5,
-                maxLines: Infinity
-            });
-        })
-        $("pre code").each(function(){
-            var html = $(this).html();
-            console.log(html);
-            var pattern = html.match(/\s*\n[\t\s]*/);
-            $(this).html(html.replace(new RegExp(pattern, "g"),'\n'));
-        });
     </script>
 @stop

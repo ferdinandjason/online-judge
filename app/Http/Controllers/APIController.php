@@ -70,16 +70,16 @@ class APIController extends Controller
         $scoreboard = Scoreboard::getScoreboard($contestId);
         $contestProblem = ContestProblem::getContestProblem($contestId);
         $userTopAcc = array();
-        $data = array();
+        $datas = array();
         for($i=0;$i<min(10,count($scoreboard));$i++)
         {
             $userTopAcc[] = $scoreboard[$i]['name'];
-            $data[$scoreboard[$i]['name']] = $scoreboard[$i]['score'];
+            $datas[$scoreboard[$i]['name']] = $scoreboard[$i]['score'];
         }
         $datasets = array();
         foreach ($userTopAcc as $c){
             $ds = array();
-            $temp = $data[$c];
+            $temp = $datas[$c];
             $data = array();
             foreach ($contestProblem as $p){
                 if($temp[$p->problem_id]['is_accepted']) {

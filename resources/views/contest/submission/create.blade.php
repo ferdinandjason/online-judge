@@ -4,84 +4,60 @@
 @stop
 @section('left-segment')
     <div class="ui piled segment">
-        <h4 class="ui header">Problem {{$problem->title}}</h4>
+        <h4 class="ui header">Contest {{$contest->name}}</h4>
         <div class="ui divider"></div>
-        @include('problem.navigator')
-    </div>
-    <div class="ui piled segment">
-        <h4 class="ui header">Export Problem</h4>
-        <div class="ui divider"></div>
-        <div class="ui labeled button" tabindex="0" style="margin: 2px;">
-            <div class="ui button">
-                <i class="file excel outline icon"></i> Export to
-            </div>
-            <a class="ui basic left pointing label">
-                CSV
-            </a>
-        </div>
-        <div class="ui labeled button" tabindex="0" style="margin: 2px;">
-            <div class="ui button">
-                <i class="file alternate outline icon"></i> Export to
-            </div>
-            <a class="ui basic left pointing label">
-                HTML
-            </a>
-        </div>
+        @include('contest.navigator')
     </div>
 @stop
 @section('right-segment')
     <div class="ui piled segment">
-        <h4 class="ui header">Tags</h4>
+        <h4 class="ui header">Submit {{$problem->id}}</h4>
         <div class="ui divider"></div>
-        @foreach($problem->tags as $tag)
-            <div class="ui tag label">
-                {{$tag->name}}
-            </div>
-        @endforeach
-    </div>
-    <div class="ui piled segment">
-        <h4 class="ui header">Statistic</h4>
-        <div class="ui divider"></div>
-
     </div>
 @stop
 @section('content')
-    <?php
+    @include('contest.contestinfo')
+@stop
+@section('contest-only')
+    <div class="ui segment">
+        <?php
         $array_lang = ['C++'];
         $theme = ['chrome'=>'Chrome','monokai'=>'Monokai','solarized_dark'=>'Solarized Dark'];
-    ?>
-    {!! Form::open(['url' => action('SubmissionController@store'), 'class' => 'ui form submit']) !!}
+        ?>
+        {!! Form::open(['url' => action('SubmissionController@store'), 'class' => 'ui form submit']) !!}
 
-    <div class="ui stackable grid">
-        <div class="two wide column field column-label">Bahasa</div>
-        <div class="six wide column field">
-            {!! Form::select('lang', $array_lang, 'C++', ['class' => 'ui search selection dropdown','id'=>'text']) !!}
-        </div>
-        <div class="two wide column field column-label">Theme</div>
-        <div class="six wide column field">
-            {!! Form::select('theme', $theme, 'chrome', ['class' => 'ui search selection dropdown','id'=>'theme']) !!}
-        </div>
-    </div>
-    <div class="ui stackable grid">
-        <div class="two wide column field column-label">Source Code</div>
-        <div class="fourteen wide column field inline">
-            <div class="sendiri">
-                <div id="editor" class="code" data-theme="chrome" style="font-family:'Ubuntu Mono'"></div>
-                <div class="ui divider hidden"></div>
-                {!! Form::submit('Submit', ['class' => 'ui blue button']) !!}
+        <div class="ui stackable grid">
+            <div class="two wide column field column-label">Bahasa</div>
+            <div class="six wide column field">
+                {!! Form::select('lang', $array_lang, 'C++', ['class' => 'ui search selection dropdown','id'=>'text']) !!}
+            </div>
+            <div class="two wide column field column-label">Theme</div>
+            <div class="six wide column field">
+                {!! Form::select('theme', $theme, 'chrome', ['class' => 'ui search selection dropdown','id'=>'theme']) !!}
             </div>
         </div>
+        <div class="ui stackable grid">
+            <div class="two wide column field column-label">Source Code</div>
+            <div class="fourteen wide column field inline">
+                <div class="sendiri">
+                    <div id="editor" class="code" data-theme="chrome" style="font-family:'Ubuntu Mono'"></div>
+                    <div class="ui divider hidden"></div>
+                    {!! Form::submit('Submit', ['class' => 'ui blue button']) !!}
+                </div>
+            </div>
+        </div>
+        {!! Form::textarea('codes', old('code'), ['style'=>'display:none;']) !!}
+        {!! Form::hidden('problem_id', $problem->id) !!}
+        {!! Form::hidden('user_id', Auth::user()->id) !!}
+        {!! Form::hidden('contest_id', $contest->id) !!}
+        {!! Form::close() !!}
     </div>
-    {!! Form::textarea('codes', old('code'), ['style'=>'display:none;']) !!}
-    {!! Form::hidden('problem_id', $problem->id) !!}
-    {!! Form::hidden('user_id', Auth::user()->id) !!}
-    {!! Form::close() !!}
 @stop
 @section('script')
     <script>
         $('.dropdown').dropdown()
         $(document).ready(function(){
-            $('#problemTable').DataTable();
+            $('#submissionTable').DataTable();
         });
     </script>
     <script src="/assets/editor/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>

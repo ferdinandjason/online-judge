@@ -78,8 +78,6 @@ function score_cmp($a, $b){
         return $b['total_accepted'] - $a['total_accepted'];
     if ($a['total_penalty'] != $b['total_penalty'])
         return $a['total_penalty'] - $b['total_penalty'];
-    if ($a['last_submission'] != $b['last_submission'])
-        return $a['last_submission'] - $b['last_submission'];
     if ($a['name'] == $b['name'])
         return 0;
     return $a['name'] < $b['name'] ? -1 : 1;
@@ -88,7 +86,7 @@ function score_cmp($a, $b){
 function minimalPenalty($scoreboard,$problemId){
     $temp = array();
     foreach ($scoreboard as $c){
-        $temp[] = $c['score'][$problemId]['time_penalty'];
+        $temp[] = $c['score'][$problemId]['accepted_in'];
     }
     return min($temp);
 }
@@ -101,8 +99,13 @@ function getFirstAccProblem($scoreboard,$contestProblem){
     return $firstPenalty;
 }
 
-function isFirstAccepted($time,$array){
-    return in_array($time,$array);
+function isFirstAccepted($time,$array,$problemId){
+    try{
+        return $array[$problemId] == $time;
+    }
+    catch(Exception $e){
+        return FALSE;
+    }
 }
 
 function line_cmp($a,$b){

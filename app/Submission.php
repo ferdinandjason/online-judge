@@ -12,7 +12,7 @@ class Submission extends Model
     protected $fillable = ['problem_id', 'user_id','lang','contest_id'];
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\User','id','user_id');
     }
 
     public function codes(){
