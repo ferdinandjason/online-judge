@@ -110,9 +110,12 @@ class ProblemController extends Controller
     public function edit($problemId)
     {
         //
-        $problem = Problem::getProblem($problemId);
-        $tags = ProblemTag::getProblemTag($problemId);
-        return view('admin.problem.edit',compact('problem','tags'));
+        if(Auth::user()->isAdmin) {
+            $problem = Problem::getProblem($problemId);
+            $tags = ProblemTag::getProblemTag($problemId);
+            return view('admin.problem.edit',compact('problem','tags'));
+        }
+        else return redirect('problems');
     }
 
     /**
@@ -149,7 +152,9 @@ class ProblemController extends Controller
     public function destroy($problemId)
     {
         //
-        Problem::delete($problemId);
+        if(Auth::user()->isAdmin) {
+            Problem::delete($problemId);
+        }
         return back();
     }
 }
