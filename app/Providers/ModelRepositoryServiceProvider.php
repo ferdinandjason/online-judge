@@ -11,9 +11,11 @@ use App\Repository\ContestProblem\ContestProblemEloquent;
 use App\Repository\Scoreboard\ScoreboardEloquent;
 use App\Repository\Submission\SubmissionEloquent;
 use App\Repository\Testcase\TestcaseEloquent;
+use App\Repository\User\UserEloquent;
 use App\Scoreboard;
 use App\Submission;
 use App\Testcase;
+use App\User;
 use Illuminate\Support\ServiceProvider;
 use App\Problem;
 use App\ProblemTag;
@@ -70,6 +72,10 @@ class ModelRepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind('App\Repository\Scoreboard\ScoreboardRepository',function($app){
            return new ScoreboardEloquent(new Scoreboard());
+        });
+
+        $this->app->bind('App\Repository\User\UserRepository',function($app){
+            return new UserEloquent(new User());
         });
     }
 }

@@ -63,5 +63,9 @@ class ModelServicesServiceProvider extends ServiceProvider
         $this->app->bind('ScoreboardServices',function($app){
            return new ScoreboardServices($app->make('App\Repository\Scoreboard\ScoreboardRepository'));
         });
+
+        $this->app->bind('UserServices',function($app){
+           return new UserServices($app->make('App\Repository\User\UserRepository'));
+        });
     }
 }
