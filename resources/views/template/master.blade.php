@@ -7,7 +7,7 @@
 </head>
 <body>
     @include('template.navigator')
-    <div class="ui container" style="width: 50% !important;min-height: 100vh;margin-top: 20px;">
+    <div class="ui container" style="width: 50% !important;min-height: 100vh;margin-top: 20px;margin-bottom: 20px;">
         <div class="ui top attached segment">
             <div class="left ui rail" style="padding-right: 0px;padding-left: 56px;">
                 @yield('left-segment')

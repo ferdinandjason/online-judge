@@ -237,6 +237,8 @@ return [
         'ContestMember' => App\Service\ContestMember\ContestMemberFacade::class,
         'Scoreboard' => App\Service\Scoreboard\ScoreboardFacade::class,
         'User' => App\Service\User\UserFacade::class,
+        'Comment' => App\Service\Comment\CommentFacade::class,
+        'Clarification' => App\Service\Clarification\ClarificationFacade::class,
     ],
 
 ];

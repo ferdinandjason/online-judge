@@ -15,7 +15,7 @@
             <div class="ui button">
                 <i class="file excel outline icon"></i> Export to
             </div>
-            <a class="ui basic left pointing label">
+            <a class="ui basic left pointing label" href="{{$problem->id}}/csv">
                 CSV
             </a>
         </div>
@@ -23,7 +23,7 @@
             <div class="ui button">
                 <i class="file alternate outline icon"></i> Export to
             </div>
-            <a class="ui basic left pointing label">
+            <a class="ui basic left pointing label" href="{{$problem->id}}/html">
                 HTML
             </a>
         </div>
@@ -89,14 +89,9 @@
                     </div>
                 </div>
             </div>
-            <div class="ui horizontal divider">Hint</div>
+            <div class="ui horizontal divider">Comment</div>
             <div class="context">
-                <div class="vhint tags">
-                    <h2 class="ui sub header">Tags</h2>
-                    @foreach( $problem->tags as $t )
-                        <a class="ui tag label" href="">{{ $t->Tags }}</a>
-                    @endforeach
-                </div>
+                @include('problem.comment')
             </div>
         </div>
     </div>

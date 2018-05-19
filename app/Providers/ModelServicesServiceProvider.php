@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Service\Clarification\ClarificationServices;
+use App\Service\Comment\CommentServices;
 use App\Service\Contest\ContestServices;
 use App\Service\ContestMember\ContestMemberServices;
 use App\Service\ContestProblem\ContestProblemServices;
@@ -66,6 +68,14 @@ class ModelServicesServiceProvider extends ServiceProvider
 
         $this->app->bind('UserServices',function($app){
            return new UserServices($app->make('App\Repository\User\UserRepository'));
+        });
+
+        $this->app->bind('CommentServices',function($app){
+           return new CommentServices($app->make('App\Repository\Comment\CommentRepository'));
+        });
+
+        $this->app->bind('ClarificationServices',function($app){
+            return new ClarificationServices($app->make('App\Repository\Clarification\ClarificationRepository'));
         });
     }
 }

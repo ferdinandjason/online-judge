@@ -30,11 +30,60 @@
                 <a class="item" href="/admin/contest/create"><i class="add icon"></i> Add Contest</a>
             </div>
         </div>
+        <div class="item">
+            Clarification
+            <div class="menu">
+                <a class="item" href="/admin/clarification"><i class="list icon"></i> List Clarification</a>
+                <a class="item" id="addclar"><i class="add icon"></i> Add Clarification</a>
+            </div>
+        </div>
     </div>
+
+    <div class="ui mini modal" >
+        <i class="close icon"></i>
+        <div class="header">
+            Make Clarification
+        </div>
+        <div class="image content">
+            <form class="ui form" method="POST" action="/admin/clarification">
+                {{csrf_field()}}
+                <div class="field">
+                    <label>Title : </label>
+                    <input name="title" placeholder="Clarification Title" type="text">
+                </div>
+                <div class="field">
+                    <label>Content : </label>
+                    <input name="content" placeholder="Content" type="text">
+                </div>
+                <label>Contest : </label>
+                <div class="field">
+                    <div class="ui selection dropdown">
+                        <input name="contest_id" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text"> - </div>
+                        <div class="menu">
+                            @foreach($contest as $c)
+                                <div class="item" data-value="{{$c->id}}">{{$c->name}}</div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
+                <input type="hidden" value="0" name="to">
+                <button class="ui primary button" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
     @include('admin.navigator')
     <div style="margin-left: 19%;margin-right: 20px;margin-top: 80px;margin-bottom: 20px;">
         @yield('content')
     </div>
+    <script>
+        $('#addclar').click(function() {
+            $('.ui.modal').modal('show');
+        });
+    </script>
     @yield('script')
 </body>
 </html>

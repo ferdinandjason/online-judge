@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use \Problem;
-use \Submission;
+use Problem;
+use Contest;
+use Submission;
 use Illuminate\Http\Request;
 
 class SubmissionController extends Controller
@@ -29,7 +30,8 @@ class SubmissionController extends Controller
             if($link[3] === 'submission'){
                 return redirect('admin/submission');
             }
-            return view('admin.submission.index',compact('submission'));
+            $contest = Contest::all();
+            return view('admin.submission.index',compact('submission','contest'));
         }
         else{
             if($link[3] === 'admin'){

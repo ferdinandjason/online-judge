@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+// admin
 Route::resource('admin/problems','ProblemController');
 Route::resource('admin/submissions','SubmissionController');
 Route::resource('admin/problems/{id}/testcase','TestcaseController');
@@ -27,7 +28,11 @@ Route::resource('admin/contest','ContestController');
 Route::get('admin/contest/{id}/add_problem','ContestProblemController@create');
 Route::post('admin/contest/{id}/add_problem','ContestProblemController@store');
 Route::get('admin/submissions/{id}/regrade','SubmissionController@regrade');
+Route::get('admin/clarification','ClarificationController@indexAdmin');
+Route::post('admin/clarification','ClarificationController@storeAdmin');
+Route::get('admin/clarification/{id}','ClarificationController@showAdmin');
 
+//user
 Route::resource('problems','ProblemController');
 Route::resource('submissions','SubmissionController');
 Route::get('problems/{id}/submit','SubmissionController@create');
@@ -39,6 +44,12 @@ Route::get('contest/{id}/scoreboard','ContestController@scoreboard');
 Route::get('contest/{id}/problems/{pid}','ContestProblemController@show');
 Route::get('contest/{id}/problems/{pid}/submit','ContestController@submit');
 Route::get('contest/{id}/submissions/{sid}','ContestController@submission');
+Route::post('comment','CommentController@store');
+Route::get('problems/{id}/html','ProblemController@html');
+Route::get('problems/{id}/csv','ProblemController@csv');
+Route::get('contest/{id}/clarification','ClarificationController@index');
+Route::post('contest/{id}/clarification','ClarificationController@store');
+Route::get('contest/{id}/clarification/{cid}','ClarificationController@show');
 
 
 Route::resource('/user','UserController');

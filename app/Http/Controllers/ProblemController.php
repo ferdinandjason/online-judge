@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Problem;
 use ProblemTag;
+use Comment;
 use Illuminate\Http\Request;
 
 class ProblemController extends Controller
@@ -30,7 +31,8 @@ class ProblemController extends Controller
             if($link[3] === 'problems'){
                 return redirect('admin/problems');
             }
-            return view('admin.problem.index',compact('problemTag','problem'));
+            $contest = Contest::all();
+            return view('admin.problem.index',compact('problemTag','problem','contest'));
         }
         else {
             if($link[3] === 'admin'){
@@ -93,11 +95,12 @@ class ProblemController extends Controller
     {
         //
         $problem = Problem::getProblem($problemId);
+        $comment = Comment::getProblemComment($problemId);
         if(Auth::user()->isAdmin){
-            return view('admin.problem.show',compact('problem'));
+            return view('admin.problem.show',compact('problem','comment'));
         }
         else{
-            return view('problem.show',compact('problem'));
+            return view('problem.show',compact('problem','comment'));
         }
     }
 
@@ -156,5 +159,33 @@ class ProblemController extends Controller
             Problem::delete($problemId);
         }
         return back();
+    }
+
+    public function html($id)
+    {
+        $problem = Problem::getProblem($id);
+        return view('problem.html',compact('problem'));
+    }
+
+    public function csv($id)
+    {
+        $problem = Problem::getProblem($id);
+        $headers = array(
+            "Content-type" => "text/csv",
+            "Content-Disposition" => "attachment; filename=$problem->id.csv",
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0"
+        );
+
+        $columns = array('id', 'title', 'description', 'sample_input', 'sample_output', 'time_limit', 'memory_limit');
+        $callback = function() use ($problem, $columns)
+        {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+            fputcsv($file, array($problem->id, $problem->title, $problem->description, $problem->sample_input, $problem->sample_output, $problem->time_limit, $problem->memory_limit));
+            fclose($file);
+        };
+        return \Response::stream($callback,200,$headers);
     }
 }

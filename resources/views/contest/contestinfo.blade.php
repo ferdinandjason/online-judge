@@ -70,6 +70,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            $('#submit').hide();
         }
         updateLabelTime();
         return a;

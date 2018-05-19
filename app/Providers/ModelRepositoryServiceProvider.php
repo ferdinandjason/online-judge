@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
+use App\Clarification;
+use App\Comment;
 use App\Contest;
 use App\ContestMember;
 use App\ContestProblem;
+use App\Repository\Clarification\ClarificationEloquent;
+use App\Repository\Comment\CommentEloquent;
 use App\Repository\Contest\ContestEloquent;
 use App\Repository\ContestMember\ContestMemberEloquent;
 use App\Repository\ContestProblem\ContestProblemEloquent;
@@ -76,6 +80,14 @@ class ModelRepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind('App\Repository\User\UserRepository',function($app){
             return new UserEloquent(new User());
+        });
+
+        $this->app->bind('App\Repository\Comment\CommentRepository',function($app){
+            return new CommentEloquent(new Comment());
+        });
+
+        $this->app->bind('App\Repository\Clarification\ClarificationRepository',function($app){
+            return new ClarificationEloquent(new Clarification());
         });
     }
 }

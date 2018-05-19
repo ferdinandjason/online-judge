@@ -14,7 +14,7 @@
         <h4 class="ui header">Problem</h4>
         <div class="ui divider"></div>
         @include('contest.problem.contestproblem')
-        <div class="ui vertical menu">
+        <div class="ui vertical menu" id="submit">
             <a class="{{(Request::is('contest/*/problems/*/submit'))?'active ':''}}blue item" href="/contest/{{$contest->id}}/problems/{{$problem->id}}/submit">
                 Submit
                 @if(Request::is('contest/*/problems/*/submit'))
