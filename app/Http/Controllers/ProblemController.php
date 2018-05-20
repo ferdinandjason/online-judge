@@ -51,12 +51,13 @@ class ProblemController extends Controller
     public function create(Request $request)
     {
         //
+        $contest = Contest::all();
         $arr = (explode('/',$request->url()));
         if(Auth::user()->isAdmin) {
             if($arr[3] === 'problems'){
                 return redirect('admin/problems/create');
             }
-            return view('admin.problem.create');
+            return view('admin.problem.create',compact('contest'));
         }
         if($arr[3] === 'admin'){
             return redirect('problems');

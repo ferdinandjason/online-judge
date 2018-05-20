@@ -51,7 +51,8 @@ class ContestController extends Controller
     public function create()
     {
         //
-        return view('admin.contest.create');
+        $contest = Contest::all();
+        return view('admin.contest.create',compact('contest'));
     }
 
     /**

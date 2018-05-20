@@ -31,6 +31,14 @@ Route::get('admin/submissions/{id}/regrade','SubmissionController@regrade');
 Route::get('admin/clarification','ClarificationController@indexAdmin');
 Route::post('admin/clarification','ClarificationController@storeAdmin');
 Route::get('admin/clarification/{id}','ClarificationController@showAdmin');
+Route::get('admin',function(){
+    $contest = Contest::all();
+    return view('admin.index',compact('contest'));
+});
+Route::get('admin/general',function(){
+    $contest = Contest::all();
+    return view('admin.general',compact('contest'));
+});
 
 //user
 Route::resource('problems','ProblemController');

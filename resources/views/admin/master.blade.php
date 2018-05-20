@@ -23,30 +23,37 @@
         <div class="item" style="background-color: white;min-height: 100px;">
             <img class="ui centered tiny image" src="/images/logo.png" style="margin-top: 25px;margin-bottom: 25px;">
         </div>
-        <div class="item">
-            <i class="clone outline icon left"></i>Problem <i class="angle down icon"></i>
+        <div class="item{{(Request::is('admin') || Request::is('admin/general'))?' active':''}}">
+            <i class="clone outline icon left"></i>Dashboard <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item" href="/admin/problems"> List Problem</a>
-                <a class="item" href="/admin/problems/create"> Add Problem</a>
+                <a class="item{{Request::is('admin')?' active blue':''}}" href="/admin"> Dashboard</a>
+                <a class="item{{Request::is('admin/general')?' active blue':''}}" href="/admin/general"> General</a>
             </div>
         </div>
-        <div class="item">
-            <i class="file icon left"></i>Submission <i class="angle down icon"></i>
+        <div class="item{{Request::is('admin/problem*')?' active':''}}">
+            <i class="clone outline icon left"></i>Problem <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item" href="/admin/submissions"> List Submission</a>
+                <a class="item{{Request::is('admin/problems')?' active blue':''}}" href="/admin/problems"> List Problem</a>
+                <a class="item{{Request::is('admin/problems/create')?' active blue':''}}" href="/admin/problems/create"> Add Problem</a>
             </div>
         </div>
-        <div class="item">
-            <i class="star icon left"></i>Contest <i class="angle down icon"></i>
+        <div class="item{{Request::is('admin/submissions*')?' active':''}}">
+            <i class="file icon left"></i>Submission <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item" href="/admin/contest"> List Contest</a>
-                <a class="item" href="/admin/contest/create"> Add Contest</a>
+                <a class="item{{Request::is('admin/submissions')?' active blue':''}}" href="/admin/submissions"> List Submission</a>
             </div>
         </div>
-        <div class="item">
-            <i class="question icon left"></i>Clarification <i class="angle down icon"></i>
+        <div class="item{{Request::is('admin/contest*')?' active':''}}">
+            <i class="star icon left"></i>Contest <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item" href="/admin/clarification"> List Clarification</a>
+                <a class="item{{Request::is('admin/contest')?' active blue':''}}" href="/admin/contest"> List Contest</a>
+                <a class="item{{Request::is('admin/contest/create')?' active blue':''}}" href="/admin/contest/create"> Add Contest</a>
+            </div>
+        </div>
+        <div class="item{{Request::is('admin/clarification*')?' active':''}}">
+            <i class="question icon left"></i>Clarification <i class="angle up icon"></i>
+            <div class="menu">
+                <a class="item{{Request::is('admin/clarification')?' active blue':''}}" href="/admin/clarification"> List Clarification</a>
                 <a class="item" id="addclar"> Add Clarification</a>
             </div>
         </div>
@@ -96,6 +103,19 @@
         $('#addclar').click(function() {
             $('.ui.modal').modal('show');
         });
+
+        $('.angle.icon').click(function(){
+            $(this).parent().children().filter('div').slideToggle('slow');
+            if($(this).hasClass('up')){
+                $(this).removeClass('up');
+                $(this).addClass('down');
+            }
+            else{
+                $(this).removeClass('down');
+                $(this).addClass('up');
+            }
+        });
+
     </script>
     @yield('script')
 </body>
