@@ -13,6 +13,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Service\Problem\ProblemServices;
 use App\Service\ProblemTag\ProblemTagServices;
 use App\Service\Testcase\TestcaseServices;
+use App\Service\User\UserServices;
 
 class ModelServicesServiceProvider extends ServiceProvider
 {
