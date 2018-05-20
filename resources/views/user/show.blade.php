@@ -4,60 +4,33 @@
 @stop
 
 @section('content')
-	<div class="ui raised segment">
-		<div class="ui grid" style="margin-bottom: 20px; margin-top: 10px;margin-left: 5px">
-			<div class="four wide column">
-				<div class="ui slide up instant reveal">
-					<div class="visible content">
-						<img src="/images/avatar.png" class="ui small circular bordered image">
+	<img class="ui tiny circular centered image" style="position: relative; top: 50px; z-index: 1;" src="/images/avatar.png">
+	<div class="ui raised segment center aligned" style="width: 80%; margin-right: auto; margin-left: auto">
+		<div class="ui grid" style="margin-bottom: 20px; margin-top: 30px;">
+			<div class="sixteen wide column">
+				<h2>Nama</h2>
+				<h4>Email</h4>
+				<div class="ui three column very relaxed grid">
+					<div class="column">
+						<h5>Solved</h5>
+						<h3>30</h3>
 					</div>
-					<div class="hidden content">
-						<img src="/images/changeavatar.png" class="ui small circular bordered image">
+					<div class="column">
+						<h5>Submissions</h5>
+						<h3>100</h3>
+					</div>
+					<div class="column">
+						<h5>Score</h5>
+						<h3>0</h3>
 					</div>
 				</div>
-				<h4><i class="user icon" style="margin-right: 5px"></i>Name</h4>
-				<h4><i class="building icon" style="margin-right: 5px"></i>School</h4>
-				<h4><i class="graduation cap icon" style="margin-right: 5px"></i>Major</h4>
-				<h4><i class="github icon" style="margin-right: 5px"></i>Github</h4>
-			</div>
-			<div class="twelve wide column">
-				<h2>Profile Setting</h2>
-				<div class="ui form">
-					<div class="fields">
-						<div class="field seven column wide">
-							<label>Name</label>
-							<input type="text" placeholder="Name">
-						</div>
-						<div class="field seven column wide">
-							<label>School</label>
-							<input type="text" placeholder="School">
-						</div>
-					</div>
-					<div class="fields">
-						<div class="field seven column wide">
-							<label>Major</label>
-							<input type="text" placeholder="Major">
-						</div>
-						<div class="field seven column wide">
-							<label>Github</label>
-							<input type="text" placeholder="Github">
-						</div>
-					</div>
-					<div class="fields">
-						<div class="field seven column wide">
-							<label>New Password</label>
-							<input type="text" placeholder="New Password">
-						</div>
-						<div class="field seven column wide">
-							<label>Re-enter Password</label>
-							<input type="text" placeholder="Re-enter Password">
-						</div>
-					</div>
-					<button class="ui primary button" style="margin-top: 100px">
-  						Save All
-					</button>
+				<div class="ui center aligned grid" style="margin-top: 50px">
+					<i class="github icon"></i>
+					<i class="mail icon"></i>
+					<i class="globe icon"></i>
 				</div>
 			</div>
 		</div>
 	</div>
+
 @stop
