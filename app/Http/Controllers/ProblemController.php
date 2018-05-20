@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Problem;
 use ProblemTag;
 use Comment;
+use Contest;
 use Illuminate\Http\Request;
 
 class ProblemController extends Controller
