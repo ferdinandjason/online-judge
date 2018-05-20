@@ -91,19 +91,34 @@
                     type:'scatter',
                     data:data,
                     options:{
-                        showLine:1,
+                        elements: {
+                            line: {
+                                tension: 0
+                            }
+                        },
+                        bezierCurve : false,
+                        showLines:true,
                         responsive: false,
                         maintainAspectRatio: false,
                         scales: {
                             yAxes: [{
                                 ticks: {
-                                    beginAtZero: true
-                                }
+                                    beginAtZero: true,
+                                    max:{{count($contestProblem)}},
+                                    stepSize: 1,
+                                },
+                                position: 'bottom',
+                                type: 'linear',
+
                             }],
                             xAxes: [{
                                 ticks: {
-                                    beginAtZero: true
-                                }
+                                    beginAtZero: true,
+                                    max:{{\Carbon\Carbon::parse($contest->end_time)->diffInMinutes($contest->start_time)}},
+                                    stepSize:{{\Carbon\Carbon::parse($contest->end_time)->diffInMinutes($contest->start_time)/20}},
+                                },
+                                position: 'bottom',
+                                type: 'linear',
                             }]
                         },
                     }

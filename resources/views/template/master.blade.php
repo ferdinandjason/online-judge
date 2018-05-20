@@ -7,7 +7,7 @@
 </head>
 <body>
     @include('template.navigator')
-    <div class="ui container" style="width: 50% !important;min-height: 100vh;margin-top: 20px;margin-bottom: 20px;">
+    <div class="ui container" style="width: 50% !important;min-height: 85vh;margin-top: 20px;margin-bottom: 20px;">
         <div class="ui top attached segment">
             <div class="left ui rail" style="padding-right: 0px;padding-left: 56px;">
                 @yield('left-segment')
@@ -29,7 +29,6 @@
         $(window).scroll(
             function() {
                 if(isElementInViewport($("#footer")[0])){
-                    console.log('asdasd')
                     $("#footer-navbar").hide();
                 }
                 else{
@@ -51,8 +50,7 @@
                 top += el.offsetTop;
                 left += el.offsetLeft;
             }
-            console.log(top)
-            console.log(window.pageYOffset + window.innerHeight)
+
             return (
                 top < (window.pageYOffset + window.innerHeight)-55 &&
                 left < (window.pageXOffset + window.innerWidth)-55 &&

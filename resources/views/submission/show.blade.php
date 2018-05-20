@@ -55,7 +55,7 @@
         @if(Auth::user()!=null && (Auth::user()->id == $submission->user->id))
             <div id="compile"  style="font-family:Ubuntu\ Mono !important;font-size:12pt !important;">
                 <div class="ui segment code" >
-                    <pre><code><?php echo $submission->compile_result ?></code></pre>
+                    <pre style="overflow: auto;"><code><?php echo $submission->compile_result ?></code></pre>
                 </div>
             </div>
         @endif

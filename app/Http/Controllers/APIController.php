@@ -77,13 +77,15 @@ class APIController extends Controller
             $datas[$scoreboard[$i]['name']] = $scoreboard[$i]['score'];
         }
         $datasets = array();
+        $ds = array();
         foreach ($userTopAcc as $c){
-            $ds = array();
+            $color = '#'.dechex(rand(0x000000, 0xFFFFFF));
             $temp = $datas[$c];
             $data = array();
+            array_push($data,Array('x'=>0,'y'=>0));
             foreach ($contestProblem as $p){
                 if($temp[$p->problem_id]['is_accepted']) {
-                    $x = \Carbon\Carbon::parse($temp[$p->problem_id]['accepted_in'])->diffInMinutes(Contest::getContest($contestId)->start_time);
+                    $x = $temp[$p->problem_id]['accepted_in'];
                     $y = 1;
                     array_push($data,Array('x'=>$x,'y'=>$y));
                 }
@@ -94,10 +96,10 @@ class APIController extends Controller
                     $data[$i]['y'] += $data[$i-1]['y'];
                 }
             }
-            $ds[] = Array('label'=>$c,'data'=>$data);
-            $datasets[] = $ds;
+            $ds[] = Array('label'=>$c,'data'=>$data,'borderColor'=>$color,'fill'=>false);
         }
-        return Response::json($datasets);
+        $datasets = $ds;
+        return Response::json(['datasets'=>$datasets]);
     }
 
     public function stop($contestId){
