@@ -16,6 +16,9 @@
             margin-left: 20px;
             margin-top: 15px;
         }
+        .angle.icon{
+            cursor: pointer;
+        }
     </style>
 </head>
 <body style="background-color: #EDECEC">
@@ -71,10 +74,6 @@
                     <label>Title : </label>
                     <input name="title" placeholder="Clarification Title" type="text">
                 </div>
-                <div class="field">
-                    <label>Content : </label>
-                    <input name="content" placeholder="Content" type="text">
-                </div>
                 <label>Contest : </label>
                 <div class="field">
                     <div class="ui selection dropdown">
@@ -87,6 +86,10 @@
                             @endforeach
                         </div>
                     </div>
+                </div>
+                <div class="field">
+                    <label>Content : </label>
+                    <input name="content" placeholder="Content" type="text">
                 </div>
                 <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
                 <input type="hidden" value="0" name="to">
@@ -104,7 +107,7 @@
             $('.ui.modal').modal('show');
         });
 
-        $('.angle.icon').click(function(){
+        $('.menu .icon').click(function(){
             $(this).parent().children().filter('div').slideToggle('slow');
             if($(this).hasClass('up')){
                 $(this).removeClass('up');

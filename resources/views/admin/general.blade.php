@@ -2,7 +2,7 @@
 @section('head')
     <style>
         .statistic{
-            margin-left: 110px !important;
+            margin-left: 115px !important;
             margin-right: 80px !important;
         }
     </style>
