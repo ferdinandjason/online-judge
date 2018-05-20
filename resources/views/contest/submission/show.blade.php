@@ -52,7 +52,7 @@
         @if(Auth::user()!=null && (Auth::user()->id == $submission->user->id))
             <div id="compile"  style="font-family:Ubuntu\ Mono !important;font-size:12pt !important;">
                 <div class="ui segment code">
-                    <pre><code><?php echo $submission->compile_result ?></code></pre>
+                    <pre style="overflow: auto;"><code><?php echo $submission->compile_result ?></code></pre>
                 </div>
             </div>
         @endif
@@ -61,5 +61,24 @@
 @section('script')
     <script>
         $('.dropdown').dropdown()
+    </script>
+    <script src="/assets/editor/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/assets/editor.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(function(){
+            var lang = $('#editor').attr('data-lang');
+            var editor = ace.edit('editor');
+            initialize_editor(editor, getLanguageClass(lang), $('#editor').attr('data-theme'));
+            editor.setReadOnly(true);
+            editor.setOptions({
+                minLines: 5,
+                maxLines: Infinity
+            });
+        })
+        $("pre code").each(function(){
+            var html = $(this).html();
+            var pattern = html.match(/\s*\n[\t\s]*/);
+            $(this).html(html.replace(new RegExp(pattern, "g"),'\n'));
+        });
     </script>
 @stop

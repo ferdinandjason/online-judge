@@ -11,6 +11,7 @@ namespace App\Service\Scoreboard;
 use ContestMember;
 use ContestProblem;
 use Contest;
+use Illuminate\Support\Facades\Auth;
 
 class ScoreboardServices
 {
@@ -90,7 +91,7 @@ class ScoreboardServices
 
         foreach ($scoreboard as $s)
         {
-            if(isset($board[$s->user_id]['score'][$s->problem_id]))
+            if(isset($board[$s->user_id]['score'][$s->problem_id]) && (Auth::user()->isAdmin || \Carbon\Carbon::parse($s->updated_at)->lte(Contest::getContest($contestId)->freeze_time)  ))
             {
                 $board[$s->user_id]['score'][$s->problem_id]['submission_count'] = $s->submission_count;
                 $board[$s->user_id]['score'][$s->problem_id]['time_penalty'] = $s->penalty;

@@ -171,7 +171,7 @@ class ContestController extends Controller
     }
 
     public function submission($id,$sid){
-        $submission = Submission::getSubmission($id);
+        $submission = Submission::getSubmission($sid);
         $contest = Contest::getContest($id);
         $contestProblem = ContestProblem::getContestProblem($id);
         return view('contest.submission.show',compact('submission','contest','contestProblem'));

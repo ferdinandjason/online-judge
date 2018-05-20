@@ -109,5 +109,5 @@ function isFirstAccepted($time,$array,$problemId){
 }
 
 function line_cmp($a,$b){
-    return $a['x'] < $b['x'];
+    return $a['x'] > $b['x'];
 }

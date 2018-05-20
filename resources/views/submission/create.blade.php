@@ -39,11 +39,7 @@
             </div>
         @endforeach
     </div>
-    <div class="ui piled segment">
-        <h4 class="ui header">Statistic</h4>
-        <div class="ui divider"></div>
-
-    </div>
+    @include('problem.stat')
 @stop
 @section('content')
     <?php
