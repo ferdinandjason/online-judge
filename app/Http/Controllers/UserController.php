@@ -17,4 +17,9 @@ class UserController extends Controller
         $user = User::getUser($id);
         return view('user.show',compact('user'));
     }
+
+    public function edit($id){
+        $user = User::getUser($id);
+        return view('user.edit',compact('user'));
+    }
 }
