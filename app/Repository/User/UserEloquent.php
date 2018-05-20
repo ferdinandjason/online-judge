@@ -21,4 +21,18 @@ class UserEloquent implements \UserRepository
     }
 
     // yang tadi kamu definisikan dijelaskan disini yo
+
+    public function all()
+    {
+        // TODO: Implement all() method.
+        return $this->model->all();
+    }
+
+    public function find($id)
+    {
+        // TODO: Implement find() method.
+        return $this->model->where('id',$id)->first();
+    }
+
+
 }

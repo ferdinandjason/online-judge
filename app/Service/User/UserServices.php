@@ -22,5 +22,14 @@ class UserServices
     // dengan memanggil fungsi fungsi dari UserRepository okaayy :)
     // nanti di controller use User; terus tinggal User::namafungsi()
 
+    public function getAllUser()
+    {
+        return $this->repo->all();
+    }
+
+    public function getUser($id)
+    {
+        return $this->repo->find($id);
+    }
 
 }
