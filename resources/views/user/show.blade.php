@@ -6,6 +6,9 @@
 @section('content')
 	<img class="ui tiny circular centered image" style="position: relative; top: 50px; z-index: 1;" src="/images/avatar.png">
 	<div class="ui raised segment center aligned" style="width: 80%; margin-right: auto; margin-left: auto">
+		<div class="ui grid" style="position: relative; top: 20px; left: 850px">
+			<i class="pencil icon"></i>
+		</div>
 		<div class="ui grid" style="margin-bottom: 20px; margin-top: 30px;">
 			<div class="sixteen wide column">
 				<h2>Nama</h2>
