@@ -19,7 +19,7 @@
             @foreach($contest as $c)
                 <tr>
                     <td>{{$c->id}}</td>
-                    <td><a href="">{{$c->name}}</a></td>
+                    <td><a href="#">{{$c->name}}</a></td>
                     <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)->DiffForHumans()}}</td>
                     <td>{{getContestLength($c->start_time,$c->end_time)}} Hours</td>
                     @if($c->visible)
@@ -29,7 +29,7 @@
                     @endif
                     <td>
                         <div>
-                            <a class="ui primary basic button" href="/contest/{{$c->id}}/edit" data-tooltip="Edit Contest"><i class="far fa-edit" style="color: blue"></i></a>
+                            <a class="ui primary basic button" href="/admin/contest/{{$c->id}}/edit" data-tooltip="Edit Contest"><i class="far fa-edit" style="color: blue"></i></a>
                             {{ Form::open(array('url' => 'contest/' . $c->id, 'style' => 'display:inline')) }}
                             {{ Form::hidden('_method', 'DELETE') }}
                             <button class='ui red  basic button' type='submit' data-tooltip="Delete Contest"><i class="far fa-trash-alt" style="color:red"></i></button>

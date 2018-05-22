@@ -80,11 +80,13 @@
                         <input name="contest_id" type="hidden">
                         <i class="dropdown icon"></i>
                         <div class="default text"> - </div>
-                        <div class="menu">
-                            @foreach($contest as $c)
-                                <div class="item" data-value="{{$c->id}}">{{$c->name}}</div>
-                            @endforeach
-                        </div>
+                        @if(!strpos($_SERVER['REQUEST_URI'], 'add') && !strpos($_SERVER['REQUEST_URI'], 'edit'))
+                            <div class="menu">
+                                @foreach($contest as $c)
+                                    <div class="item" data-value="{{$c->id}}">{{$c->name}}</div>
+                                @endforeach
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="field">
