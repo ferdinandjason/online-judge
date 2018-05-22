@@ -9,6 +9,7 @@ use Contest;
 use Problem;
 use Testcase;
 use Scoreboard;
+use UserSolvedProblem;
 use Illuminate\Console\Command;
 
 class RunGrader extends Command
@@ -225,6 +226,7 @@ class RunGrader extends Command
                 User::where('id',$submission->user_id)->increment('total_ac');
             }
             Problem::increment($submission->problem_id,'total_submit');
+            UserSolvedProblem::create($submission->user_id,$submission->problem_id);
             if($overallVerdict == 1) Problem::increment($submission->problem_id,'total_ce');
             if($overallVerdict == 2) Problem::increment($submission->problem_id,'total_ac');
             if($overallVerdict == 3) Problem::increment($submission->problem_id,'total_wa');

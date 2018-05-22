@@ -34,5 +34,16 @@ class UserEloquent implements \UserRepository
         return $this->model->where('id',$id)->first();
     }
 
+    public function update($request,$id)
+    {
+        // TODO: Implement update() method.
+        $this->model->where('id',$id)->update($request->except('avatar_path','_method','_token'));
+        if($request->file('avatar_path')!=null){
+            $path = $request->file('avatar_path')->storeAs('user/images',\Carbon\Carbon::now().$this->model->where('id',$id)->first()['username'].$request->file('avatar_path')->getClientOriginalName(),'public');
+            $this->model->where('id',$id)->update(Array('avatar_path'=>$path));
+        }
+        return redirect('/user/'.$id);
+    }
+
 
 }

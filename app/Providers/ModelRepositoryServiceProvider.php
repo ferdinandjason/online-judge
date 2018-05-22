@@ -16,10 +16,12 @@ use App\Repository\Scoreboard\ScoreboardEloquent;
 use App\Repository\Submission\SubmissionEloquent;
 use App\Repository\Testcase\TestcaseEloquent;
 use App\Repository\User\UserEloquent;
+use App\Repository\UserSolvedProblem\UserSolvedProblemEloquent;
 use App\Scoreboard;
 use App\Submission;
 use App\Testcase;
 use App\User;
+use App\UserSolvedProblem;
 use Illuminate\Support\ServiceProvider;
 use App\Problem;
 use App\ProblemTag;
@@ -88,6 +90,10 @@ class ModelRepositoryServiceProvider extends ServiceProvider
 
         $this->app->bind('App\Repository\Clarification\ClarificationRepository',function($app){
             return new ClarificationEloquent(new Clarification());
+        });
+
+        $this->app->bind('App\Repository\UserSolvedProblem\UserSolvedProblemRepository',function($app){
+            return new UserSolvedProblemEloquent(new UserSolvedProblem());
         });
     }
 }

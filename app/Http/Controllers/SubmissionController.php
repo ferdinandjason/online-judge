@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Problem;
 use Contest;
 use Submission;
@@ -116,5 +117,18 @@ class SubmissionController extends Controller
     {
         Submission::regrade($id);
         return back();
+    }
+
+    public function code($id)
+    {
+        $code = DB::table('codes')->where('id',$id)->first()->code;
+        $headers = array(
+            "Content-type" => "text/cpp",
+            "Content-Disposition" => "attachment; filename=$id.cpp",
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0"
+        );
+        return \Response::make($code,200,$headers);
     }
 }

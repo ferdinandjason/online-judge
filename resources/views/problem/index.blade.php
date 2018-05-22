@@ -7,6 +7,17 @@
     <div class="ui piled segment">
         <h4 class="ui header">Problem</h4>
         <div class="ui divider"></div>
+        <div class="ui vertical menu">
+            <a class="item" href="/problems/{{$problem[rand(0,count($problem)-1)]->id}}">
+                Go To Random Problem
+            </a>
+            <a class="item" href="/problems/{{$problem[count($problem)-1]->id}}">
+                Go To Newest Problem
+            </a>
+            <a class="item" id="find">
+                Go To Favorite Problem
+            </a>
+        </div>
     </div>
 @stop
 @section('right-segment')
@@ -48,9 +59,16 @@
 @stop
 @section('script')
     <script>
+        let problem;
         $('.dropdown').dropdown()
         $(document).ready(function(){
-            $('#problemTable').DataTable();
+            problem = $('#problemTable').DataTable();
+        });
+
+        $('#find').click(function(){
+            console.log('asd');
+            var fav = problem.column(0).data().sort();
+            window.location.href="problems/"+fav[0];
         });
     </script>
 @stop

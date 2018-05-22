@@ -6,7 +6,7 @@
     <div class="ui divider"></div>
     <canvas id="stat" width="400" height="400"></canvas>
 </div>
-<div class="ui mini modal" >
+<div class="ui mini modal" style="vertical-align: center">
     <i class="close icon"></i>
     <div class="header">
         Statistic Detail
@@ -18,7 +18,7 @@
 <script>
     $.ajax({
         type: "POST",
-        url: '/api/v1/statistics/problems/{{$problem->id}}',
+        url: '/api/v1/statistics/problems/{{$problem_id}}',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
@@ -36,7 +36,7 @@
         $('.ui.modal').modal('show');
         $.ajax({
             type: "POST",
-            url: '/api/v1/statistics/problems/{{$problem->id}}',
+            url: '/api/v1/statistics/problems/{{$problem_id}}',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -50,5 +50,4 @@
             }
         });
     })
-
 </script>

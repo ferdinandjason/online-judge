@@ -35,7 +35,7 @@ class ProblemEloquent implements \ProblemRepository
     public function all()
     {
         // TODO: Implement all() method.
-        return $this->model->all();
+        return $this->model->orderBy('created_at','dsc')->get();
     }
 
     public function allPaginate($n)

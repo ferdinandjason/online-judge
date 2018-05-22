@@ -31,6 +31,6 @@ class ContestMemberServices
     }
 
     public function countPeopleJoin($id){
-        $this->repo->countPeopleJoin($id);
+        return $this->repo->countPeopleJoin($id);
     }
 }

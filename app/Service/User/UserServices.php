@@ -8,6 +8,7 @@
 
 namespace App\Service\User;
 
+use Illuminate\Http\Request;
 
 class UserServices
 {
@@ -30,6 +31,11 @@ class UserServices
     public function getUser($id)
     {
         return $this->repo->find($id);
+    }
+
+    public function update($id,Request $request)
+    {
+        $this->repo->update($request,$id);
     }
 
 }

@@ -32,7 +32,7 @@ class SubmissionEloquent implements \SubmissionRepository
 
     public function all()
     {
-        return $this->model->all();
+        return $this->model->orderBy('created_at','dsc')->get();
     }
 
     public function create($request)

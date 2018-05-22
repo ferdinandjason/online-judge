@@ -10,8 +10,18 @@
 @stop
 @section('right-segment')
     <div class="ui piled segment">
-        <h4 class="ui header"></h4>
+        <h4 class="ui header">Feedback <i class="child icon"></i></h4>
         <div class="ui divider"></div>
+        <p>
+            Happy with our services?<br>
+            Found a bug in our services?<br>
+            Want to help improve the awesomes?<br>
+            <br>
+            Send your feedback to : <br>
+            <i class="mail icon"></i> <strong>ferdinandjasong@gmail.com</strong>
+            <i class="mail icon"></i> <strong>vinsensiusindra@gmail.com</strong>
+            <i class="mail icon"></i> <strong>fwildanf@gmail.com</strong>
+        </p>
     </div>
 @stop
 @section('content')
@@ -31,7 +41,7 @@
                 <td><a href="/contest/{{$c->id}}">{{$c->name}}</a></td>
                 <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)->DiffForHumans()}}</td>
                 <td>{{getContestLength($c->start_time,$c->end_time)}} Hours</td>
-                <td>{{countPeopleJoin($c->id)}}</td>
+                <td><i class="user icon"></i>{{countPeopleJoin($c->id)}}</td>
                 <td>
                     @if(NotInsideCM($c->id,$contestMember))
                         {!! Form::open(['action'=>'ContestMemberController@store']) !!}

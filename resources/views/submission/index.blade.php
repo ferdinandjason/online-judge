@@ -6,11 +6,30 @@
     <div class="ui piled segment">
         <h4 class="ui header">Submission</h4>
         <div class="ui divider"></div>
+        <div class="ui vertical menu">
+            <a class="item" id="self">
+                My Submission
+            </a>
+            <a class="item" id="self_ac">
+                Accepted Submission
+            </a>
+        </div>
     </div>
 @stop
 @section('right-segment')
     <div class="ui piled segment">
-
+        <h4 class="ui header">Feedback <i class="child icon"></i></h4>
+        <div class="ui divider"></div>
+        <p>
+            Happy with our services?<br>
+            Found a bug in our services?<br>
+            Want to help improve the awesomes?<br>
+            <br>
+            Send your feedback to : <br>
+            <i class="mail icon"></i> <strong>ferdinandjasong@gmail.com</strong>
+            <i class="mail icon"></i> <strong>vinsensiusindra@gmail.com</strong>
+            <i class="mail icon"></i> <strong>fwildanf@gmail.com</strong>
+        </p>
     </div>
 @stop
 @section('content')
@@ -22,7 +41,6 @@
             <th style="width:12%;">Problem</th>
             <th style="text-align:center">Status</th>
             <th style="width:10%;">Time</th>
-            <th style="width:10%;">Memori</th>
             <th style="width:10%;">Bahasa</th>
             <th style="width:10%;">Waktu</th>
         </tr>
@@ -44,7 +62,6 @@
                         <td style="color:red;text-align: center;">{{get_verdict($solution->verdict)}}</td>
                     @endif
                     <td>{{number_format($solution->time, 2, ',', '')}} s</td>
-                    <td>{{number_format((float)$solution->memory/1024.0,2, ',', '')}} MB</td>
                 @else
                     @if(get_verdict($solution->verdict) == "RUN TIME ERROR")
                         <td style="color:yellow;text-align: center;">{{get_verdict($solution->verdict)}}</td>
@@ -53,7 +70,6 @@
                     @else
                         <td style="color:blue;text-align: center;">{{get_verdict($solution->verdict)}}</td>
                     @endif
-                    <td>-</td>
                     <td>-</td>
                 @endif
                 <td>{{$solution->lang}}</td>
@@ -65,9 +81,18 @@
 @stop
 @section('script')
     <script>
+        let submission;
         $('.dropdown').dropdown()
         $(document).ready(function(){
-            $('#submissionTable').DataTable();
+            submission = $('#submissionTable').DataTable({
+                "order": [[ 1, "desc" ]]
+            });
+        });
+        $('#self').click(function(){
+            submission.search('{{Auth::user()->real_name}}').draw();
+        });
+        $('#self_ac').click(function(){
+            submission.search('ACCEPTED').draw();
         });
     </script>
 @stop

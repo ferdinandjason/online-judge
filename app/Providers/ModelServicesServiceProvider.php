@@ -9,6 +9,7 @@ use App\Service\ContestMember\ContestMemberServices;
 use App\Service\ContestProblem\ContestProblemServices;
 use App\Service\Scoreboard\ScoreboardServices;
 use App\Service\Submission\SubmissionServices;
+use App\Service\UserSolvedProblem\UserSolvedProblemServices;
 use Illuminate\Support\ServiceProvider;
 use App\Service\Problem\ProblemServices;
 use App\Service\ProblemTag\ProblemTagServices;
@@ -77,6 +78,10 @@ class ModelServicesServiceProvider extends ServiceProvider
 
         $this->app->bind('ClarificationServices',function($app){
             return new ClarificationServices($app->make('App\Repository\Clarification\ClarificationRepository'));
+        });
+
+        $this->app->bind('UserSolvedProblemServices',function($app){
+            return new UserSolvedProblemServices($app->make('App\Repository\UserSolvedProblem\UserSolvedProblemRepository'));
         });
     }
 }

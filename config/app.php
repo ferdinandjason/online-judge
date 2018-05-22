@@ -239,6 +239,7 @@ return [
         'User' => App\Service\User\UserFacade::class,
         'Comment' => App\Service\Comment\CommentFacade::class,
         'Clarification' => App\Service\Clarification\ClarificationFacade::class,
+        'UserSolvedProblem' => App\Service\UserSolvedProblem\UserSolvedProblemFacade::class,
     ],
 
 ];

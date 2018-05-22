@@ -58,7 +58,7 @@ Route::get('problems/{id}/csv','ProblemController@csv');
 Route::get('contest/{id}/clarification','ClarificationController@index');
 Route::post('contest/{id}/clarification','ClarificationController@store');
 Route::get('contest/{id}/clarification/{cid}','ClarificationController@show');
-
+Route::get('submissions/{id}/code','SubmissionController@code');
 
 Route::resource('/user','UserController');
 

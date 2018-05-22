@@ -6,20 +6,18 @@
     <div class="ui piled segment">
         <h4 class="ui header">Submission #{{$submission->id}}</h4>
         <div class="ui divider"></div>
-    </div>
-    <div class="ui piled segment">
-
+        <div class="ui labeled button" tabindex="0" style="margin: 2px;">
+            <div class="ui button">
+                <i class="file excel outline icon"></i> Download to
+            </div>
+            <a class="ui basic left pointing label" href="{{$submission->id}}/code">
+                CPP
+            </a>
+        </div>
     </div>
 @stop
 @section('right-segment')
-    <div class="ui piled segment">
-
-    </div>
-    <div class="ui piled segment">
-        <h4 class="ui header">Statistic</h4>
-        <div class="ui divider"></div>
-
-    </div>
+    @include('problem.stat',['problem_id'=>$submission->problem_id])
 @stop
 @section('content')
     <div class="ui container">
@@ -30,16 +28,16 @@
                 <th>User</th>
                 <th>Problem ID</th>
                 <th>Runtime</th>
-                <th>Memory Usage</th>
+                <th>Memory</th>
                 <th>Status</th>
                 <th>Language</th>
                 <th>Submit</th>
             </tr></thead>
-            <tbody style="background-color:#eee"><tr>
+            <tbody style="background-color:#eee;font-size: 13px;"><tr>
                 <td>{{$submission->user->real_name}}</td>
                 <td>{{$submission->problem_id}}</td>
                 <td>{{$submission->time}} s</td>
-                <td>{{$submission->memory/1024.0}} MB</td>
+                <td>{{substr($submission->memory/1024.0,0,4)}} MB</td>
                 <td>{{get_verdict($submission->verdict)}}</td>
                 <td>{{$submission->lang}}</td>
                 <td>{{\Carbon\Carbon::parse($submission->created_at)->diffForHumans()}}</td>
