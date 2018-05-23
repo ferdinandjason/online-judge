@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use \Testcase;
 use \Problem;
+use \Contest;
 use Illuminate\Http\Request;
 
 class TestcaseController extends Controller
@@ -28,7 +29,8 @@ class TestcaseController extends Controller
         $this->problemId = $id;
         $tc = Testcase::find($this->problemId);
         $problem = Problem::getProblem($this->problemId);
-        return view('admin.testcase.index',compact('tc','problem'));
+        $contest = Contest::all();
+        return view('admin.testcase.index',compact('tc','problem','contest'));
     }
 
     /**
