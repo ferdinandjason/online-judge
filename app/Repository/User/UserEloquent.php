@@ -45,5 +45,11 @@ class UserEloquent implements \UserRepository
         return redirect('/user/'.$id);
     }
 
+    public function order()
+    {
+        // TODO: Implement order() method.
+        return $this->model->where('isAdmin',0)->orderBy('total_ac')->get();
+    }
+
 
 }

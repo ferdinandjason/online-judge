@@ -31,6 +31,7 @@ class UserController extends Controller
     }
 
     public function rank(){
-        return view('rank.index');
+        $user = User::getRank();
+        return view('rank.index',compact('user'));
     }
 }

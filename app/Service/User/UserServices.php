@@ -38,4 +38,9 @@ class UserServices
         $this->repo->update($request,$id);
     }
 
+    public function getRank()
+    {
+        return $this->repo->order();
+    }
+
 }

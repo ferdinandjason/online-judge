@@ -14,14 +14,30 @@
         <thead>
             <tr>
                 <th class="one wide">#</th>
-                <th class="nine wide">Username</th>
+                <th class="nine wide">Name</th>
                 <th class="two wide">Total Accepted</th>
                 <th class="two wide">Total Submission</th>
                 <th class="two wide">Percentage</th>
             </tr>
         </thead>
         <tbody>
-        
+        @foreach($user as $u)
+            <tr>
+                <?php
+                    try{
+                        $percent = ($u->total_ac*100)/($u->total_submission-$u->total_ac);
+                    }
+                    catch (Exception $e){
+                        $percent = 0;
+                    }
+                ?>
+                <td>{{$u->id}}</td>
+                <td>{{$u->real_name}}</td>
+                <td>{{$u->total_ac}}</td>
+                <td>{{$u->total_submission}}</td>
+                <td>{{$percent}}%</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
 @stop
