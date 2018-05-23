@@ -63,6 +63,9 @@ Route::get('submissions/{id}/code','SubmissionController@code');
 
 Route::resource('/user','UserController');
 Route::get('/rank','UserController@rank');
+Route::get('/about',function(){
+	return view('about.index');
+});
 
 // API
 Route::post('/api/v1/statistics/problems/{id}','APIController@problems');
