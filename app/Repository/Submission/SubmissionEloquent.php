@@ -89,5 +89,11 @@ class SubmissionEloquent implements \SubmissionRepository
         return $this->model->where('contest_id',$id)->where('problem_id',$id)->get();
     }
 
+    public function rankProblem($id)
+    {
+        // TODO: Implement rankProblem() method.
+        return $this->model->where('problem_id',$id)->orderBy('time')->get();
+    }
+
 
 }

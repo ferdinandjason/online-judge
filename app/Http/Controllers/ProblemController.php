@@ -7,6 +7,7 @@ use Problem;
 use ProblemTag;
 use Comment;
 use Contest;
+use Submission;
 use Illuminate\Http\Request;
 
 class ProblemController extends Controller
@@ -192,7 +193,8 @@ class ProblemController extends Controller
     }
 
     public function rank($problemId){
-        $problem = Problem::getProblem($problemId); 
-        return view('problem.rank',compact('problem'));
+        $problem = Problem::getProblem($problemId);
+        $rank = Submission::getRank($problemId);
+        return view('problem.rank',compact('problem','rank'));
     }
 }

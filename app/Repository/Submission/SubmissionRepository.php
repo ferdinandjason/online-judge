@@ -20,4 +20,5 @@ interface SubmissionRepository
     public function updateMemoryResult($id,$memo);
     public function update($id,$data);
     public function getSubmissionContestWithProblem($id,$pid);
+    public function rankProblem($id);
 }

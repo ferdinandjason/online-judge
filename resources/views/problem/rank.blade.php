@@ -39,10 +39,10 @@
             </div>
         @endforeach
     </div>
-    @include('problem.stat',['problem_id'=>$problem->id])
+    @include('problem.stat',array('problem_id'=>$problem->id))
 @stop
 @section('content')
-    <table class="ui compact striped blue text-center table unstackable" id="problemTable">
+    <table class="ui compact striped blue text-center table unstackable" id="rankTable">
         <thead>
             <tr>
                 <th class="one wide">#</th>
@@ -53,7 +53,17 @@
             </tr>
         </thead>
         <tbody>
-        
+            <?php $index = 1; ?>
+            @foreach($rank as $r)
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{$r->user->real_name}}</td>
+                    <td>{{$r->time}}</td>
+                    <td>{{$r->memory}}</td>
+                    <td>{{$r->created_at}}</td>
+                </tr>
+                <?php $index+=1; ?>
+            @endforeach
         </tbody>
     </table>
 @stop
@@ -61,7 +71,13 @@
     <script>
         $('.dropdown').dropdown()
         $(document).ready(function(){
-            $('#problemTable').DataTable();
+            let rank;
+            rank = $('#rankTable').DataTable();
+            rank.on( 'order.dt search.dt', function () {
+                rank.column(0).nodes().each( function (cell, i) {
+                    cell.innerHTML = i+1;
+                } );
+            } ).draw();
         });
     </script>
 @stop

@@ -68,5 +68,11 @@ class ProblemEloquent implements \ProblemRepository
         $this->model->where('id',$id)->increment($table);
     }
 
+    public function random()
+    {
+        // TODO: Implement random() method.
+        return $this->model->inRandomOrder()->take(1)->first();
+    }
+
 
 }

@@ -88,4 +88,8 @@ class SubmissionServices
     public function getSubmissionContestWithProblem($id,$pid){
         $this->repo->getSubmissionContestWithProblem($id,$pid);
     }
+
+    public function getRank($id){
+        return $this->repo->rankProblem($id);
+    }
 }

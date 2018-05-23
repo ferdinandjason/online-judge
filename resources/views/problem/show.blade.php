@@ -39,7 +39,7 @@
             </div>
         @endforeach
     </div>
-    @include('problem.stat',['problem_id'=>$problem->id])
+    @include('problem.stat',array('problem_id'=>$problem->id))
 @stop
 @section('content')
     {{--@include('problems.navigator', ['problem_id' => $problem->problem_id ])--}}

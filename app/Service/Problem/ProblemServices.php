@@ -55,4 +55,8 @@ class ProblemServices
         $this->repo->increment($id,$table);
     }
 
+    public function getRandom()
+    {
+        return $this->repo->random();
+    }
 }

@@ -13,7 +13,8 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    $problem = \Problem::getRandom();
+    return view('welcome',compact('problem'));
 });
 
 // Webpages

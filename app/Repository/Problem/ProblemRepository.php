@@ -17,4 +17,5 @@ interface ProblemRepository{
     public function update($id,Array $request);
     public function delete($id);
     public function increment($id,$table);
+    public function random();
 }

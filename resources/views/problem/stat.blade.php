@@ -15,6 +15,15 @@
         <canvas id="stat2" width="400" height="400"></canvas>
     </div>
 </div>
+<?php
+    try{
+        $var = $problem_id;
+    }
+    catch (Exception $e){
+        $problem_id = $problem->id;
+    }
+
+?>
 <script>
     $.ajax({
         type: "POST",
