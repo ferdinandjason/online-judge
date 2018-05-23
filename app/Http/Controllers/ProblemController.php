@@ -190,4 +190,9 @@ class ProblemController extends Controller
         };
         return \Response::stream($callback,200,$headers);
     }
+
+    public function rank($problemId){
+        $problem = Problem::getProblem($problemId); 
+        return view('problem.rank',compact('problem'));
+    }
 }

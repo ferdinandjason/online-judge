@@ -55,6 +55,7 @@ Route::get('contest/{id}/submissions/{sid}','ContestController@submission');
 Route::post('comment','CommentController@store');
 Route::get('problems/{id}/html','ProblemController@html');
 Route::get('problems/{id}/csv','ProblemController@csv');
+Route::get('problems/{id}/rank','ProblemController@rank');
 Route::get('contest/{id}/clarification','ClarificationController@index');
 Route::post('contest/{id}/clarification','ClarificationController@store');
 Route::get('contest/{id}/clarification/{cid}','ClarificationController@show');

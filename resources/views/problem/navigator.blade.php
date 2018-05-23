@@ -6,7 +6,7 @@
             <div class="ui blue left pointing label">&nbsp;</div>
         @endif
     </a>
-    <a class="{{(Request::is('problems/*/rank'))?'active ':''}}blue item">
+    <a class="{{(Request::is('problems/*/rank'))?'active ':''}}blue item" href="/problems/{{$problem->id}}/rank">
         Rank
         @if(Request::is('problems/*/rank'))
             <div class="ui blue left pointing label">&nbsp;</div>
