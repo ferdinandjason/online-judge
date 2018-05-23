@@ -63,7 +63,7 @@
         <div class="ui horizontal inverted small divided link list">
             <p class="item">Make with <span style="color:red">&#10084;</span> , Laravel , Semantic UI , Moe Contest Environment</p>
             <br>
-            <p class="item">2018 &copy; All Rights Reserved by <a href="#" target="_blank"> Moe Moe Team </a></p>
+            <p class="item">2018 &copy; All Rights Reserved by <a href="#" target="_blank"> ApaYha Team </a></p>
             <p class="item"> </p>
         </div>
     </div>

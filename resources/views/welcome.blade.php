@@ -37,8 +37,8 @@
 <div class="nav">
     <div class="ui secondary pointing menu" id="navi" style="background:rgba(255,255,255,.80)">
         <div class="ui item left aligned" style="display: flex">
-            <a class="ui item" href="/problems">Problems</a>
-            <a class="ui item" href="/submissions">Submissions</a>
+            <a class="ui item" href="/problems">Problem</a>
+            <a class="ui item" href="/submissions">Submission</a>
         </div>
         <a href="/"><img class="ui small circular centered image" style="position: relative;z-index: 1;width: 80px" src="/images/logo.png"></a>
         <div class="ui item right aligned" style="display: flex">
@@ -58,7 +58,7 @@
                 @if (Route::has('login'))
                     @auth
                         <p class="subtitle" style="text-shadow: 3px 0 3px #000;">
-                            Welcome, aboard
+                            Welcome, aboard !
                         </p>
                         {{--<form id="logout-form" action="/logout" method="POST" style="display: none;">--}}
                         <a class="ui blue big image label">
