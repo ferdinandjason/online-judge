@@ -61,6 +61,7 @@ Route::get('contest/{id}/clarification/{cid}','ClarificationController@show');
 Route::get('submissions/{id}/code','SubmissionController@code');
 
 Route::resource('/user','UserController');
+Route::get('/rank','UserController@rank');
 
 // API
 Route::post('/api/v1/statistics/problems/{id}','APIController@problems');

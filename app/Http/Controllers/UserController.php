@@ -29,4 +29,8 @@ class UserController extends Controller
         User::update($id,$request);
         return back();
     }
+
+    public function rank(){
+        return view('rank.index');
+    }
 }
