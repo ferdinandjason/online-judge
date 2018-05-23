@@ -33,12 +33,18 @@ Route::get('admin/clarification','ClarificationController@indexAdmin');
 Route::post('admin/clarification','ClarificationController@storeAdmin');
 Route::get('admin/clarification/{id}','ClarificationController@showAdmin');
 Route::get('admin',function(){
-    $contest = Contest::all();
-    return view('admin.index',compact('contest'));
+	if(Auth::user()->isAdmin) {
+	    $contest = Contest::all();
+    	return view('admin.index',compact('contest'));
+    }
+    return back();
 });
 Route::get('admin/general',function(){
-    $contest = Contest::all();
-    return view('admin.general',compact('contest'));
+	if(Auth::user()->isAdmin) {
+	    $contest = Contest::all();
+    	return view('admin.general',compact('contest'));
+    }
+    return back();
 });
 
 //user
