@@ -6,23 +6,24 @@
     <div class="ui piled segment">
         <h4 class="ui header">Contest</h4>
         <div class="ui divider"></div>
+        <div class="ui vertical menu">
+            <a class="item" href="/contest?query=all">
+                All Contest
+            </a>
+            <a class="item" href="/contest?query=active">
+                Active Contest
+            </a>
+            <a class="item" href="/contest?query=past">
+                Past Contest
+            </a>
+            <a class="item" href="/contest?query=my">
+                My Participation
+            </a>
+        </div>
     </div>
 @stop
 @section('right-segment')
-    <div class="ui piled segment">
-        <h4 class="ui header">Feedback <i class="child icon"></i></h4>
-        <div class="ui divider"></div>
-        <p>
-            Happy with our services?<br>
-            Found a bug in our services?<br>
-            Want to help improve the awesomes?<br>
-            <br>
-            Send your feedback to : <br>
-            <i class="mail icon"></i> <strong>ferdinandjasong@gmail.com</strong>
-            <i class="mail icon"></i> <strong>vinsensiusindra@gmail.com</strong>
-            <i class="mail icon"></i> <strong>fwildanf@gmail.com</strong>
-        </p>
-    </div>
+    @include('template.feedback')
 @stop
 @section('content')
     <table class="ui compact striped blue text-center table unstackable" id="contestTable">
@@ -36,24 +37,48 @@
         </tr></thead>
         <tbody>
         @foreach($contest as $c)
-            <tr>
-                <td>{{$c->id}}</td>
-                <td><a href="/contest/{{$c->id}}">{{$c->name}}</a></td>
-                <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)->DiffForHumans()}}</td>
-                <td>{{getContestLength($c->start_time,$c->end_time)}} Hours</td>
-                <td><i class="user icon"></i>{{countPeopleJoin($c->id)}}</td>
-                <td>
-                    @if(NotInsideCM($c->id,$contestMember))
-                        {!! Form::open(['action'=>'ContestMemberController@store']) !!}
-                        {!! Form::hidden('contest_id',$c->id) !!}
-                        {!! Form::hidden('user_id',Auth::user()->id) !!}
-                        {!! Form::button('<i class="fa fa-user-plus"></i>'. ' Join', array('type' => 'submit', 'class' => 'small ui primary button','style'=>'margin:4px'))!!}
-                        {!! Form::close() !!}
-                    @else
-                        <a href="/contest/{{$c->id}}"><button class="ui basic blue button"><i class="fa fa-user-plus"></i> Masuk</button></a>
-                    @endif
-                </td>
-            </tr>
+            {{--{{dd(NotInsideCM($c->id,$contestMember))}}--}}
+            @if(Request::get('query')=='my' && !NotInsideCM($c->id,$contestMember) == true)
+                <tr>
+                    <td>{{$c->id}}</td>
+                    <td><a href="/contest/{{$c->id}}">{{$c->name}}</a>&nbsp;&nbsp;@if($c->active)<button class="ui green basic label">Active</button>@else<button class="ui red basic label">Non-Active</button>@endif</td>
+                    <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)->DiffForHumans()}}</td>
+                    <td>{{getContestLength($c->start_time,$c->end_time)}} Hours</td>
+                    <td><i class="user icon"></i>{{countPeopleJoin($c->id)}}</td>
+                    <td>
+                        @if(NotInsideCM($c->id,$contestMember))
+                            {!! Form::open(['action'=>'ContestMemberController@store']) !!}
+                            {!! Form::hidden('contest_id',$c->id) !!}
+                            {!! Form::hidden('user_id',Auth::user()->id) !!}
+                            {!! Form::button('<i class="fa fa-user-plus"></i>'. ' Join', array('type' => 'submit', 'class' => 'small ui primary button','style'=>'margin:4px'))!!}
+                            {!! Form::close() !!}
+                        @else
+                            <a href="/contest/{{$c->id}}"><button class="ui basic blue button"><i class="fa fa-user-plus"></i> Masuk</button></a>
+                        @endif
+                    </td>
+                </tr>
+            @elseif(Request::get('query')=='my' && !NotInsideCM($c->id,$contestMember) == false)
+
+            @else
+                <tr>
+                    <td>{{$c->id}}</td>
+                    <td><a href="/contest/{{$c->id}}">{{$c->name}}</a>&nbsp;&nbsp;@if($c->active)<button class="ui green basic label">Active</button>@else<button class="ui red basic label">Non-Active</button>@endif</td>
+                    <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)->DiffForHumans()}}</td>
+                    <td>{{getContestLength($c->start_time,$c->end_time)}} Hours</td>
+                    <td><i class="user icon"></i>{{countPeopleJoin($c->id)}}</td>
+                    <td>
+                        @if(NotInsideCM($c->id,$contestMember))
+                            {!! Form::open(['action'=>'ContestMemberController@store']) !!}
+                            {!! Form::hidden('contest_id',$c->id) !!}
+                            {!! Form::hidden('user_id',Auth::user()->id) !!}
+                            {!! Form::button('<i class="fa fa-user-plus"></i>'. ' Join', array('type' => 'submit', 'class' => 'small ui primary button','style'=>'margin:4px'))!!}
+                            {!! Form::close() !!}
+                        @else
+                            <a href="/contest/{{$c->id}}"><button class="ui basic blue button"><i class="fa fa-user-plus"></i> Masuk</button></a>
+                        @endif
+                    </td>
+                </tr>
+            @endif
         @endforeach
         </tbody>
     </table>
@@ -62,7 +87,7 @@
     <script>
         $('.dropdown').dropdown()
         $(document).ready(function(){
-            $('#contestTable').DataTable();
+            //$('#contestTable').DataTable();
         });
     </script>
 @stop

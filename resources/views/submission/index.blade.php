@@ -17,20 +17,7 @@
     </div>
 @stop
 @section('right-segment')
-    <div class="ui piled segment">
-        <h4 class="ui header">Feedback <i class="child icon"></i></h4>
-        <div class="ui divider"></div>
-        <p>
-            Happy with our services?<br>
-            Found a bug in our services?<br>
-            Want to help improve the awesomes?<br>
-            <br>
-            Send your feedback to : <br>
-            <i class="mail icon"></i> <strong>ferdinandjasong@gmail.com</strong>
-            <i class="mail icon"></i> <strong>vinsensiusindra@gmail.com</strong>
-            <i class="mail icon"></i> <strong>fwildanf@gmail.com</strong>
-        </p>
-    </div>
+    @include('template.feedback')
 @stop
 @section('content')
     <table class="ui striped blue table compact single line unstackable" id="submissionTable">

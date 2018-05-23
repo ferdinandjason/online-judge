@@ -69,4 +69,8 @@ class ContestServices
     public function stop($id){
         $this->repo->update($id,['visible'=>0]);
     }
+
+    public function find($query){
+        return $this->repo->findQuery($query);
+    }
 }

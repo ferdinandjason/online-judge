@@ -14,4 +14,5 @@ interface ContestRepository{
     public function create(Array $request);
     public function update($id,Array $request);
     public function delete($id);
+    public function findQuery($query);
 }

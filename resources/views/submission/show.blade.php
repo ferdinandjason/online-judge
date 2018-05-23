@@ -6,6 +6,7 @@
     <div class="ui piled segment">
         <h4 class="ui header">Submission #{{$submission->id}}</h4>
         <div class="ui divider"></div>
+        @if(Auth::user()!=null && (Auth::user()->id == $submission->user->id))
         <div class="ui labeled button" tabindex="0" style="margin: 2px;">
             <div class="ui button">
                 <i class="file excel outline icon"></i> Download to
@@ -14,6 +15,7 @@
                 CPP
             </a>
         </div>
+        @endif
     </div>
 @stop
 @section('right-segment')
@@ -64,6 +66,9 @@
         $('.dropdown').dropdown()
         $(document).ready(function(){
             $('#problemTable').DataTable();
+        });
+        $(document).ready(function(){
+            $('#loading').hide();
         });
     </script>
     <script src="/assets/editor/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>

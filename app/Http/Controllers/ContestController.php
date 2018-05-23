@@ -27,7 +27,23 @@ class ContestController extends Controller
     {
         //
         $link = (explode('/',$request->url()));
-        $contest = Contest::all();
+        if($request->has('query')){
+            if($request->get('query')=='all'){
+                $contest = Contest::all();
+            }
+            else if($request->get('query')=='active'){
+                $contest = Contest::find('active');
+            }
+            else if($request->get('query')=='past'){
+                $contest = Contest::find('non-active');
+            }
+            else{
+                $contest = Contest::all();
+            }
+        }
+        else{
+            $contest = Contest::all();
+        }
         $contestMember = ContestMember::getAllContestMember();
         if(Auth::user()->isAdmin){
             if($link[3] === 'contest'){

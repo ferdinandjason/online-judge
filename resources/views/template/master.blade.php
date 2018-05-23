@@ -6,13 +6,13 @@
     @yield('head')
 </head>
 <body>
-    @include('template.navigator')
     <div class="ui segment" id="loading">
         <div class="ui active inverted dimmer" style="width: 100vw;height: 100vh;">
             <div class="ui text loader">Loading</div>
         </div>
         <p></p>
     </div>
+    @include('template.navigator')
     <div class="ui container" style="width: 50% !important;min-height: 85vh;margin-top: 20px;margin-bottom: 20px;">
         <div class="ui top attached segment">
             <div class="left ui rail" style="padding-right: 0px;padding-left: 56px;">

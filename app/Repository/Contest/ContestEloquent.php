@@ -50,4 +50,16 @@ class ContestEloquent implements \ContestRepository
         $this->model->where('id',$id)->delete();
     }
 
+    public function findQuery($query)
+    {
+        // TODO: Implement findQuery() method.
+        if($query=='active'){
+            return $this->model->where('visible',1)->get();
+        }
+        else{
+            return $this->model->where('visible',0)->get();
+        }
+    }
+
+
 }
