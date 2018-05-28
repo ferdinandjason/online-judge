@@ -17,7 +17,7 @@
     </div>
 @stop
 @section('content')
-    <div style="height: 350px;width: auto;">
+    <div style="height: 350px;width: auto;" id="scoreboard-wrap">
         <canvas id="line"></canvas>
     </div>
 @stop
@@ -86,7 +86,7 @@
                 console.log(data);
                 var ctx = $("#line");
                 ctx.height(350);
-                ctx.width(920);
+                ctx.width($('#scoreboard-wrap').width());
                 var line = new Chart(ctx,{
                     type:'scatter',
                     data:data,

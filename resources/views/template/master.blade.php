@@ -6,7 +6,7 @@
     @yield('head')
 </head>
 <body>
-    <div class="ui segment" id="loading">
+    <div class="ui segment" id="loading" style="padding: 0px;margin: 0px;">
         <div class="ui active inverted dimmer" style="width: 100vw;height: 100vh;">
             <div class="ui text loader">Loading</div>
         </div>

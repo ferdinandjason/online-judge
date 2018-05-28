@@ -13,6 +13,9 @@
 
 
 Route::get('/', function () {
+    if (Auth::check() && Auth::user()->isAdmin){
+        redirect('/admin');
+    }
     $problem = \Problem::getRandom();
     return view('welcome',compact('problem'));
 });
@@ -56,6 +59,7 @@ Route::post('','ContestMemberController@store')->name('contestmember.store');
 Route::get('contest/{id}/problems','ContestController@problemIndex');
 Route::get('contest/{id}/submission','ContestController@submissionIndex');
 Route::get('contest/{id}/scoreboard','ContestController@scoreboard');
+Route::get('contest/{id}/problems/OOPS','ContestProblemController@oops');
 Route::get('contest/{id}/problems/{pid}','ContestProblemController@show');
 Route::get('contest/{id}/problems/{pid}/submit','ContestController@submit');
 Route::get('contest/{id}/submissions/{sid}','ContestController@submission');

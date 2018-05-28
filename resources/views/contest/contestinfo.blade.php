@@ -24,8 +24,11 @@
         if(a==100){
             $('#contestLabel').text('Contest Ended');
         }
-        else{
+        else if(a!=0){
             $('#contestLabel').text('Contest Running');
+        }
+        else{
+            $('#contestLabel').text('Contest\'ll be started soon!');
         }
     }
 
@@ -79,7 +82,7 @@
     function update(){
         var a = updateContestTime();
         if(a == 100) return;
-        setTimeout(update,1000);
+        setTimeout(update,60000);
     }
 
     update();

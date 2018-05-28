@@ -10,7 +10,7 @@
     @include('template.feedback')
 @stop
 @section('content')
-    <table class="ui compact striped blue text-center table unstackable" id="problemTable">
+    <table class="ui compact striped blue text-center table unstackable" id="rankTable">
         <thead>
             <tr>
                 <th class="one wide">#</th>
@@ -45,8 +45,12 @@
     <script>
         let problem;
         $('.dropdown').dropdown()
-        $(document).ready(function(){
-            problem = $('#problemTable').DataTable();
-        });
+        let rank;
+        rank = $('#rankTable').DataTable();
+        rank.on( 'order.dt search.dt', function () {
+            rank.column(0).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
     </script>
 @stop

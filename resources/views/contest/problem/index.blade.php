@@ -21,28 +21,32 @@
 @stop
 @section('contest-only')
     <div class="ui segment">
-        <table class="ui compact striped blue text-center table unstackable" id="problemTable">
-            <thead>
-            <tr>
-                <th class="one wide">#</th>
-                <th class="six wide">Problem</th>
-                <th class="one wide">Alias</th>
-                <th class="one wide">Submit</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($contestProblem as $p)
+        @if(\Carbon\Carbon::parse($contest->start_time)->diffInSeconds(\Carbon\Carbon::now(),false)>=0)
+            <table class="ui compact striped blue text-center table unstackable" id="problemTable">
+                <thead>
                 <tr>
-                    <td>{{ $p->problem->id }}</td>
-                    <td class="left aligned">
-                        <a href="/contest/{{$contest->id}}/problems/{{$p->problem->id}}" style="vertical-align: middle">{{ $p->problem->title }}</a>
-                    </td>
-                    <td><a>{{$p->alias}}</a></td>
-                    <td><button class="ui basic blue button"><a href="/contest/{{$contest->id}}/problems/{{$p->problem->id}}"><i class="fa fa-user-plus"></i> Masuk</a></button></td>
+                    <th class="one wide">#</th>
+                    <th class="six wide">Problem</th>
+                    <th class="one wide">Alias</th>
+                    <th class="one wide">Submit</th>
                 </tr>
-            @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                @foreach($contestProblem as $p)
+                    <tr>
+                        <td>{{ $p->problem->id }}</td>
+                        <td class="left aligned">
+                            <a href="/contest/{{$contest->id}}/problems/{{$p->problem->id}}" style="vertical-align: middle">{{ $p->problem->title }}</a>
+                        </td>
+                        <td><a>{{$p->alias}}</a></td>
+                        <td><button class="ui basic blue button"><a href="/contest/{{$contest->id}}/problems/{{$p->problem->id}}"><i class="fa fa-user-plus"></i> Masuk</a></button></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        @else
+            <a class="">No Problem's Added Yet!</a>
+        @endif
     </div>
 @stop
 @section('script')

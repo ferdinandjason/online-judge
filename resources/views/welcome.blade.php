@@ -28,7 +28,7 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-<div class="ui segment" id="loading">
+<div class="ui segment" id="loading" style="padding: 0px;margin: 0px;">
     <div class="ui active inverted dimmer" style="width: 100vw;height: 100vh;">
         <div class="ui text loader">Loading</div>
     </div>
@@ -36,12 +36,12 @@
 </div>
 <div class="nav">
     <div class="ui secondary pointing menu" id="navi" style="background:rgba(255,255,255,.80)">
-        <div class="ui item left aligned" style="display: flex">
+        <div class="ui item right aligned" style="display: flex">
             <a class="ui item" href="/problems">Problem</a>
             <a class="ui item" href="/submissions">Submission</a>
         </div>
         <a href="/"><img class="ui small circular centered image" style="position: relative;z-index: 1;width: 80px" src="/images/logo.png"></a>
-        <div class="ui item right aligned" style="display: flex">
+        <div class="ui item left aligned" style="display: flex">
             <a class="ui item" href="/contest">Contest</a>
             <a class="ui item" href="/rank">Rank</a>
         </div>
@@ -64,6 +64,7 @@
                         <a class="ui blue big image label">
                             <img src="/storage/{{Auth::user()->avatar_path}}">
                             {{Auth::user()->real_name}}
+                            <div type="submit" class="detail" id="profile">Profile</div>
                             <div type="submit" class="detail" id="logout">Logout</div>
                         </a>
                         {{--</form>--}}
@@ -78,7 +79,7 @@
             </p>
             @if (Route::has('login'))
                 @auth
-                <div class="ui large form" style="width: 500px;height: 400px;margin: auto;float: right;padding-top: 10px;" id="prob">
+                <div class="ui large form" style="width: 400px;height: 400px;margin: auto;float: right;padding-top: 10px;" id="prob">
                     <p class="ui header" style="font-family: Rancho">Be Productive !</p>
                     <div class="ui stacked segment" style="padding-top: 40px">
                         <p style="color: #000;">Hello there!, I have some problem for you! check it out!</p>
@@ -105,7 +106,7 @@
                     </div>
                 </div>
                 @else
-                <form class="ui large form" action="{{route('login')}}" method="POST" style="width: 500px;height: 400px;margin: auto;float: right;padding-top: 10px;" id="login">
+                <form class="ui large form" action="{{route('login')}}" method="POST" style="width: 400px;height: 400px;margin: auto;float: right;padding-top: 10px;" id="login">
                     <p class="ui header" style="font-family: Rancho">Login</p>
                     {!! csrf_field() !!}
                     <div class="ui stacked segment" style="padding-top: 40px">
@@ -114,12 +115,22 @@
                                 <i class="user icon"></i>
                                 <input name="email" placeholder="E-mail address" type="email">
                             </div>
+                            @if($errors->has('email'))
+                                <p style="color: #9F3A38">
+                                    {{$errors->first('email')}}
+                                </p>
+                            @endif
                         </div>
                         <div class="field">
                             <div class="ui left icon input">
                                 <i class="lock icon"></i>
                                 <input name="password" placeholder="Password" type="password">
                             </div>
+                            @if($errors->has('password'))
+                                <p style="color: #9F3A38">
+                                    {{$errors->first('password')}}
+                                </p>
+                            @endif
                         </div>
                         <div class="field">
                             <div class="ui checkbox" style="color: black;min-width: 50%;">
@@ -130,7 +141,7 @@
                     </div>
                     <div class="ui error message"></div>
                 </form>
-                <form class="ui form" action="{{route('register')}}" method="POST" id="register" style="width: 500px;height: 400px;margin: auto;float: right;display: none;padding-top: 10px;">
+                <form class="ui form" action="{{route('register')}}" method="POST" id="register" style="width: 400px;height: 400px;margin: auto;float: right;display: none;padding-top: 10px;">
                     <p class="ui header" style="font-family: Rancho">Sign Up</p>
                     {!! csrf_field() !!}
                     <div class="ui stacked segment" style="padding-top: 40px;">
@@ -257,6 +268,12 @@
                 location.reload();
             }
         });
+    });
+
+    $('#profile').click(function(){
+        @auth
+            location.href = '/user/{{ Auth::user()->id }}';
+        @endauth
     });
 
     $(window).scroll(

@@ -8,7 +8,7 @@
             <a class="item" href="/rank">Rank</a>
             <a class="item" href="/contest">Contest</a>
         </div>
-        <div style="display: flex;float: right;">Version 0.6.5&nbsp;&nbsp;&nbsp;</div>
+        <div style="display: flex;float: right;">Version 0.8.5&nbsp;&nbsp;&nbsp;</div>
     </div>
 </div>
 <div id="footer" class="ui black inverted vertical footer segment" style="margin-top:0;">

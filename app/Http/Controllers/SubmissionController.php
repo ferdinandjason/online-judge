@@ -36,7 +36,7 @@ class SubmissionController extends Controller
         }
         else{
             if($link[3] === 'admin'){
-                return redirect('submission');
+                return abort(404);
             }
             return view('submission.index',compact('submission'));
         }

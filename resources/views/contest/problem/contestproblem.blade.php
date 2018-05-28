@@ -1,12 +1,18 @@
 <div class="ui vertical menu">
-    @foreach($contestProblem as $p)
-        <a class="{{(Request::is('contest/*/problems/'.$p->problem->id))?'active ':''}}blue item" href="/contest/{{$contest->id}}/problems/{{$p->problem->id}}">
-            {{$p->alias}} - {{$p->problem->id}}
-            @if(Request::is('contest/*/problems/'.$p->problem->id))
-                <div class="ui blue left pointing label">&nbsp;</div>
-            @endif
+    @if(\Carbon\Carbon::parse($contest->start_time)->diffInSeconds(\Carbon\Carbon::now(),false)>=0)
+        @foreach($contestProblem as $p)
+            <a class="{{(Request::is('contest/*/problems/'.$p->problem->id))?'active ':''}}blue item" href="/contest/{{$contest->id}}/problems/{{$p->problem->id}}">
+                {{$p->alias}} - {{$p->problem->id}}
+                @if(Request::is('contest/*/problems/'.$p->problem->id))
+                    <div class="ui blue left pointing label">&nbsp;</div>
+                @endif
+            </a>
+        @endforeach
+    @else
+        <a class="blue item">
+            No Problem's Added Yet.
         </a>
-    @endforeach
+    @endif
 </div>
 <div class="ui vertical menu" id="clar">
     <a class="item"> Make Clarification</a>

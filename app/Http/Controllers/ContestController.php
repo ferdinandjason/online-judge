@@ -16,6 +16,7 @@ class ContestController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('contest');
     }
 
     /**
@@ -67,8 +68,13 @@ class ContestController extends Controller
     public function create()
     {
         //
-        $contest = Contest::all();
-        return view('admin.contest.create',compact('contest'));
+        if(Auth::user()->isAdmin){
+            $contest = Contest::all();
+            return view('admin.contest.create',compact('contest'));
+        }
+        else{
+            return abort(404);
+        }
     }
 
     /**
@@ -86,9 +92,11 @@ class ContestController extends Controller
         else{
             $_POST['active'] = 1;
         }
-        Contest::validator($request);
-        Contest::create(Contest::prosesPostData($_POST));
-        return redirect('contest');
+        if(Auth::user()->isAdmin) {
+            Contest::validator($request);
+            Contest::create(Contest::prosesPostData($_POST));
+            return redirect('contest');
+        }
     }
 
     /**
@@ -114,8 +122,13 @@ class ContestController extends Controller
     public function edit($id)
     {
         //
-        $contest = Contest::getContest($id);
-        return view('admin.contest.edit',compact('contest'));
+        if(Auth::user()->isAdmin) {
+            $contest = Contest::getContest($id);
+            return view('admin.contest.edit', compact('contest'));
+        }
+        else{
+            return abort(404);
+        }
     }
 
     /**
@@ -134,9 +147,12 @@ class ContestController extends Controller
         else{
             $_POST['active'] = 1;
         }
-        Contest::validator($request);
-        Contest::update($contest,Contest::prosesPostData($_POST));
-        return redirect('contest');
+
+        if(Auth::user()->isAdmin){
+            Contest::validator($request);
+            Contest::update($contest,Contest::prosesPostData($_POST));
+            return redirect('contest');
+        }
     }
 
     /**
@@ -145,11 +161,13 @@ class ContestController extends Controller
      * @param  \App\Contest  $contest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contest $contest)
+    public function destroy($id)
     {
         //
-        Contest::delete($contest);
-        return redirect('contest');
+        if(Auth::user()->isAdmin){
+            Contest::delete($id);
+            return redirect('contest');
+        }
     }
 
     public function messages()

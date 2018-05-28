@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 class ContestProblemController extends Controller
 {
+    public function __construct(){
+        $this->middleware('contest_start');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -59,7 +62,12 @@ class ContestProblemController extends Controller
         $contestProblem = ContestProblem::getContestProblem($contestId);
         $problem = Problem::getProblem($id);
         return view('contest.problem.show',compact('contest','contestProblem','problem'));
+    }
 
+    public function oops($contestId){
+        $contest = Contest::getContest($contestId);
+        $contestProblem = ContestProblem::getContestProblem($contestId);
+        return view('contest.problem.oops',compact('contest','contestProblem'));
     }
 
     /**

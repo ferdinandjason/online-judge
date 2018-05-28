@@ -36,9 +36,12 @@ function getCurrentPercentageTime($contestStartTime,$contestEndTime){
     $contestEndTime = \Carbon\Carbon::parse($contestEndTime);
     $nowTime = \Carbon\Carbon::now();
     $currentTime = $nowTime->min($contestEndTime);
+    $contestStartTime = \Carbon\Carbon::parse($contestStartTime);
 
-    $elapsed = $currentTime->diffInSeconds($contestStartTime);
-    $end = $contestEndTime->diffInSeconds($contestStartTime);
+    $elapsed = $contestStartTime->diffInSeconds($currentTime,false);
+    $end = $contestStartTime->diffInSeconds($contestEndTime,false);
+
+    if($elapsed < 0){ $elapsed = 0; }
 
     return $elapsed/$end*100;
 }
@@ -48,16 +51,24 @@ function getElapsedTime($contestStartTime,$contestEndTime){
     $nowTime = \Carbon\Carbon::now();
     $currentTime = $nowTime->min($contestEndTime);
 
-    $elapsed = $currentTime->diffInMinutes($contestStartTime);
+    $contestStartTime = \Carbon\Carbon::parse($contestStartTime);
+
+    $elapsed = $contestStartTime->diffInMinutes($currentTime,false);
+
+    if($elapsed < 0){ $elapsed = 0; }
+
     return $elapsed;
 }
 
 function getRemainingTime($contestStartTime,$contestEndTime){
     $contestEndTime = \Carbon\Carbon::parse($contestEndTime);
     $nowTime = \Carbon\Carbon::now();
-    $currentTime = $nowTime->min($contestEndTime);
+    $currentTime = $nowTime->max($contestStartTime);
 
-    $remainingTime = $currentTime->diffInMinutes($contestEndTime);
+    $remainingTime = $currentTime->diffInMinutes($contestEndTime,false);
+
+    if($remainingTime < 0){ $remainingTime = 0; }
+
     return $remainingTime;
 }
 

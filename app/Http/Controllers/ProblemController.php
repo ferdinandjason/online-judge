@@ -61,7 +61,7 @@ class ProblemController extends Controller
             return view('admin.problem.create',compact('contest'));
         }
         if($arr[3] === 'admin'){
-            return redirect('problems');
+            return abort('404');
         }
         return redirect('problems');
     }
@@ -121,7 +121,7 @@ class ProblemController extends Controller
             $tags = ProblemTag::getProblemTag($problemId);
             return view('admin.problem.edit',compact('problem','tags'));
         }
-        else return redirect('problems');
+        else return abort('404');
     }
 
     /**

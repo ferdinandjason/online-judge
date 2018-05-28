@@ -3,6 +3,9 @@
 
 @stop
 @section('content')
+    <?php
+        $arrayContestProblem = [];
+    ?>
     <div class="ui segment">
         <table class="ui compact striped text-center table unstackable">
             <thead><tr>
@@ -19,6 +22,7 @@
                         {{ Form::close() }}
                     </td>
                 </tr>
+                <?php array_push($arrayContestProblem,$cp->problem_id) ?>
             @endforeach
         </table>
         <p><strong>Tambah Problem :</strong></p>
@@ -32,9 +36,11 @@
         <div class="four fields">
             <div class="field">
                 <select class="ui fluid selection dropdown" name="problem_id" id="problem_id" value="">
-                    <option value="-">------ - --------------------</option>
+                    <option value="-">- - -</option>
                     @foreach($problem as $p)
-                        <option value="{{$p->id}}">{{$p->id}} | {{$p->title}}</option>
+                        @if(!in_array($p->id,$arrayContestProblem))
+                            <option value="{{$p->id}}">{{$p->id}} | {{$p->title}}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
