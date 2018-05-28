@@ -1,5 +1,5 @@
 <!-- Navigator -->
-<div class="nav" id="navigator" role="navigation">
+<div class="nav" id="navigator" role="navigation" style="background: white">
     <div class="ui blue secondary pointing menu" style="{{(Route::current()->getName() == 'welcome')?'background:rgba(44,49,65,.80)':''}}" id={{ isset($isIndex) ? 'navi' : 'n' }}>
         <div class="ui container">
             @if ( ! isset($isIndex) )
