@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Contest;
 use ContestProblem;
 use Problem;
@@ -30,10 +31,15 @@ class ContestProblemController extends Controller
     public function create($id)
     {
         //
-        $contest = Contest::getContest($id);
-        $contestProblem = ContestProblem::getContestProblem($id);
-        $problem = Problem::all();
-        return view('admin.contestproblem.create',compact('contest','contestProblem','problem'));
+        if(Auth::user()->isAdmin) {
+            $contest = Contest::getContest($id);
+            $contestProblem = ContestProblem::getContestProblem($id);
+            $problem = Problem::all();
+            return view('admin.contestproblem.create', compact('contest','contestProblem','problem'));
+        }
+        else{
+            return abort(404);
+        }
     }
 
     /**
@@ -99,10 +105,8 @@ class ContestProblemController extends Controller
      * @param  \App\ContestProblem  $contestProblem
      * @return \Illuminate\Http\Response
      */
-    public function destroy($contestId,$id)
+    public function destroy(ContestProblem $contestProblem)
     {
         //
-        ContestProblem::delete($contestId,$id);
-        return back();
     }
 }
