@@ -2,7 +2,7 @@
     @foreach($comment as $c)
         <div class="comment">
             <a class="avatar">
-                <img src="../../storage/{{ $c->user->avatar_path }}">
+                <img src="../../storage/{{asset('storage/'.$c->user->avatar_path)}}">
             </a>
             <div class="content">
                 <a class="author">{{$c->user->real_name}}</a>

@@ -62,7 +62,7 @@
                         </p>
                         {{--<form id="logout-form" action="/logout" method="POST" style="display: none;">--}}
                         <a class="ui blue big image label">
-                            <img src="../../storage/{{Auth::user()->avatar_path}}">
+                            <img src="{{asset('storage/'.Auth::user()->avatar_path)}}">
                             {{Auth::user()->real_name}}
                             <div type="submit" class="detail" id="profile">Profile</div>
                             <div type="submit" class="detail" id="logout">Logout</div>

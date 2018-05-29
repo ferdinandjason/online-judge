@@ -1,7 +1,7 @@
 @if (Route::has('login'))
     @auth
         <div class="ui right dropdown item" style="color: #000 !important;">
-            <img class="ui avatar image" src="../../storage/{{ Auth::user()->avatar_path }}">&nbsp;&nbsp;
+            <img class="ui avatar image" src="{{asset('storage/'.Auth::user()->avatar_path)}}">&nbsp;&nbsp;
             <strong>Hi,&nbsp;&nbsp;&nbsp;</strong>{{ Auth::user()->real_name }}
             <i class="dropdown icon"></i>
             <div class="menu">
