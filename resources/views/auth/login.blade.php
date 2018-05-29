@@ -8,7 +8,7 @@
     <div class="ui column centered grid" style="height: 100vh;">
         <div style="vertical-align: middle;align-self: center !important;">
             <h2 class="ui blue image header">
-                <img src="/images/logo.png" class="image">
+                <img src="{{asset('images/logo.png')}}" class="image">
                 <div class="content">
                     Log-in to the World!
                 </div>

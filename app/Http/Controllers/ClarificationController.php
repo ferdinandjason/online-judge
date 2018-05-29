@@ -75,14 +75,16 @@ class ClarificationController extends Controller
     public function show($contestId,$clarificationId)
     {
         //
+        $contest = Contest::all();
         $clarification = Clarification::getClarification($clarificationId);
-        return view('contest.clarification.show',compact('clarification'));
+        return view('contest.clarification.show',compact('clarification','contest'));
     }
 
     public function showAdmin($clarificationId)
     {
+        $contest = Contest::all();
         $clarification = Clarification::getClarification($clarificationId);
-        return view('admin.clarification_show',compact('clarification'));
+        return view('admin.clarification_show',compact('clarification','contest'));
     }
 
     /**

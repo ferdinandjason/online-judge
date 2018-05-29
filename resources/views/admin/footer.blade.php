@@ -2,7 +2,7 @@
     <div class="ui center aligned container">
         <div class="ui stackable inverted grid">
             <div class="four wide column">
-                <img src="/images/logo.png" class="ui centered mini image"/>
+                <img src="{{asset('images/logo.png')}}" class="ui centered mini image"/>
                 <h4 class="ui inverted header" style="font-family: Lato;font-weight: 100;font-size: 1.5rem;margin:auto"><strong>Moe Online Judge</strong></h4>
                 <div class="ui inverted link list">
                     <a class="item" href="{{route('about')}}" target="_blank">About</a>
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="ui inverted section divider"></div>
-        <img src="/images/logo.png" class="ui centered mini image"/>
+        <img src="{{asset('images/logo.png')}}" class="ui centered mini image"/>
         <div class="ui horizontal inverted small divided link list">
             <p class="item">Make with <span style="color:red">&#10084;</span> , Laravel , Semantic UI , Moe Contest Environment</p>
             <br>

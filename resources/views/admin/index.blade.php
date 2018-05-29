@@ -61,7 +61,7 @@
     <div class="ui segment">
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <img class="ui centered small image" src="/images/logo.png" style="margin-top: 25px;margin-bottom: 25px;">
+                <img class="ui centered small image" src="{{asset('images/logo.png')}}" style="margin-top: 25px;margin-bottom: 25px;">
                 <div class="title m-b-md">
                     Welcome to Moe Online Judge, {{Auth::user()->real_name}}!
                 </div>

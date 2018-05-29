@@ -3,7 +3,7 @@
 @section('content')
 <div class="ui container">
 	<h2 class="ui header">
-		<img src="/images/logo.png">
+		<img src="{{asset('images/logo.png')}}">
 	  	<div class="content">
 	    	Moe Online Judge
 	    	<div class="sub header">By ApaYha Team</div>

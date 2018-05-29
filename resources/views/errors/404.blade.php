@@ -92,7 +92,7 @@
 <div id="wrapper">
     <div id="box_centered" class="clearfix">
         <div class="pane-left">
-            <img src="/images/miku.png" class="owl">
+            <img src="{{asset('images/miku.png')}}" class="owl">
         </div>
         <div class="pane-right">
             <h1>Error <strong style="color: dodgerblue">404</strong></h1>
@@ -116,7 +116,7 @@
                     </button>
                 </div>
             </p>
-            <a href="{{route('root')}}" style="display: flex"><img src="/images/logo.png" class="moe"><p class="subtitle" style="margin-top: 6px;">&nbsp;&nbsp;Moe Online Judge</p></a>
+            <a href="{{route('root')}}" style="display: flex"><img src="{{asset('images/logo.png')}}" class="moe"><p class="subtitle" style="margin-top: 6px;">&nbsp;&nbsp;Moe Online Judge</p></a>
         </div>
     </div>
 </div>

@@ -24,7 +24,7 @@
 <body style="background-color: #EDECEC">
     <div class="ui left fixed vertical menu" style="z-index: 1000;font-size: 16px;min-width: 17%;background: white;">
         <div class="item" style="background-color: white;min-height: 100px;">
-            <img class="ui centered tiny image" src="/images/logo.png" style="margin-top: 25px;margin-bottom: 25px;">
+            <img class="ui centered tiny image" src="{{asset('images/logo.png')}}" style="margin-top: 25px;margin-bottom: 25px;">
         </div>
         <div class="item{{(Request::is('admin') || Request::is('admin/general'))?' active':''}}">
             <i class="clone outline icon left"></i>Dashboard <i class="angle up icon"></i>

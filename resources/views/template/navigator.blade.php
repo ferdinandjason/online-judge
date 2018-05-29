@@ -4,7 +4,7 @@
         <div class="ui container">
             @if ( ! isset($isIndex) )
                 <a class="ui item brand" href="/">
-                    <img src="/images/logo.png" >&nbsp;
+                    <img src="{{asset('images/logo.png')}}" >&nbsp;
                 </a>
             @endif
             <a href="{{route('problems.index')}}" class="ui item{{(\Request::is('problems*') || \Request::is('tag*'))?' active':''}}"><i class="fas fa-file-code" style="color: blue"></i>&nbsp;&nbsp;Problem</a>

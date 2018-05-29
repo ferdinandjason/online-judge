@@ -15,7 +15,7 @@
         <div class="ui divider"></div>
         @include('contest.problem.contestproblem')
         <div class="ui vertical menu" id="submit">
-            <a class="{{(Request::is('contest/*/problems/*/submit'))?'active ':''}}blue item" href="">
+            <a class="{{(Request::is('contest/*/problems/*/submit'))?'active ':''}}blue item" href="{{route('contest.problem.submit',[$contest->id,$problem->id])}}">
                 Submit
                 @if(Request::is('contest/*/problems/*/submit'))
                     <div class="ui blue left pointing label">&nbsp;</div>

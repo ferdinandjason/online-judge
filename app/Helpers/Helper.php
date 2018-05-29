@@ -43,6 +43,7 @@ function getCurrentPercentageTime($contestStartTime,$contestEndTime){
 
     if($elapsed < 0){ $elapsed = 0; }
 
+
     return $elapsed/$end*100;
 }
 

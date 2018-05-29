@@ -40,7 +40,7 @@
             <a class="ui item" href="{{route('problems.index')}}">Problem</a>
             <a class="ui item" href="{{route('submissions.index')}}">Submission</a>
         </div>
-        <a href="/"><img class="ui small circular centered image" style="position: relative;z-index: 1;width: 80px" src="/images/logo.png"></a>
+        <a href="/"><img class="ui small circular centered image" style="position: relative;z-index: 1;width: 80px" src="{{asset("images/logo.png")}}"></a>
         <div class="ui item left aligned" style="display: flex">
             <a class="ui item" href="{{route('contest.index')}}">Contest</a>
             <a class="ui item" href="{{route('user.rank')}}">Rank</a>
@@ -62,7 +62,7 @@
                         </p>
                         {{--<form id="logout-form" action="/logout" method="POST" style="display: none;">--}}
                         <a class="ui blue big image label">
-                            <img src="/storage/{{Auth::user()->avatar_path}}">
+                            <img src="../../storage/{{Auth::user()->avatar_path}}">
                             {{Auth::user()->real_name}}
                             <div type="submit" class="detail" id="profile">Profile</div>
                             <div type="submit" class="detail" id="logout">Logout</div>
@@ -216,11 +216,11 @@
         </div>
         <div class="row">
             <div class="column">
-                <img src="/images/LaravelLogo.png" style="height: 50px;width: auto">
+                <img src="{{asset('images/LaravelLogo.png')}}" style="height: 50px;width: auto">
                 <h3 class="ui header">Laravel 5.5</h3>
             </div>
             <div class="column">
-                <img src="/images/SemanticUI.svg" style="height: 50px;width: auto">
+                <img src="{{asset('images/SemanticUI.svg')}}" style="height: 50px;width: auto">
                 <h3 class="ui header">Semantic UI</h3>
             </div>
         </div>

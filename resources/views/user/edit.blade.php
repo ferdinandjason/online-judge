@@ -1,7 +1,7 @@
 	<div class="four wide column">
 		<div class="ui slide up instant reveal">
 			<div class="visible content">
-				<img src="/storage/{{ $user->avatar_path }}" class="ui small circular bordered image">
+				<img src="../../storage/{{ $user->avatar_path }}" class="ui small circular bordered image">
 			</div>
 			<div class="hidden content" style="text-align: left">
 				<label for="file">&nbsp;Choose a file</label>
