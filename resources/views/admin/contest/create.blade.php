@@ -10,7 +10,7 @@
                 {!! Form::label('name','Nama Contest') !!}
                 {!! Form::text('name',null,array('placeholder'=>'Nama Contest')) !!}
                 @if ($errors->has('name'))
-                    <p style="color:red"><strong>{{$errors->first('name')}}</strong><p>
+                    <p style="color:red"><strong>{{$errors->first('name')}}</strong></p>
                 @endif
             </div>
             <div class="field{{($errors->has('announcement'))?' error':''}}">
@@ -19,7 +19,7 @@
                              <p>Announcement Here</p>
                 </textarea>
                 @if ($errors->has('announcement'))
-                    <p style="color:red"><strong>{{$errors->first('end_time')}}</strong><p>
+                    <p style="color:red"><strong>{{$errors->first('announcement')}}</strong></p>
                 @endif
             </div>
             <div class="three fields">

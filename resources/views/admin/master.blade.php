@@ -70,14 +70,20 @@
         <div class="image content">
             <form class="ui form" method="POST" action="/admin/clarification">
                 {{csrf_field()}}
-                <div class="field">
+                <div class="field{{($errors->has('title'))?' error':''}}">
                     <label>Title : </label>
                     <input name="title" placeholder="Clarification Title" type="text">
+                    @if ($errors->has('title'))
+                        <p style="color:red"><strong>{{$errors->first('title')}}</strong></p>
+                    @endif
                 </div>
                 <label>Contest : </label>
-                <div class="field">
+                <div class="field{{($errors->has('contest_id'))?' error':''}}">
                     <div class="ui selection dropdown">
                         <input name="contest_id" type="hidden">
+                        @if ($errors->has('contest_id'))
+                        <p style="color:red"><strong>{{$errors->first('contest_id')}}</strong></p>
+                        @endif
                         <i class="dropdown icon"></i>
                         <div class="default text"> - </div>
                         @if(!strpos($_SERVER['REQUEST_URI'], 'add') && !strpos($_SERVER['REQUEST_URI'], 'edit'))
@@ -89,9 +95,12 @@
                         @endif
                     </div>
                 </div>
-                <div class="field">
+                <div class="field{{($errors->has('content'))?' error':''}}">
                     <label>Content : </label>
                     <input name="content" placeholder="Content" type="text">
+                    @if ($errors->has('content'))
+                    <p style="color:red"><strong>{{$errors->first('content')}}</strong></p>
+                    @endif
                 </div>
                 <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
                 <input type="hidden" value="0" name="to">
