@@ -26,10 +26,10 @@ class ContestProblemEloquent implements \ContestProblemRepository
         return $this->model->all();
     }
 
-    public function delete($id)
+    public function delete($contestId,$problemId)
     {
         // TODO: Implement delete() method.
-        $this->model->where('id',$id)->delete();
+        $this->model->where('contest_id',$contestId)->where('problem_id',$problemId)->delete();
     }
 
     public function create($request)

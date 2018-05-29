@@ -26,10 +26,10 @@
                 <tr>
                     <td><a href="/submissions/{{$solution->id}}">{{ $solution->id }}</a></td>
                     <td>
-                        <a href="/user/{{ $solution->user->id }}">{{ $solution->user->real_name }}</a>
+                        <a href="{{route('user.show',$solution->user_id)}}">{{ $solution->user->real_name }}</a>
                     </td>
                     <td>
-                        <a href="/problems/{{ $solution->problem_id }}">{{ $solution->problem_id }}</a>
+                        <a>{{ $solution->problem_id }}</a>
                     </td>
                     @if(get_verdict($solution->verdict) == "ACCEPTED" || get_verdict($solution->verdict) == "WRONG ANSWER")
                         @if(get_verdict($solution->verdict) == "ACCEPTED")
@@ -53,8 +53,8 @@
                     <td>{{$solution->lang}}</td>
                     <td>{{\Carbon\Carbon::parse($solution->created_at)->diffForHumans()}}</td>
                     <td>
-                        <a onclick="location.href='{{url('admin/submissions/'.$solution->id.'/regrade')}}'"><button class='ui basic purple button' data-tooltip="Regrade Submissions"><i class="fas fa-retweet" style="color: purple"></i></button></a>
-                        {{ Form::open(array('url' => 'submissions/' . $solution->id, 'style' => 'display:inline')) }}
+                        <a onclick="location.href='{{route('submission.regrade',$solution->id)}}'"><button class='ui basic purple button' data-tooltip="Regrade Submissions"><i class="fas fa-retweet" style="color: purple"></i></button></a>
+                        {{ Form::open(array('route'=>['submissions.destroy',$solution->id], 'style' => 'display:inline')) }}
                         {{ Form::hidden('_method', 'DELETE') }}
                         <button class='ui red basic button' type='submit' data-tooltip="Delete Submissions"><i class="far fa-trash-alt" style="color:red"></i></button>
                         {{ Form::close() }}

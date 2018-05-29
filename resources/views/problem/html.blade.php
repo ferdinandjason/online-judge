@@ -31,5 +31,4 @@
     <div class="bold">Contoh Output</div>
     <pre>{{ $problem->sample_output }}</pre>
     </div>
-    <a href="submit"> submit </a>
 </div>

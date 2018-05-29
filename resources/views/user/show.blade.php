@@ -76,7 +76,7 @@
 			Edit Profile
 		</div>
 		<div class="content">
-			<form action="/user/{{$user->id}}" method="POST" enctype="multipart/form-data">
+			<form action="{{route('user.update')}}" method="POST" enctype="multipart/form-data">
 				{{csrf_field()}}
 				<input type="hidden" name="_method" value="PUT" />
 				<div class="ui grid">
@@ -195,7 +195,7 @@
 	<div style="text-align: center;">
 		@if(count($userSolvedProblem)>0)
 			@foreach($userSolvedProblem as $usp)
-				<a href="/problems/{{$usp->problem_id}}"><button class="ui primary basic button">{{$usp->problem_id}}</button></a>
+                <a href="{{route('problem.show',$usp->problem_id)}}"><button class="ui primary basic button">{{$usp->problem_id}}</button></a>
 			@endforeach
 		@else
 			No problem solved yet...

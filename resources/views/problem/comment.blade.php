@@ -19,7 +19,7 @@
         </div>
     @endforeach
     <a class="" id="add">Add new comment</a>
-    <form class="ui reply form" method="POST" action="http://{{$_SERVER['HTTP_HOST']}}/comment" id="commentreply">
+    <form class="ui reply form" method="POST" action="{{route('comment.store')}}" id="commentreply">
         <div class="field">
             {{csrf_field()}}
             <input name="comment" style="min-height: 168px;">

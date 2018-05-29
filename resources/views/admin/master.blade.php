@@ -29,34 +29,34 @@
         <div class="item{{(Request::is('admin') || Request::is('admin/general'))?' active':''}}">
             <i class="clone outline icon left"></i>Dashboard <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item{{Request::is('admin')?' active blue':''}}" href="/admin"> Dashboard</a>
-                <a class="item{{Request::is('admin/general')?' active blue':''}}" href="/admin/general"> General</a>
+                <a class="item{{Request::is('admin')?' active blue':''}}" href="{{route('admin.index')}}"> Dashboard</a>
+                <a class="item{{Request::is('admin/general')?' active blue':''}}" href="{{route('admin.general')}}"> General</a>
             </div>
         </div>
         <div class="item{{Request::is('admin/problem*')?' active':''}}">
             <i class="clone outline icon left"></i>Problem <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item{{Request::is('admin/problems')?' active blue':''}}" href="/admin/problems"> List Problem</a>
-                <a class="item{{Request::is('admin/problems/create')?' active blue':''}}" href="/admin/problems/create"> Add Problem</a>
+                <a class="item{{Request::is('admin/problems')?' active blue':''}}" href="{{route('admin.problem.index')}}"> List Problem</a>
+                <a class="item{{Request::is('admin/problems/create')?' active blue':''}}" href="{{route('admin.problem.create')}}"> Add Problem</a>
             </div>
         </div>
         <div class="item{{Request::is('admin/submissions*')?' active':''}}">
             <i class="file icon left"></i>Submission <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item{{Request::is('admin/submissions')?' active blue':''}}" href="/admin/submissions"> List Submission</a>
+                <a class="item{{Request::is('admin/submissions')?' active blue':''}}" href="{{route('admin.submission.index')}}"> List Submission</a>
             </div>
         </div>
         <div class="item{{Request::is('admin/contest*')?' active':''}}">
             <i class="star icon left"></i>Contest <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item{{Request::is('admin/contest')?' active blue':''}}" href="/admin/contest"> List Contest</a>
-                <a class="item{{Request::is('admin/contest/create')?' active blue':''}}" href="/admin/contest/create"> Add Contest</a>
+                <a class="item{{Request::is('admin/contest')?' active blue':''}}" href="{{route('admin.contest.index')}}"> List Contest</a>
+                <a class="item{{Request::is('admin/contest/create')?' active blue':''}}" href="{{route('admin.contest.create')}}"> Add Contest</a>
             </div>
         </div>
         <div class="item{{Request::is('admin/clarification*')?' active':''}}">
             <i class="question icon left"></i>Clarification <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item{{Request::is('admin/clarification')?' active blue':''}}" href="/admin/clarification"> List Clarification</a>
+                <a class="item{{Request::is('admin/clarification')?' active blue':''}}" href="{{route('admin.clarification.admin.index')}}"> List Clarification</a>
                 <a class="item" id="addclar"> Add Clarification</a>
             </div>
         </div>
@@ -68,7 +68,7 @@
             Make Clarification
         </div>
         <div class="image content">
-            <form class="ui form" method="POST" action="/admin/clarification">
+            <form class="ui form" method="POST" action="{{route('admin.clarification.admin.store')}}">
                 {{csrf_field()}}
                 <div class="field">
                     <label>Title : </label>

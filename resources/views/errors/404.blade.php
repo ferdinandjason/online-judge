@@ -99,7 +99,7 @@
             <p>
                 Sorry, the page you were looking for doesn’t exist. <br>
                 Are you lost ? <br>
-                Try going to <a href="/">Home</a>, <br>
+                Try going to <a href="{{route('root')}}">Home</a>, <br>
                 or follow us on
                 <div class="ui link list">
                     <button class="ui circular facebook icon button">
@@ -116,7 +116,7 @@
                     </button>
                 </div>
             </p>
-            <a href="/" style="display: flex"><img src="/images/logo.png" class="moe"><p class="subtitle" style="margin-top: 6px;">&nbsp;&nbsp;Moe Online Judge</p></a>
+            <a href="{{route('root')}}" style="display: flex"><img src="/images/logo.png" class="moe"><p class="subtitle" style="margin-top: 6px;">&nbsp;&nbsp;Moe Online Judge</p></a>
         </div>
     </div>
 </div>

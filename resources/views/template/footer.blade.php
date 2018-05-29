@@ -2,11 +2,11 @@
     <div style="text-decoration-color: white;text-align: center;">
         <div style="display: flex;float: left;">&nbsp;&nbsp;&nbsp;© 2018 Moe Online Judge</div>
         <div class="ui horizontal inverted small divided link list" style="margin: 0;">
-            <a class="item" href="/about" target="_blank">About</a>
-            <a class="item" href="/problems">Problems</a>
-            <a class="item" href="/submissions">Submissions</a>
-            <a class="item" href="/rank">Rank</a>
-            <a class="item" href="/contest">Contest</a>
+            <a class="item" href="{{route('about')}}" target="_blank">About</a>
+            <a class="item" href="{{route('problem.index')}}">Problems</a>
+            <a class="item" href="{{route('submission.index')}}">Submissions</a>
+            <a class="item" href="{{route('user.rank')}}">Rank</a>
+            <a class="item" href="{{route('contest.index')}}">Contest</a>
         </div>
         <div style="display: flex;float: right;">Version 0.8.5&nbsp;&nbsp;&nbsp;</div>
     </div>
@@ -18,26 +18,21 @@
                 <img src="/images/logo.png" class="ui centered mini image"/>
                 <h4 class="ui inverted header" style="font-family: Lato;font-weight: 100;font-size: 1.5rem;margin:auto"><strong>Moe Online Judge</strong></h4>
                 <div class="ui inverted link list">
-                    <a class="item" href="/about" target="_blank">About</a>
-                    <a class="item" href="/help" target="_blank">Help</a>
-                    <a class="item" href="/license" target="_blank">License</a>
+                    <a class="item" href="{{route('about')}}" target="_blank">About</a>
                 </div>
             </div>
             <div class="four wide column">
                 <h4 class="ui inverted header">Problem</h4>
                 <div class="ui inverted link list">
-                    <a class="item" href="/problems">Problems</a>
-                    <a class="item" href="/problems/new">New Problems</a>
-                    <a class="item" href="/tags">Tags</a>
-                    <a class="item" href="/submissions">Submissions</a>
+                    <a class="item" href="{{route('problem.index')}}">Problems</a>
+                    <a class="item" href="{{route('submission.index')}}">Submissions</a>
                 </div>
             </div>
             <div class="four wide column">
                 <h4 class="ui inverted header">OTHER</h4>
                 <div class="ui inverted link list">
-                    <a class="item" href="/rank">Rank</a>
-                    <a class="item" href="/contest">Contest</a>
-                    <a class="item" href="/kamingsun">Coming Soon</a>
+                    <a class="item" href="{{route('user.rank')}}">Rank</a>
+                    <a class="item" href="{{route('contest.index')}}">Contest</a>
                 </div>
             </div>
 

@@ -4,7 +4,7 @@
 @stop
 @section('content')
     <div class="ui segment">
-        {!! Form::open(array('url'=>'/contest')) !!}
+        {!! Form::open(array('route'=>'admin.contest.store')) !!}
         <div class="ui form">
             <div class="field{{($errors->has('name'))?' error':''}}">
                 {!! Form::label('name','Nama Contest') !!}

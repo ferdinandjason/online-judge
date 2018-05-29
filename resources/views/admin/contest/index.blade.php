@@ -29,12 +29,12 @@
                     @endif
                     <td>
                         <div>
-                            <a class="ui primary basic button" href="/admin/contest/{{$c->id}}/edit" data-tooltip="Edit Contest"><i class="far fa-edit" style="color: blue"></i></a>
-                            {{ Form::open(array('url' => 'contest/' . $c->id, 'style' => 'display:inline')) }}
+                            <a class="ui primary basic button" href="{{route('admin.contest.edit',$c->id)}}" data-tooltip="Edit Contest"><i class="far fa-edit" style="color: blue"></i></a>
+                            {{ Form::open(array('route' =>['admin.contest.destroy',$c->id], 'style' => 'display:inline')) }}
                             {{ Form::hidden('_method', 'DELETE') }}
                             <button class='ui red  basic button' type='submit' data-tooltip="Delete Contest"><i class="far fa-trash-alt" style="color:red"></i></button>
                             {{ Form::close() }}
-                            <a class="ui green basic button" href="contest/{{$c->id}}/add_problem" data-tooltip="Add Contest Problems"><i class="fas fa-plus" style="color: green"></i></a>
+                            <a class="ui green basic button" href="{{route('admin.contest.problem.create',$c->id)}}" data-tooltip="Add Contest Problems"><i class="fas fa-plus" style="color: green"></i></a>
                         </div>
                     </td>
                 </tr>

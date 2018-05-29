@@ -26,7 +26,7 @@ class ContestProblemServices
         $this->repo->create($request);
     }
 
-    public function delete($id){
-        $this->repo->delete($id);
+    public function delete($contestId,$problemId){
+        $this->repo->delete($contestId,$problemId);
     }
 }

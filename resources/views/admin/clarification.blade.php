@@ -30,7 +30,7 @@
                         {{$clar->content}}
                     </td>
                     <td>
-                        <a href="clarification/{{$clar->id}}"><button class="ui primary basic button" onclick="show({{$clar->id}})">Detail</button></a>
+                        <a href="{{route('admin.clarification.admin.show',$clar->id)}}"><button class="ui primary basic button" onclick="show({{$clar->id}})">Detail</button></a>
                     </td>
                 </tr>
             @endforeach

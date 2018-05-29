@@ -4,7 +4,7 @@
 @stop
 @section('content')
     <div class="ui segment">
-        {!! Form::open(array('url'=>'/problems')) !!}
+        {!! Form::open(array('route'=>'admin.problems.store')) !!}
         <div class="ui form">
             <div class="four fields">
                 <div class="field{{($errors->has('id'))?' error':''}}">

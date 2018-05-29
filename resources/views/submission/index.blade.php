@@ -35,12 +35,12 @@
         <tbody>
         @foreach($submission as $solution)
             <tr>
-                <td><a href="/submissions/{{$solution->id}}">{{ $solution->id }}</a></td>
+                <td><a href="{{route('submission.show',$solution->id)}}">{{ $solution->id }}</a></td>
                 <td>
-                    <a href="/user/{{ $solution->user->id }}">{{ $solution->user->real_name }}</a>
+                    <a href="{{route('user.show',$solution->user_id)}}">{{ $solution->user->real_name }}</a>
                 </td>
                 <td>
-                    <a href="/problems/{{ $solution->problem_id }}">{{ $solution->problem_id }}</a>
+                    <a href="{{route('problem.show',$solution->problem_id)}}">{{ $solution->problem_id }}</a>
                 </td>
                 @if(get_verdict($solution->verdict) == "ACCEPTED" || get_verdict($solution->verdict) == "WRONG ANSWER")
                     @if(get_verdict($solution->verdict) == "ACCEPTED")

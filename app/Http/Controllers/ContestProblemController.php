@@ -99,8 +99,10 @@ class ContestProblemController extends Controller
      * @param  \App\ContestProblem  $contestProblem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ContestProblem $contestProblem)
+    public function destroy($contestId,$id)
     {
         //
+        ContestProblem::delete($contestId,$id);
+        return back();
     }
 }

@@ -16,7 +16,7 @@
             @foreach($contestProblem as $cp)
                 <tr> <td> {{$cp->alias}} </td><td>{{$cp->problem_id}}</td>
                     <td align="center">
-                        {{ Form::open(array('url' => 'contest/' . $contest->id . '/problems/' . $cp->id, 'style' => 'display:inline')) }}
+                        {{ Form::open(array('route'=>['admin.contest.problem.destroy',$contest->id,$cp->problem_id], 'style' => 'display:inline')) }}
                         {{ Form::hidden('_method', 'DELETE') }}
                         <button class='ui red small button' type='submit'><i class='fa fa-times-circle'></i> Delete</button>
                         {{ Form::close() }}
