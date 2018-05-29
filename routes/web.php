@@ -14,7 +14,7 @@
 
 Route::get('/', function () {
     if (Auth::check() && Auth::user()->isAdmin){
-        redirect('/admin');
+        return redirect('/admin');
     }
     $problem = \Problem::getRandom();
     return view('welcome',compact('problem'));

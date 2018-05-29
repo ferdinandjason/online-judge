@@ -33,6 +33,16 @@ class ClarificationServices
         $this->repo->create($request);
     }
 
+    public function validator($request){
+        return $request->validate([
+            'user_id'=>'required',
+            'contest_id'=>'required',
+            'title'=>'required|string',
+            'content'=>'required|string',
+            'to'=>'required'
+        ]);
+    }
+
     public function getClarification($clarificationId){
         return $this->repo->findFirst($clarificationId);
     }

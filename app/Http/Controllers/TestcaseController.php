@@ -14,8 +14,6 @@ class TestcaseController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-        $this->problemId= explode('/',$url)[5];
     }
 
     /**
@@ -23,12 +21,10 @@ class TestcaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($problemId)
     {
-        //
-        $this->problemId = $id;
-        $tc = Testcase::find($this->problemId);
-        $problem = Problem::getProblem($this->problemId);
+        $tc = Testcase::find($problemId);
+        $problem = Problem::getProblem($problemId);
         $contest = Contest::all();
         return view('admin.testcase.index',compact('tc','problem','contest'));
     }
@@ -49,10 +45,10 @@ class TestcaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($problemId,Request $request)
     {
         //
-        Testcase::create($this->problemId,$request);
+        Testcase::create($problemId,$request);
         return back();
     }
 

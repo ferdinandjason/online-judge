@@ -54,12 +54,14 @@ class ClarificationController extends Controller
     public function store(Request $request)
     {
         //
+        Clarification::validator($request);
         Clarification::create($request->all());
         return back();
     }
 
     public function storeAdmin(Request $request)
     {
+        Clarification::validator($request);
         Clarification::create($request->all());
         return back();
     }

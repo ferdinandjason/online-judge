@@ -13,7 +13,7 @@
                 <th><b>Keterangan<b></th>
             </tr></thead>
             @foreach($tc as $t)
-                <tr> <td> <a href={{asset('storage/'.$t->path_input)}}> {{$t->path_input }}<a> </td> <td> <a href={{asset('storage/app/'.$t->path_output)}}> {{$t->path_output}} </a></td>
+                <tr> <td> <a href={{asset('storage/'.$t->path_input)}}> {{$t->path_input }}<a> </td> <td> <a href={{asset('storage/'.$t->path_output)}}> {{$t->path_output}} </a></td>
                     <td align="center">
                         {{ Form::open(array('url' => 'problems/' . $t->problem_id . '/testcase/' . $t->tid, 'style' => 'display:inline')) }}
                         {{ Form::hidden('_method', 'DELETE') }}
