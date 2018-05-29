@@ -3,8 +3,8 @@
         <div style="display: flex;float: left;">&nbsp;&nbsp;&nbsp;© 2018 Moe Online Judge</div>
         <div class="ui horizontal inverted small divided link list" style="margin: 0;">
             <a class="item" href="{{route('about')}}" target="_blank">About</a>
-            <a class="item" href="{{route('problem.index')}}">Problems</a>
-            <a class="item" href="{{route('submission.index')}}">Submissions</a>
+            <a class="item" href="{{route('problems.index')}}">Problems</a>
+            <a class="item" href="{{route('submissions.index')}}">Submissions</a>
             <a class="item" href="{{route('user.rank')}}">Rank</a>
             <a class="item" href="{{route('contest.index')}}">Contest</a>
         </div>
@@ -24,8 +24,8 @@
             <div class="four wide column">
                 <h4 class="ui inverted header">Problem</h4>
                 <div class="ui inverted link list">
-                    <a class="item" href="{{route('problem.index')}}">Problems</a>
-                    <a class="item" href="{{route('submission.index')}}">Submissions</a>
+                    <a class="item" href="{{route('problems.index')}}">Problems</a>
+                    <a class="item" href="{{route('submissions.index')}}">Submissions</a>
                 </div>
             </div>
             <div class="four wide column">

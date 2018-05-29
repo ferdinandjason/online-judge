@@ -1,7 +1,7 @@
 <div class="ui vertical menu">
     @if(\Carbon\Carbon::parse($contest->start_time)->diffInSeconds(\Carbon\Carbon::now(),false)>=0)
         @foreach($contestProblem as $p)
-            <a class="{{(Request::is('contest/*/problems/'.$p->problem->id))?'active ':''}}blue item" href="{{route('contest.problem.show',$contest->id,$p->problem_id)}}">
+            <a class="{{(Request::is('contest/*/problems/'.$p->problem->id))?'active ':''}}blue item" href="{{route('contest.problem.show',[$contest->id,$p->problem_id])}}">
                 {{$p->alias}} - {{$p->problem->id}}
                 @if(Request::is('contest/*/problems/'.$p->problem->id))
                     <div class="ui blue left pointing label">&nbsp;</div>

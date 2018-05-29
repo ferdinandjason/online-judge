@@ -11,8 +11,8 @@
             <div class="four wide column">
                 <h4 class="ui inverted header">Problem</h4>
                 <div class="ui inverted link list">
-                    <a class="item" href="{{route('problem.index')}}">Problems</a>
-                    <a class="item" href="{{route('submission.index')}}">Submissions</a>
+                    <a class="item" href="{{route('problems.index')}}">Problems</a>
+                    <a class="item" href="{{route('submissions.index')}}">Submissions</a>
                 </div>
             </div>
             <div class="four wide column">

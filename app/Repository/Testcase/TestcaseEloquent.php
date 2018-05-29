@@ -27,7 +27,7 @@ class TestcaseEloquent implements \TestcaseRepository
 
     public function findFirst($id)
     {
-        return $this->model->where('problem_id',$id)->first();
+        return $this->model->where('id',$id)->first();
     }
 
     public function create($request,$id)

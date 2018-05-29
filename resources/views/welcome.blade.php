@@ -37,7 +37,7 @@
 <div class="nav">
     <div class="ui secondary pointing menu" id="navi" style="background:rgba(255,255,255,.80)">
         <div class="ui item right aligned" style="display: flex">
-            <a class="ui item" href="{{route('problem.index')}}">Problem</a>
+            <a class="ui item" href="{{route('problems.index')}}">Problem</a>
             <a class="ui item" href="{{route('submissions.index')}}">Submission</a>
         </div>
         <a href="/"><img class="ui small circular centered image" style="position: relative;z-index: 1;width: 80px" src="/images/logo.png"></a>
@@ -98,10 +98,11 @@
                             </div>
                             <div class="extra content">
                                 <div class="ui two buttons">
-                                    <a href="{{route('problem.show',$problem->id)}}"><div class="ui basic green button">Go for it !!!</div></a>
+                                    <a href="{{route('problems.show',$problem->id)}}"><div class="ui basic green button">Go for it !!!</div></a>
                                     <a href="{{route("root")}}"><div class="ui basic red button">Other problems ?</div></a>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>

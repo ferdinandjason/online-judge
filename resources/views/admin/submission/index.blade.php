@@ -53,8 +53,8 @@
                     <td>{{$solution->lang}}</td>
                     <td>{{\Carbon\Carbon::parse($solution->created_at)->diffForHumans()}}</td>
                     <td>
-                        <a onclick="location.href='{{route('submission.regrade',$solution->id)}}'"><button class='ui basic purple button' data-tooltip="Regrade Submissions"><i class="fas fa-retweet" style="color: purple"></i></button></a>
-                        {{ Form::open(array('route'=>['submissions.destroy',$solution->id], 'style' => 'display:inline')) }}
+                        <a onclick="location.href='{{route('admin.submissions.regrade',$solution->id)}}'"><button class='ui basic purple button' data-tooltip="Regrade Submissions"><i class="fas fa-retweet" style="color: purple"></i></button></a>
+                        {{ Form::open(array('route'=>['admin.submissions.destroy',$solution->id], 'style' => 'display:inline')) }}
                         {{ Form::hidden('_method', 'DELETE') }}
                         <button class='ui red basic button' type='submit' data-tooltip="Delete Submissions"><i class="far fa-trash-alt" style="color:red"></i></button>
                         {{ Form::close() }}

@@ -36,10 +36,10 @@
                     <tr>
                         <td>{{ $p->problem->id }}</td>
                         <td class="left aligned">
-                            <a href="{{route('contest.problem.show',$contest->id,$p->problem->id)}}" style="vertical-align: middle">{{ $p->problem->title }}</a>
+                            <a href="{{route('contest.problem.show',[$contest->id,$p->problem->id])}}" style="vertical-align: middle">{{ $p->problem->title }}</a>
                         </td>
                         <td><a>{{$p->alias}}</a></td>
-                        <td><button class="ui basic blue button"><a href="{{route('contest.problem.show',$contest->id,$p->problem->id)}}"><i class="fa fa-user-plus"></i> Masuk</a></button></td>
+                        <td><button class="ui basic blue button"><a href="{{route('contest.problem.show',[$contest->id,$p->problem->id])}}"><i class="fa fa-user-plus"></i> Masuk</a></button></td>
                     </tr>
                 @endforeach
                 </tbody>

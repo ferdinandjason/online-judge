@@ -67,10 +67,10 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{route('admin.problem.index')}}">Problems</a>
-                    <a href="{{route('admin.submission.index')}}">Submission</a>
+                    <a href="{{route('admin.problems.index')}}">Problems</a>
+                    <a href="{{route('admin.submissions.index')}}">Submission</a>
                     <a href="{{route('admin.contest.index')}}">Contest</a>
-                    <a href="{{route('admin.clarification.index')}}">Clarification</a>
+                    <a href="{{route('admin.clarification.admin.index')}}">Clarification</a>
                     {{--<a href="https://github.com/laravel/laravel">GitHub</a>--}}
                 </div>
             </div>

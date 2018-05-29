@@ -36,14 +36,14 @@
         <div class="item{{Request::is('admin/problem*')?' active':''}}">
             <i class="clone outline icon left"></i>Problem <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item{{Request::is('admin/problems')?' active blue':''}}" href="{{route('admin.problem.index')}}"> List Problem</a>
-                <a class="item{{Request::is('admin/problems/create')?' active blue':''}}" href="{{route('admin.problem.create')}}"> Add Problem</a>
+                <a class="item{{Request::is('admin/problems')?' active blue':''}}" href="{{route('admin.problems.index')}}"> List Problem</a>
+                <a class="item{{Request::is('admin/problems/create')?' active blue':''}}" href="{{route('admin.problems.create')}}"> Add Problem</a>
             </div>
         </div>
         <div class="item{{Request::is('admin/submissions*')?' active':''}}">
             <i class="file icon left"></i>Submission <i class="angle up icon"></i>
             <div class="menu">
-                <a class="item{{Request::is('admin/submissions')?' active blue':''}}" href="{{route('admin.submission.index')}}"> List Submission</a>
+                <a class="item{{Request::is('admin/submissions')?' active blue':''}}" href="{{route('admin.submissions.index')}}"> List Submission</a>
             </div>
         </div>
         <div class="item{{Request::is('admin/contest*')?' active':''}}">

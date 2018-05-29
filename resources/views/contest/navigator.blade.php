@@ -17,13 +17,13 @@
             <div class="ui blue left pointing label">&nbsp;</div>
         @endif
     </a>
-    <a class="{{(Request::is('contest/*/clarification*'))?'active ':''}}blue item" href="{{route('clarification.index',$contest->id}}">
+    <a class="{{(Request::is('contest/*/clarification*'))?'active ':''}}blue item" href="{{route('clarification.index',$contest->id)}}">
         Clarification
         @if(Request::is('contest/*/clarification*'))
             <div class="ui blue left pointing label">&nbsp;</div>
         @endif
     </a>
-    <a class="{{(Request::is('contest/*/scoreboard'))?'active ':''}}blue item" href="{{route('contest.scoreboard',$contest->id)}}/scoreboard">
+    <a class="{{(Request::is('contest/*/scoreboard'))?'active ':''}}blue item" href="{{route('contest.scoreboard',$contest->id)}}">
         Scoreboard
         @if(Request::is('contest/*/scoreboard'))
             <div class="ui blue left pointing label">&nbsp;</div>

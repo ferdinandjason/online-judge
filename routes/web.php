@@ -56,7 +56,7 @@ Route::get('admin/general',function(){
 //user
 Route::resource('problems','ProblemController');
 Route::resource('submissions','SubmissionController');
-Route::get('problems/{id}/submit','SubmissionController@create')->name('problem.submit');
+Route::get('problems/{id}/submit','SubmissionController@create')->name('problems.submit');
 Route::resource('contest','ContestController');
 Route::post('','ContestMemberController@store')->name('contestmember.store');
 Route::get('contest/{id}/problems','ContestController@problemIndex')->name('contest.problem.index');
@@ -67,13 +67,13 @@ Route::get('contest/{id}/problems/{pid}','ContestProblemController@show')->name(
 Route::get('contest/{id}/problems/{pid}/submit','ContestController@submit')->name('contest.problem.submit');
 Route::get('contest/{id}/submissions/{sid}','ContestController@submission')->name('contest.submission.show');
 Route::post('comment','CommentController@store')->name('comment.store');
-Route::get('problems/{id}/html','ProblemController@html')->name('problem.html');
-Route::get('problems/{id}/csv','ProblemController@csv')->name('problem.csv');
-Route::get('problems/{id}/rank','ProblemController@rank')->name('problem.rank');
+Route::get('problems/{id}/html','ProblemController@html')->name('problems.html');
+Route::get('problems/{id}/csv','ProblemController@csv')->name('problems.csv');
+Route::get('problems/{id}/rank','ProblemController@rank')->name('problems.rank');
 Route::get('contest/{id}/clarification','ClarificationController@index')->name('clarification.index');
 Route::post('contest/{id}/clarification','ClarificationController@store')->name('clarification.store');
 Route::get('contest/{id}/clarification/{cid}','ClarificationController@show')->name('clarification.show');
-Route::get('submissions/{id}/code','SubmissionController@code')->name('submission.code');
+Route::get('submissions/{id}/code','SubmissionController@code')->name('submissions.code');
 
 Route::resource('/user','UserController');
 Route::get('/rank','UserController@rank')->name('user.rank');

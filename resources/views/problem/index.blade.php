@@ -8,10 +8,10 @@
         <h4 class="ui header">Problem</h4>
         <div class="ui divider"></div>
         <div class="ui vertical menu">
-            <a class="item" href="{{route('problem.show',$problem[rand(0,count($problem)-1)]->id)}}">
+            <a class="item" href="{{route('problems.show',$problem[rand(0,count($problem)-1)]->id)}}">
                 Go To Random Problem
             </a>
-            <a class="item" href="{{route('problem.show',$problem[count($problem)-1]->id)}}">
+            <a class="item" href="{{route('problems.show',$problem[count($problem)-1]->id)}}">
                 Go To Newest Problem
             </a>
             <a class="item" id="find">
@@ -48,7 +48,7 @@
                     {{ $p->id }}
                 </td>
                 <td class="left aligned">
-                    <a href="{{ route('problem.show',$p->id) }}" style="vertical-align: middle">{{ $p->title }}</a>
+                    <a href="{{ route('problems.show',$p->id) }}" style="vertical-align: middle">{{ $p->title }}</a>
                 </td>
                 <td><a>{{$p->total_submit}}</a></td>
                 <td><a>{{$p->total_ac}}</a></td>
