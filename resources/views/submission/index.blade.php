@@ -60,7 +60,7 @@
                     <td>-</td>
                 @endif
                 <td>{{$solution->lang}}</td>
-                <td>{{\Carbon\Carbon::parse($solution->created_at)->diffForHumans()}}</td>
+                <td>{{\Carbon\Carbon::parse($solution->created_at)}}</td>
             </tr>
         @endforeach
         </tbody>

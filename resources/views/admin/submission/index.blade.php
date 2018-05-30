@@ -24,7 +24,7 @@
             <tbody>
             @foreach($submission as $solution)
                 <tr>
-                    <td><a href="/submissions/{{$solution->id}}">{{ $solution->id }}</a></td>
+                    <td><a>{{ $solution->id }}</a></td>
                     <td>
                         <a href="{{route('user.show',$solution->user_id)}}">{{ $solution->user->real_name }}</a>
                     </td>
@@ -51,7 +51,7 @@
                         <td>-</td>
                     @endif
                     <td>{{$solution->lang}}</td>
-                    <td>{{\Carbon\Carbon::parse($solution->created_at)->diffForHumans()}}</td>
+                    <td>{{\Carbon\Carbon::parse($solution->created_at)}}</td>
                     <td>
                         <a onclick="location.href='{{route('admin.submissions.regrade',$solution->id)}}'"><button class='ui basic purple button' data-tooltip="Regrade Submissions"><i class="fas fa-retweet" style="color: purple"></i></button></a>
                         {{ Form::open(array('route'=>['admin.submissions.destroy',$solution->id], 'style' => 'display:inline')) }}

@@ -78,7 +78,7 @@
 
         $.ajax({
             type: "POST",
-            url: '/api/v1/statistics/contest/linecharts/{{$contest->id}}',
+            url: '{{route('api.linecharts',$contest->id)}}',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },

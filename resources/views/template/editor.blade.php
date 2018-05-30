@@ -28,12 +28,12 @@
 
             height: 300,
             content_css: [
-                '/assets/style.css',
-                '/assets/semantic-ui/css/semantic.min.css',
-                '/assets/tinymce/style.css',
+                '{{asset('assets/style.css')}}',
+                '{{asset('assets/semantic-ui/css/semantic.min.css')}}',
+                '{{asset('assets/tinymce/style.css')}}',
                 '//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
             ],
-            skin_url: '/assets/tinymce/skins/light',
+            skin_url: '{{asset('assets/tinymce/skins/light')}}',
             table_default_attributes: {
                 class: 'ui celled table'
             },
@@ -72,9 +72,9 @@
             paste_as_text: true,
 
             content_css: [
-                '/assets/style.css',
-                '/assets/semantic-ui/css/semantic.min.css',
-                '/assets/tinymce/style.css',
+                '{{asset('assets/style.css')}}',
+                '{{asset('assets/semantic-ui/css/semantic.min.css')}}',
+                '{{asset('assets/tinymce/style.css')}}',
                 '//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
             ],
             skin_url: '/assets/tinymce/skins/light',

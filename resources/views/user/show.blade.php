@@ -16,7 +16,7 @@
 @section('left-segment')
 	<div class="ui card" data-html="">
 		<div class="image">
-			<img src="/storage/{{ $user->avatar_path }}" style="object-fit: cover;object-position: center;width: 244px;height: 244px;">
+			<img src="{{asset('storage/'.$user->avatar_path)}}" style="object-fit: cover;object-position: center;width: 244px;height: 244px;">
 		</div>
 		<div class="content">
 			<div class="header">{{$user->real_name}}&nbsp;&nbsp;
@@ -50,7 +50,7 @@
 						<i class="clock outline icon"></i>&nbsp;Joined
 					</div>
 					<div class="content">
-						{{\Carbon\Carbon::parse($user->created_at)->diffForHumans()}}
+						{{\Carbon\Carbon::parse($user->created_at)}}
 					</div>
 				</div>
 			</div>
@@ -76,7 +76,7 @@
 			Edit Profile
 		</div>
 		<div class="content">
-			<form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
+			<form action="{{route('user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
 				{{csrf_field()}}
 				<input type="hidden" name="_method" value="PUT" />
 				<div class="ui grid">
@@ -224,7 +224,7 @@
 								{{$usp->problem_id}}
 							</a>
 							<div class="date">
-								{{\Carbon\Carbon::parse($usp->created_at)->diffForHumans()}}
+								{{\Carbon\Carbon::parse($usp->created_at)}}
 							</div>
 						</div>
 					</div>

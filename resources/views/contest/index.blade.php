@@ -42,7 +42,7 @@
                 <tr>
                     <td>{{$c->id}}</td>
                     <td><a href="{{route('contest.show',$c->id)}}">{{$c->name}}</a>&nbsp;&nbsp;@if($c->visible)<button class="ui green basic label">Active</button>@else<button class="ui red basic label">Non-Active</button>@endif</td>
-                    <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)->DiffForHumans()}}</td>
+                    <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)}}</td>
                     <td>{{getContestLength($c->start_time,$c->end_time)}} Hours</td>
                     <td><i class="user icon"></i>{{countPeopleJoin($c->id)}}</td>
                     <td>
@@ -63,7 +63,7 @@
                 <tr>
                     <td>{{$c->id}}</td>
                     <td><a href="{{route('contest.show',$c->id)}}">{{$c->name}}</a>&nbsp;&nbsp;@if($c->visible)<button class="ui green basic label">Active</button>@else<button class="ui red basic label">Non-Active</button>@endif</td>
-                    <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)->DiffForHumans()}}</td>
+                    <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)}}</td>
                     <td>{{getContestLength($c->start_time,$c->end_time)}} Hours</td>
                     <td><i class="user icon"></i>{{countPeopleJoin($c->id)}}</td>
                     <td>

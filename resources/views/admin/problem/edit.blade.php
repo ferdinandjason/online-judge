@@ -48,20 +48,8 @@
             <div class="field{{($errors->has('description'))?' error':''}}">
                 {!! Form::label('description','Problems description') !!}
                 <textarea name="description" id="description" class="html-editor">
-                            <p>Deskripsi Soal</p>
-                            <p style="text-align: center;"><strong>Format Input</strong></p>
-                            <br>
-                            <p>Diberikan sebuah bilangan T yang melambangkan Testcase</p>
-                            <br>
-                            <p style="text-align: center;"><strong>Format Output</strong></p>
-                            <br>
-                            <p>Untuk setiap testcase </p>
-                            <br>
-                            <p style="text-align: center;"><strong>Constraint</strong></p>
-                            <br><br>
-                            <p style="text-align: center;"><strong>Explanation</strong></p>
-                            <br><br>
-                    </textarea>
+                    {!! $problem->description !!}
+                </textarea>
                 @if ($errors->has('description'))
                     <p style="color:red"><strong>{{$errors->first('description')}}</strong><p>
                 @endif

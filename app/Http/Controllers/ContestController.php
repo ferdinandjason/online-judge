@@ -48,13 +48,13 @@ class ContestController extends Controller
         $contestMember = ContestMember::getAllContestMember();
         if(Auth::user()->isAdmin){
             if($link[3] === 'contest'){
-                return redirect('admin/contest');
+                return redirect()->route('admin.contest.index');
             }
             return view('admin.contest.index',compact('contest','contestMember'));
         }
         else{
             if($link[3] === 'admin'){
-                return redirect('contest');
+                return redirect()->route('contest.index');
             }
             return view('contest.index',compact('contest','contestMember'));
         }
@@ -95,7 +95,7 @@ class ContestController extends Controller
         if(Auth::user()->isAdmin) {
             Contest::validator($request);
             Contest::create(Contest::prosesPostData($_POST));
-            return redirect('contest');
+            return redirect()->route('admin.contest.index');
         }
     }
 
@@ -151,7 +151,7 @@ class ContestController extends Controller
         if(Auth::user()->isAdmin){
             Contest::validator($request);
             Contest::update($contest,Contest::prosesPostData($_POST));
-            return redirect('contest');
+            return redirect()->route('admin.contest.index');
         }
     }
 
@@ -166,7 +166,7 @@ class ContestController extends Controller
         //
         if(Auth::user()->isAdmin){
             Contest::delete($id);
-            return redirect('contest');
+            return redirect()->route('admin.contest.index');
         }
     }
 

@@ -18,14 +18,14 @@ class CheckIsContestStared
     public function handle($request, Closure $next)
     {
         $array_uri = explode('/',$request->getRequestUri());
-        if(count($array_uri)>2 && !Auth::user()->isAdmin ){
-            $contestId = $array_uri[2];
+        if(count($array_uri)>6 && !Auth::user()->isAdmin ){
+            $contestId = $array_uri[6];
             $contest = \Contest::getContest($contestId);
             if(Carbon::parse($contest->start_time)->diffInSeconds(Carbon::now(),false)>=0){
                 return $next($request);
             }
             else if($array_uri[4]!='OOPS'){
-                return redirect('/contest/'.$contestId.'/problems/OOPS');
+                return redirect()->route('contest.problem.oops',$contestId);
             }
             else{
                 return $next($request);

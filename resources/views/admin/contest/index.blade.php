@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{$c->id}}</td>
                     <td><a href="#">{{$c->name}}</a></td>
-                    <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)->DiffForHumans()}}</td>
+                    <td>{{$c->start_time}} <br> {{\Carbon\Carbon::parse($c->start_time)}}</td>
                     <td>{{getContestLength($c->start_time,$c->end_time)}} Hours</td>
                     @if($c->visible)
                         <td><a class="ui green basic label">Active</a></td>

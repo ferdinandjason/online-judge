@@ -42,7 +42,7 @@ class UserEloquent implements \UserRepository
             $path = $request->file('avatar_path')->storeAs('user/images',\Carbon\Carbon::now().$this->model->where('id',$id)->first()['username'].$request->file('avatar_path')->getClientOriginalName(),'public');
             $this->model->where('id',$id)->update(Array('avatar_path'=>$path));
         }
-        return redirect('/user/'.$id);
+        return redirect()->route('user.show',$id);
     }
 
     public function order()

@@ -40,7 +40,7 @@
             <a class="ui item" href="{{route('problems.index')}}">Problem</a>
             <a class="ui item" href="{{route('submissions.index')}}">Submission</a>
         </div>
-        <a href="/"><img class="ui small circular centered image" style="position: relative;z-index: 1;width: 80px" src="{{asset("images/logo.png")}}"></a>
+        <a href="{{route('root')}}"><img class="ui small circular centered image" style="position: relative;z-index: 1;width: 80px" src="{{asset("images/logo.png")}}"></a>
         <div class="ui item left aligned" style="display: flex">
             <a class="ui item" href="{{route('contest.index')}}">Contest</a>
             <a class="ui item" href="{{route('user.rank')}}">Rank</a>
@@ -261,7 +261,7 @@
     $('#logout').click(function(){
         $.ajax({
             type: "POST",
-            url: '/logout',
+            url: '{{route('logout')}}',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },

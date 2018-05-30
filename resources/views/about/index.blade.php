@@ -39,17 +39,14 @@
                     <pre style="font-family: monospace,monospace !important;margin: 0;padding: 0;">g++ -std=c++11 source.cpp -o source -O2 -s -static -lm'.' 2>&1</pre>
                 </div>
                 <li>
-                    C
+                    Moe Contest Environtment
                 </li>
-                <div class="ui segment code">
-                    <pre style="font-family: monospace,monospace !important;margin: 0;padding: 0;">gcc -std=c++11 source.c -o source -O2 -s -static -lm'.' 2>&1</pre>
-                </div>
-                <li>
-                    Python
-                </li>
-                <div class="ui segment code">
-                    <pre style="font-family: monospace,monospace !important;margin: 0;padding: 0;">python3 source.py</pre>
-                </div>
+                <br>
+                    Moe Contest Environtment is a system for conducting programming competitions similar in spirit to the International Olympiad in Informatics – contestants solve programming tasks, submit the source code of their solutions, which is then automatically tested on a set of test inputs.
+                    Moe is built in a modular way, making it easy to adapt it to the specifics of a particular contest, to other types of tasks, or other programming languages.
+                    <br>
+                    <strong>Build using C Languange</strong>
+                </p>
             </ul>
         </div>
     </div>

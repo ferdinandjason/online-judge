@@ -22,17 +22,27 @@ class ClarificationController extends Controller
     public function index($contestId)
     {
         //
-        $contest = Contest::getContest($contestId);
-        $contestProblem = ContestProblem::getContestProblem($contestId);
-        $clarification = Clarification::getClarificationFromAdmin($contestId);
-        return view('contest.clarification',compact('clarification','contest','contestProblem'));
+        if(!Auth::user()->isAdmin) {
+            $contest = Contest::getContest($contestId);
+            $contestProblem = ContestProblem::getContestProblem($contestId);
+            $clarification = Clarification::getClarificationFromAdmin($contestId);
+            return view('contest.clarification', compact('clarification', 'contest', 'contestProblem'));
+        }
+        else{
+            return abort(404);
+        }
     }
 
     public function indexAdmin()
     {
-        $clarification = Clarification::getClarificationFromUser();
-        $contest = Contest::all();
-        return view('admin.clarification',compact('clarification','contest','contestProblem','contest'));
+        if(Auth::user()->isAdmin) {
+            $clarification = Clarification::getClarificationFromUser();
+            $contest = Contest::all();
+            return view('admin.clarification', compact('clarification', 'contest', 'contestProblem', 'contest'));
+        }
+        else{
+            return abort(404);
+        }
     }
 
     /**
@@ -54,16 +64,27 @@ class ClarificationController extends Controller
     public function store(Request $request)
     {
         //
-        Clarification::validator($request);
-        Clarification::create($request->all());
-        return back();
+        if(!Auth::user()->isAdmin) {
+            Clarification::validator($request);
+            Clarification::create($request->all());
+            return back();
+        }
+        else{
+            return abort(404);
+        }
     }
 
     public function storeAdmin(Request $request)
     {
-        Clarification::validator($request);
-        Clarification::create($request->all());
-        return back();
+        if(Auth::user()->isAdmin){
+            Clarification::validator($request);
+            Clarification::create($request->all());
+            return back();
+        }
+        else{
+            return abort(404);
+        }
+
     }
 
     /**

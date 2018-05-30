@@ -39,7 +39,7 @@
                 <td>{{$submission->memory/1024.0}} MB</td>
                 <td>{{get_verdict($submission->verdict)}}</td>
                 <td>{{$submission->lang}}</td>
-                <td>{{\Carbon\Carbon::parse($submission->created_at)->diffForHumans()}}</td>
+                <td>{{\Carbon\Carbon::parse($submission->created_at)}}</td>
             </tr></tbody>
         </table>
         <div class="ui horizontal divider"><i class="code icon"></i>  Kode</div>

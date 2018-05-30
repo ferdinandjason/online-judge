@@ -17,15 +17,15 @@ class UserAlreadyRegister
     public function handle($request, Closure $next)
     {
         $array_uri = explode('/',$request->getRequestUri());
-        if(count($array_uri)>2){
-            $contestId = $array_uri[2];
+        if(count($array_uri)>6){
+            $contestId = $array_uri[6];
         }
         else {
             return $next($request);
         }
 
         if(NotInsideCM($contestId,\ContestMember::getContestMember($contestId)) && !Auth::user()->isAdmin){
-            return redirect('/contest');
+            return redirect()->route('contest.index');
         }
         return $next($request);
     }

@@ -36,7 +36,7 @@
         let a = $('#progress').progress('get percent');
         $.ajax({
             type: "POST",
-            url: '/api/v1/statistics/contest/percent/{{$contest->id}}',
+            url: '{{route('api.percent',$contest->id)}}',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -46,7 +46,7 @@
         });
         $.ajax({
             type: "POST",
-            url: '/api/v1/statistics/contest/elapsed/{{$contest->id}}',
+            url: '{{route('api.elapsed',$contest->id)}}',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -56,7 +56,7 @@
         });
         $.ajax({
             type: "POST",
-            url: '/api/v1/statistics/contest/remaining/{{$contest->id}}',
+            url: '{{route('api.remaining',$contest->id)}}',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -68,7 +68,7 @@
             updateLabelTime();
             $.ajax({
                 type: "POST",
-                url: '/api/v1/statistics/contest/endcontest/{{$contest->id}}',
+                url: '{{route('api.endcontest',$contest->id)}}',
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }

@@ -16,7 +16,7 @@
             <div class="field{{($errors->has('announcement'))?' error':''}}">
                 {!! Form::label('description','Announcement') !!}
                 <textarea name="description" id="announcement" class="html-editor">
-                             <p>Announcement Here</p>
+                    {!! $contest->description !!}
                 </textarea>
                 @if ($errors->has('announcement'))
                     <p style="color:red"><strong>{{$errors->first('end_time')}}</strong><p>
@@ -65,7 +65,7 @@
 @section('script')
     @include('template.editor')
     <script>
-        var active = {{$contest->active}};
+        var active = {{$contest->visible}};
 
         if (active==1){
             $('.ui.checkbox').checkbox('check');

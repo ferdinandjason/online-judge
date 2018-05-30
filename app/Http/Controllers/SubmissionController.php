@@ -29,7 +29,7 @@ class SubmissionController extends Controller
         $link = (explode('/',$request->url()));
         if(Auth::user()->isAdmin){
             if($link[3] === 'submission'){
-                return redirect('admin/submission');
+                return redirect()->route('admin.submissions.index');
             }
             $contest = Contest::all();
             return view('admin.submission.index',compact('submission','contest'));

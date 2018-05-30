@@ -31,14 +31,14 @@ class ProblemController extends Controller
         $link = (explode('/',$request->url()));
         if(Auth::user()->isAdmin){
             if($link[3] === 'problems'){
-                return redirect('admin/problems');
+                return redirect()->route('admin.problems.index');
             }
             $contest = Contest::all();
             return view('admin.problem.index',compact('problemTag','problem','contest'));
         }
         else {
             if($link[3] === 'admin'){
-                return redirect('problems');
+                return redirect()->route('admin.problems.index');
             }
             return view('problem.index', compact('problemTag', 'problem'));
         }
@@ -56,14 +56,14 @@ class ProblemController extends Controller
         $arr = (explode('/',$request->url()));
         if(Auth::user()->isAdmin) {
             if($arr[3] === 'problems'){
-                return redirect('admin/problems/create');
+                return redirect()->route('admin.problems.create');
             }
             return view('admin.problem.create',compact('contest'));
         }
         if($arr[3] === 'admin'){
             return abort('404');
         }
-        return redirect('problems');
+        return redirect()->route('problems.index');
     }
 
     /**
@@ -144,7 +144,7 @@ class ProblemController extends Controller
             Problem::validate($request);
             Problem::udpate($problemId,$request->except('tags'));
             ProblemTag::update($problemId,$request['tags'],$request);
-            return redirect('/admin/problems');
+            return redirect()->route('admin.problems.index');
         }
 
     }

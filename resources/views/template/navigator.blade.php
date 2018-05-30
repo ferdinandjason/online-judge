@@ -3,7 +3,7 @@
     <div class="ui blue secondary pointing menu" style="{{(Route::current()->getName() == 'welcome')?'background:rgba(44,49,65,.80)':''}}" id={{ isset($isIndex) ? 'navi' : 'n' }}>
         <div class="ui container">
             @if ( ! isset($isIndex) )
-                <a class="ui item brand" href="/">
+                <a class="ui item brand" href="{{route('root')}}">
                     <img src="{{asset('images/logo.png')}}" >&nbsp;
                 </a>
             @endif

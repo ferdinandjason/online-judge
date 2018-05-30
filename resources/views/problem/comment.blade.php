@@ -7,7 +7,7 @@
             <div class="content">
                 <a class="author">{{$c->user->real_name}}</a>
                 <div class="metadata">
-                    <span class="date">{{\Carbon\Carbon::parse($c->created_at)->diffForHumans()}}</span>
+                    <span class="date">{{\Carbon\Carbon::parse($c->created_at)}}</span>
                 </div>
                 <div class="text">
                     {{$c->comment}}

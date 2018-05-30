@@ -14,7 +14,7 @@
 
 Route::get('/', function () {
     if (Auth::check() && Auth::user()->isAdmin){
-        return redirect('/admin');
+        return redirect()->route('admin.index');
     }
     $problem = \Problem::getRandom();
     return view('welcome',compact('problem'));
@@ -43,14 +43,14 @@ Route::get('admin',function(){
 	    $contest = Contest::all();
     	return view('admin.index',compact('contest'));
     }
-    return back();
+    return abort(404);
 })->name('admin.index');
 Route::get('admin/general',function(){
 	if(Auth::user()->isAdmin) {
 	    $contest = Contest::all();
     	return view('admin.general',compact('contest'));
     }
-    return back();
+    return abort(404);
 })->name('admin.general');
 
 //user
@@ -82,9 +82,9 @@ Route::get('/about',function(){
 })->name('about');
 
 // API
-Route::post('/api/v1/statistics/problems/{id}','APIController@problems');
-Route::post('/api/v1/statistics/contest/percent/{id}','APIController@contestPercentage');
-Route::post('/api/v1/statistics/contest/elapsed/{id}','APIController@contestElapsed');
-Route::post('/api/v1/statistics/contest/remaining/{id}','APIController@contestRemaining');
-Route::post('/api/v1/statistics/contest/linecharts/{id}','APIController@getLineCharts');
-Route::post('/api/v1/statistics/contest/endcontest/{id}','APIController@stop');
+Route::post('api/v1/statistics/problems/{id}','APIController@problems')->name('api.problem');
+Route::post('api/v1/statistics/contest/percent/{id}','APIController@contestPercentage')->name('api.percent');
+Route::post('api/v1/statistics/contest/elapsed/{id}','APIController@contestElapsed')->name('api.elapsed');
+Route::post('api/v1/statistics/contest/remaining/{id}','APIController@contestRemaining')->name('api.remaining');
+Route::post('api/v1/statistics/contest/linecharts/{id}','APIController@getLineCharts')->name('api.linecharts');
+Route::post('api/v1/statistics/contest/endcontest/{id}','APIController@stop')->name('api.endcontest');

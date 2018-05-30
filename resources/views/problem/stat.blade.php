@@ -27,7 +27,7 @@
 <script>
     $.ajax({
         type: "POST",
-        url: '/api/v1/statistics/problems/{{$problem_id}}',
+        url: '{{route('api.problem',$problem_id)}}',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
@@ -45,7 +45,7 @@
         $('.ui.modal').modal('show');
         $.ajax({
             type: "POST",
-            url: '/api/v1/statistics/problems/{{$problem_id}}',
+            url: '{{route('api.problem',$problem_id)}}',
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
