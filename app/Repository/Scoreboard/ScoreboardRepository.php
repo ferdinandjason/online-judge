@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/18/18
- * Time: 5:57 PM
- */
 
 interface ScoreboardRepository
 {

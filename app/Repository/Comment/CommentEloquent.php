@@ -1,17 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/19/18
- * Time: 6:42 PM
- */
 
 namespace App\Repository\Comment;
 
-
 use App\Comment;
+use CommentRepository;
 
-class CommentEloquent implements \CommentRepository
+class CommentEloquent implements CommentRepository
 {
     protected $model;
 
@@ -22,13 +16,11 @@ class CommentEloquent implements \CommentRepository
 
     public function all($id)
     {
-        // TODO: Implement all() method.
         return $this->model->where('problem_id',$id)->get();
     }
 
     public function create($request)
     {
-        // TODO: Implement create() method.
         $this->model->create($request);
     }
 

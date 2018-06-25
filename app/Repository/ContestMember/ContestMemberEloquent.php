@@ -1,17 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/16/18
- * Time: 11:08 PM
- */
 
 namespace App\Repository\ContestMember;
 
-use Illuminate\Support\Facades\DB;
 use App\ContestMember;
+use ContestMemberRepository;
+use Illuminate\Support\Facades\DB;
 
-class ContestMemberEloquent implements \ContestMemberRepository
+class ContestMemberEloquent implements ContestMemberRepository
 {
     protected $model;
 
@@ -22,27 +17,23 @@ class ContestMemberEloquent implements \ContestMemberRepository
 
     public function all($id)
     {
-        return $this->model->where('contest_id',$id)->get();
-        // TODO: Implement all() method.
+        return $this->model->where('contest_id', $id)->get();
     }
 
     public function allContest()
     {
         return $this->model->all();
-        // TODO: Implement allContest() method.
     }
 
 
     public function create($request)
     {
         $this->model->create($request->all());
-        // TODO: Implement create() method.
     }
 
     public function countPeopleJoin($id)
     {
-        // TODO: Implement countPeopleJoin() method.
-        return $this->model->select('contest_id',DB::raw('count(*) as member'))->groupBy('contest_id')->where('contest_id',$id)->first();
+        return $this->model->select('contest_id', DB::raw('count(*) as member'))->groupBy('contest_id')->where('contest_id', $id)->first();
     }
 
 

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/19/18
- * Time: 7:54 PM
- */
 
 interface ClarificationRepository
 {
