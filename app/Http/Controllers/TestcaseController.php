@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
-use \Testcase;
-use \Problem;
-use \Contest;
+use Contest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Problem;
+use Testcase;
 
 class TestcaseController extends Controller
 {
@@ -31,16 +31,6 @@ class TestcaseController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -48,43 +38,8 @@ class TestcaseController extends Controller
      */
     public function store($problemId,Request $request)
     {
-        //
         Testcase::create($problemId,$request);
         return back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Testcase  $testcase
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Testcase $testcase)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Testcase  $testcase
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Testcase $testcase)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Testcase  $testcase
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Testcase $testcase)
-    {
-        //
     }
 
     /**
@@ -95,7 +50,6 @@ class TestcaseController extends Controller
      */
     public function destroy($problemId,$id)
     {
-        //
         $tc = Testcase::findFirst($id);
         Storage::delete([$tc->path_input,$tc->path_output]);
         Testcase::delete($id);

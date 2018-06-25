@@ -21,7 +21,6 @@ class ClarificationController extends Controller
      */
     public function index($contestId)
     {
-        //
         if(!Auth::user()->isAdmin) {
             $contest = Contest::getContest($contestId);
             $contestProblem = ContestProblem::getContestProblem($contestId);
@@ -43,16 +42,6 @@ class ClarificationController extends Controller
         else{
             return abort(404);
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -106,39 +95,5 @@ class ClarificationController extends Controller
         $contest = Contest::all();
         $clarification = Clarification::getClarification($clarificationId);
         return view('admin.clarification_show',compact('clarification','contest'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Clarification  $clarification
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Clarification $clarification)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Clarification  $clarification
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Clarification $clarification)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Clarification  $clarification
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Clarification $clarification)
-    {
-        //
     }
 }

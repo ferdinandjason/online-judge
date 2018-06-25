@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Comment;
+use Contest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Problem;
 use ProblemTag;
-use Comment;
-use Contest;
 use Submission;
-use Illuminate\Http\Request;
 
 class ProblemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
     public function __construct()
     {
         $this->middleware('auth');
@@ -35,8 +29,7 @@ class ProblemController extends Controller
             }
             $contest = Contest::all();
             return view('admin.problem.index',compact('problemTag','problem','contest'));
-        }
-        else {
+        } else {
             if($link[3] === 'admin'){
                 return redirect()->route('admin.problems.index');
             }
@@ -76,8 +69,7 @@ class ProblemController extends Controller
     {
         if(!isset($request['active'])){
             $request->merge(['contest_only'=>0]);
-        }
-        else{
+        } else{
             $request->merge(['contest_only'=>1]);
         }
         if(Auth::user()->isAdmin) {
@@ -96,13 +88,11 @@ class ProblemController extends Controller
      */
     public function show($problemId)
     {
-        //
         $problem = Problem::getProblem($problemId);
         $comment = Comment::getProblemComment($problemId);
         if(Auth::user()->isAdmin){
             return view('admin.problem.show',compact('problem','comment'));
-        }
-        else{
+        } else{
             return view('problem.show',compact('problem','comment'));
         }
     }
@@ -115,13 +105,11 @@ class ProblemController extends Controller
      */
     public function edit($problemId)
     {
-        //
         if(Auth::user()->isAdmin) {
             $problem = Problem::getProblem($problemId);
             $tags = ProblemTag::getProblemTag($problemId);
             return view('admin.problem.edit',compact('problem','tags'));
-        }
-        else return abort('404');
+        } else return abort('404');
     }
 
     /**
@@ -133,11 +121,9 @@ class ProblemController extends Controller
      */
     public function update(Request $request, $problemId)
     {
-        //
         if(!isset($request['active'])){
             $request->merge(['contest_only'=>0]);
-        }
-        else{
+        } else{
             $request->merge(['contest_only'=>1]);
         }
         if(Auth::user()->isAdmin) {
@@ -157,7 +143,6 @@ class ProblemController extends Controller
      */
     public function destroy($problemId)
     {
-        //
         if(Auth::user()->isAdmin) {
             Problem::delete($problemId);
         }
@@ -182,8 +167,7 @@ class ProblemController extends Controller
         );
 
         $columns = array('id', 'title', 'description', 'sample_input', 'sample_output', 'time_limit', 'memory_limit');
-        $callback = function() use ($problem, $columns)
-        {
+        $callback = function() use ($problem, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
             fputcsv($file, array($problem->id, $problem->title, $problem->description, $problem->sample_input, $problem->sample_output, $problem->time_limit, $problem->memory_limit));
