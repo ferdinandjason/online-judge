@@ -1,19 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/19/18
- * Time: 8:00 PM
- */
 
 namespace App\Service\Clarification;
 
+use ClarificationRepository;
 
 class ClarificationServices
 {
     protected $repo;
 
-    public function __construct(\ClarificationRepository $clarificationRepository)
+    public function __construct(ClarificationRepository $clarificationRepository)
     {
         $this->repo = $clarificationRepository;
     }

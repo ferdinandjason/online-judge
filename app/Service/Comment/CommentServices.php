@@ -1,19 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/19/18
- * Time: 6:48 PM
- */
 
 namespace App\Service\Comment;
 
+use CommentRepository;
 
 class CommentServices
 {
     protected $repo;
 
-    public function __construct(\CommentRepository $commentRepository)
+    public function __construct(CommentRepository $commentRepository)
     {
         $this->repo = $commentRepository;
     }

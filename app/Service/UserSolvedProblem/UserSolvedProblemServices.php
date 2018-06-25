@@ -1,19 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/22/18
- * Time: 10:10 PM
- */
 
 namespace App\Service\UserSolvedProblem;
 
+use Carbon\Carbon;
+use UserSolvedProblemRepository;
 
 class UserSolvedProblemServices
 {
     protected $repo;
 
-    public function __construct(\UserSolvedProblemRepository $userSolvedProblemRepository)
+    public function __construct(UserSolvedProblemRepository $userSolvedProblemRepository)
     {
         $this->repo = $userSolvedProblemRepository;
     }
@@ -23,13 +19,13 @@ class UserSolvedProblemServices
         return $this->repo->find($id);
     }
 
-    public function create($userId,$problemId)
+    public function create($userId, $problemId)
     {
         $this->repo->create([
-            'user_id'=>$userId,
-            'problem_id'=>$problemId,
-            'created_at'=>\Carbon\Carbon::now(),
-            'updated_at'=>\Carbon\Carbon::now()
+            'user_id' => $userId,
+            'problem_id' => $problemId,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
 
         ]);
     }
