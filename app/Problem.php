@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Problem extends Model
 {
-    //
     public $incrementing = false;
     protected $fillable = [
         'id','title','description','sample_input','sample_output','time_limit','memory_limit','contest_only','total_submit',

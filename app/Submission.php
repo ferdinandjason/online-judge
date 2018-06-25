@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class Submission extends Model
 {
-    //
-
     protected $fillable = ['problem_id', 'user_id','lang','contest_id'];
 
     public function user(){
