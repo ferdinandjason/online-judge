@@ -1,20 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/15/18
- * Time: 1:51 PM
- */
 
 namespace App\Service\Submission;
 
 use Illuminate\Support\Facades\DB;
+use SubmissionRepository;
 
 class SubmissionServices
 {
     protected $repo;
 
-    public function __construct(\SubmissionRepository $submissions_repo)
+    public function __construct(SubmissionRepository $submissions_repo)
     {
         $this->repo = $submissions_repo;
     }
