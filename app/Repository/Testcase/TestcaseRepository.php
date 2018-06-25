@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/14/18
- * Time: 11:04 PM
- */
 
 interface TestcaseRepository
 {

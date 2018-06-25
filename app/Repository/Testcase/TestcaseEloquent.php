@@ -1,17 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/14/18
- * Time: 11:05 PM
- */
 
 namespace App\Repository\Testcase;
 
 use App\Testcase;
+use TestcaseRepository;
 
-
-class TestcaseEloquent implements \TestcaseRepository
+class TestcaseEloquent implements TestcaseRepository
 {
     protected $model;
 
@@ -48,7 +42,6 @@ class TestcaseEloquent implements \TestcaseRepository
 
     public function getTestcase($id)
     {
-        // TODO: Implement getTestcase() method.
         return $this->model->where('problem_id',$id)->get();
     }
 

@@ -1,17 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ferdinand
- * Date: 5/18/18
- * Time: 5:57 PM
- */
 
 namespace App\Repository\Scoreboard;
 
-
 use App\Scoreboard;
+use ScoreboardRepository;
 
-class ScoreboardEloquent implements \ScoreboardRepository
+class ScoreboardEloquent implements ScoreboardRepository
 {
     protected $model;
 
@@ -22,7 +16,6 @@ class ScoreboardEloquent implements \ScoreboardRepository
 
     public function find($contestId,$problemId,$userId)
     {
-        // TODO: Implement find() method.
         return $this->model
             ->where('contest_id',$contestId)
             ->where('problem_id',$problemId)
@@ -31,13 +24,11 @@ class ScoreboardEloquent implements \ScoreboardRepository
 
     public function create(Array $request)
     {
-        // TODO: Implement create() method.
         $this->model->create($request);
     }
 
     public function getContest($contestId)
     {
-        // TODO: Implement getContest() method.
         return $this->model->where('contest_id',$contestId)->get();
     }
 
