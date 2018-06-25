@@ -18,5 +18,10 @@ class UsersTableSeeder extends Seeder
             'isAdmin' => 1,
         ]);
         $admin->save();
+        $user = factory(User::class)->make([
+            'username' => 'user',
+            'email' => 'user@example.com',
+        ]);
+        $user->save();
     }
 }
