@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Contest;
 use ContestMember;
 use ContestProblem;
-use Submission;
-use Scoreboard;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Problem;
+use Scoreboard;
+use Submission;
 
 class ContestController extends Controller
 {
@@ -26,7 +26,6 @@ class ContestController extends Controller
      */
     public function index(Request $request)
     {
-        //
         $link = (explode('/',$request->url()));
         if($request->has('query')){
             if($request->get('query')=='all'){
@@ -67,7 +66,6 @@ class ContestController extends Controller
      */
     public function create()
     {
-        //
         if(Auth::user()->isAdmin){
             $contest = Contest::all();
             return view('admin.contest.create',compact('contest'));
@@ -85,7 +83,6 @@ class ContestController extends Controller
      */
     public function store(Request $request)
     {
-        //
         if(!isset($_POST['active'])){
             $_POST['active'] = 0;
         }
@@ -107,7 +104,6 @@ class ContestController extends Controller
      */
     public function show($id)
     {
-        //
         $contest = Contest::getContest($id);
         $contestProblem = ContestProblem::getContestProblem($id);
         return view('contest.show',compact('contest','contestProblem'));
@@ -121,7 +117,6 @@ class ContestController extends Controller
      */
     public function edit($id)
     {
-        //
         if(Auth::user()->isAdmin) {
             $contest = Contest::getContest($id);
             return view('admin.contest.edit', compact('contest'));
@@ -140,7 +135,6 @@ class ContestController extends Controller
      */
     public function update(Request $request,$contest)
     {
-        //
         if(!isset($_POST['active'])){
             $_POST['active'] = 0;
         }
@@ -163,7 +157,6 @@ class ContestController extends Controller
      */
     public function destroy($id)
     {
-        //
         if(Auth::user()->isAdmin){
             Contest::delete($id);
             return redirect()->route('admin.contest.index');

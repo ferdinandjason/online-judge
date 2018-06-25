@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Response;
 use Contest;
-use Scoreboard;
 use ContestProblem;
+use Response;
+use Scoreboard;
 
 class APIController extends Controller
 {
-    //
     public function problems($id){
         $problem = \Problem::getProblem($id);
         $data = [

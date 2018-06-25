@@ -2,25 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Contest;
 use ContestProblem;
-use Problem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Problem;
 
 class ContestProblemController extends Controller
 {
     public function __construct(){
         $this->middleware('contest_start');
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
     }
 
     /**
@@ -30,7 +21,6 @@ class ContestProblemController extends Controller
      */
     public function create($id)
     {
-        //
         if(Auth::user()->isAdmin) {
             $contest = Contest::getContest($id);
             $contestProblem = ContestProblem::getContestProblem($id);
@@ -50,7 +40,6 @@ class ContestProblemController extends Controller
      */
     public function store($id,Request $request)
     {
-        //
         ContestProblem::create($request);
         return back();
     }
@@ -63,7 +52,6 @@ class ContestProblemController extends Controller
      */
     public function show($contestId,$id)
     {
-        //
         $contest = Contest::getContest($contestId);
         $contestProblem = ContestProblem::getContestProblem($contestId);
         $problem = Problem::getProblem($id);
@@ -76,37 +64,4 @@ class ContestProblemController extends Controller
         return view('contest.problem.oops',compact('contest','contestProblem'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\ContestProblem  $contestProblem
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ContestProblem $contestProblem)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ContestProblem  $contestProblem
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ContestProblem $contestProblem)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\ContestProblem  $contestProblem
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ContestProblem $contestProblem)
-    {
-        //
-    }
 }

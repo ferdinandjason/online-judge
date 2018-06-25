@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Contest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Problem;
-use Contest;
 use Submission;
-use Illuminate\Http\Request;
 
 class SubmissionController extends Controller
 {
@@ -24,7 +24,6 @@ class SubmissionController extends Controller
      */
     public function index(Request $request)
     {
-        //
         $submission = Submission::all();
         $link = (explode('/',$request->url()));
         if(Auth::user()->isAdmin){
@@ -33,8 +32,7 @@ class SubmissionController extends Controller
             }
             $contest = Contest::all();
             return view('admin.submission.index',compact('submission','contest'));
-        }
-        else{
+        } else{
             if($link[3] === 'admin'){
                 return abort(404);
             }
@@ -74,43 +72,8 @@ class SubmissionController extends Controller
      */
     public function show($id)
     {
-        //
         $submission = Submission::getSubmission($id);
         return view('submission.show',compact('submission'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Submission  $submission
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Submission $submission)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Submission  $submission
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Submission $submission)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Submission  $submission
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Submission $submission)
-    {
-        //
     }
 
     public function regrade($id)

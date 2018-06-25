@@ -8,7 +8,6 @@ use UserSolvedProblem;
 
 class UserController extends Controller
 {
-    //
     public function index(){
         $user = User::getAllUser();
         return view('user.index',compact('user'));
