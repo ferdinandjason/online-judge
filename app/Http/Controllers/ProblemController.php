@@ -160,17 +160,17 @@ class ProblemController extends Controller
         $problem = Problem::getProblem($id);
         $headers = array(
             "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=$problem->id.csv",
+            "Content-Disposition" => "attachment; filename=$problem->slug.csv",
             "Pragma" => "no-cache",
             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
             "Expires" => "0"
         );
 
-        $columns = array('id', 'title', 'description', 'sample_input', 'sample_output', 'time_limit', 'memory_limit');
+        $columns = array('slug', 'title', 'description', 'sample_input', 'sample_output', 'time_limit', 'memory_limit');
         $callback = function() use ($problem, $columns) {
             $file = fopen('php://output', 'w');
             fputcsv($file, $columns);
-            fputcsv($file, array($problem->id, $problem->title, $problem->description, $problem->sample_input, $problem->sample_output, $problem->time_limit, $problem->memory_limit));
+            fputcsv($file, array($problem->slug, $problem->title, $problem->description, $problem->sample_input, $problem->sample_output, $problem->time_limit, $problem->memory_limit));
             fclose($file);
         };
         return \Response::stream($callback,200,$headers);
