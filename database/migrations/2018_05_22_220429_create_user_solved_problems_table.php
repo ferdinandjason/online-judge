@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateUserSolvedProblemsTable extends Migration
 {
@@ -17,7 +17,7 @@ class CreateUserSolvedProblemsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('problem_id');
+            $table->unsignedInteger('problem_id');
             $table->foreign('problem_id')->references('id')->on('problems');
             $table->timestamps();
         });
