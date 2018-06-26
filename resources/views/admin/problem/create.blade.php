@@ -7,11 +7,11 @@
         {!! Form::open(array('route'=>'admin.problems.store')) !!}
         <div class="ui form">
             <div class="four fields">
-                <div class="field{{($errors->has('id'))?' error':''}}">
-                    {!! Form::label('id','Problem ID') !!}
-                    {!! Form::text('id',null,array('placeholder'=>'Problem ID')) !!}
-                    @if ($errors->has('id'))
-                        <p style="color:red"><strong>{{$errors->first('problem_id')}}</strong><p>
+                <div class="field{{($errors->has('slug'))?' error':''}}">
+                    {!! Form::label('slug','Problem Slug') !!}
+                    {!! Form::text('slug',null,array('placeholder'=>'Problem Slug')) !!}
+                    @if ($errors->has('slug'))
+                        <p style="color:red"><strong>{{$errors->first('problem_slug')}}</strong><p>
                     @endif
                 </div>
                 <div class="field{{($errors->has('title'))?' error':''}}">

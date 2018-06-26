@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">{{$problem->id}} - {{$problem->title}}</h1>
+<h1 style="text-align: center;">{{$problem->slug}} - {{$problem->title}}</h1>
 <style>
     .bold{
         font-weight: 900;

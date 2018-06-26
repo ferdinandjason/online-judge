@@ -45,7 +45,7 @@
         @foreach($problem as $p)
             <tr>
                 <td>
-                    {{ $p->id }}
+                    {{ $p->slug }}
                 </td>
                 <td class="left aligned">
                     <a href="{{ route('problems.show',$p->id) }}" style="vertical-align: middle">{{ $p->title }}</a>
@@ -60,7 +60,7 @@
 @section('script')
     <script>
         let problem;
-        $('.dropdown').dropdown()
+        $('.dropdown').dropdown();
         $(document).ready(function(){
             problem = $('#problemTable').DataTable();
         });
