@@ -23,9 +23,9 @@ class ProblemTagServices
         return $this->repo->allPaginate($n);
     }
 
-    public function create($data, $problem_id)
+    public function create($data, $problemId)
     {
-        $this->repo->create(explode(',', $data), $problem_id);
+        $this->repo->create(explode(',', $data), $problemId);
     }
 
     public function update($request, $id)
