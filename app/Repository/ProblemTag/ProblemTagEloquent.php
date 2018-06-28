@@ -2,6 +2,7 @@
 
 namespace App\Repository\ProblemTag;
 
+use Problem;
 use App\ProblemTag;
 use Illuminate\Support\Facades\DB;
 use ProblemTagRepository;
@@ -40,7 +41,7 @@ class ProblemTagEloquent implements ProblemTagRepository
     public function create($data, $request)
     {
         foreach ($data as $tag) {
-            $this->model->create(Array('name' => $tag, 'problem_id' => $request['id']));
+            $this->model->create(Array('name' => $tag, 'problem_id' => Problem::last()->id));
         }
     }
 

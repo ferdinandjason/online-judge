@@ -59,5 +59,8 @@ class ProblemEloquent implements ProblemRepository
         return $this->model->inRandomOrder()->take(1)->first();
     }
 
-
+    public function last()
+    {
+        return $this->model->all()->last();
+    }
 }
