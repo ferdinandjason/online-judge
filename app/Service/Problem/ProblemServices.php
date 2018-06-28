@@ -46,7 +46,7 @@ class ProblemServices
     public function validate($request)
     {
         return $request->validate([
-            'id' => 'required|string',
+            'slug' => 'required|string',
             'title' => 'required',
             'time_limit' => 'required|integer|between:1,10',
             'memory_limit' => 'required|integer|between:32,1024',

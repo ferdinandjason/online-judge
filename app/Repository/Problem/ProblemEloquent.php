@@ -58,6 +58,4 @@ class ProblemEloquent implements ProblemRepository
     {
         return $this->model->inRandomOrder()->take(1)->first();
     }
-
-
 }

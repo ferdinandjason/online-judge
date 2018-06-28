@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSubmissionsTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreateSubmissionsTable extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('problem_id');
+            $table->unsignedInteger('problem_id');
             $table->integer('user_id')->unsigned();
             $table->integer('contest_id')->default(0);
             $table->float('time')->default(-1);

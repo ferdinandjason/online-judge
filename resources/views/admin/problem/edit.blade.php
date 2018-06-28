@@ -7,18 +7,18 @@
         {!! Form::model($problem,['method'=>'PUT','action'=>['ProblemController@update',$problem->id]]) !!}
         <div class="ui form">
             <div class="four fields">
-                <div class="field{{($errors->has('id'))?' error':''}}">
-                    {!! Form::label('id','Problem ID') !!}
-                    {!! Form::text('id',null,array('placeholder'=>'Problem ID')) !!}
-                    @if ($errors->has('id'))
-                        <p style="color:red"><strong>{{$errors->first('problem_id')}}</strong><p>
+                <div class="field{{($errors->has('slug'))?' error':''}}">
+                    {!! Form::label('slug','Problem Slug') !!}
+                    {!! Form::text('slug',null,array('placeholder'=>'Problem Slug')) !!}
+                    @if ($errors->has('slug'))
+                        <p style="color:red"><strong>{{$errors->first('problem_slug')}}</strong></p>
                     @endif
                 </div>
                 <div class="field{{($errors->has('title'))?' error':''}}">
                     {!! Form::label('title','Problem Title') !!}
                     {!! Form::text('title',null,array('placeholder'=>'Problem Title')) !!}
                     @if ($errors->has('problem_title'))
-                        <p style="color:red"><strong>{{$errors->first('problem_title')}}</strong><p>
+                        <p style="color:red"><strong>{{$errors->first('problem_title')}}</strong></p>
                     @endif
                 </div>
                 <div class="field{{($errors->has('time_limit'))?' error':''}}">

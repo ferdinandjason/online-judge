@@ -2,6 +2,7 @@
 
 namespace App\Repository\ProblemTag;
 
+use Problem;
 use App\ProblemTag;
 use Illuminate\Support\Facades\DB;
 use ProblemTagRepository;
@@ -37,10 +38,10 @@ class ProblemTagEloquent implements ProblemTagRepository
             ->groupBy('name')->orderBy('name')->paginate($n);
     }
 
-    public function create($data, $request)
+    public function create($data, $problemId)
     {
         foreach ($data as $tag) {
-            $this->model->create(Array('name' => $tag, 'problem_id' => $request['id']));
+            $this->model->create(Array('name' => $tag, 'problem_id' => $problemId));
         }
     }
 

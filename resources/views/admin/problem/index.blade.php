@@ -20,7 +20,7 @@
             @foreach($problem as $p)
                 <tr>
                     <td>
-                        {{ $p->id }}
+                        {{ $p->slug }}
                     </td>
                     <td class="left aligned">
                         <a style="vertical-align: middle">{{ $p->title }}</a>
@@ -45,7 +45,7 @@
 @stop
 @section('script')
     <script>
-        $('.dropdown').dropdown()
+        $('.dropdown').dropdown();
         $(document).ready(function(){
             $('#problemTable').DataTable();
         });

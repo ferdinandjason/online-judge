@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTestcasesTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreateTestcasesTable extends Migration
     {
         Schema::create('testcases', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('problem_id');
+            $table->unsignedInteger('problem_id');
             $table->text('path_input');
             $table->text('path_output');
             $table->timestamps();
