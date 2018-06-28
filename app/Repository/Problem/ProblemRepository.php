@@ -10,5 +10,4 @@ interface ProblemRepository{
     public function delete($id);
     public function increment($id,$table);
     public function random();
-    public function last();
 }

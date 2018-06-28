@@ -64,9 +64,4 @@ class ProblemServices
     {
         return $this->repo->random();
     }
-
-    public function last()
-    {
-        return $this->repo->last();
-    }
 }

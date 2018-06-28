@@ -74,8 +74,8 @@ class ProblemController extends Controller
         }
         if(Auth::user()->isAdmin) {
             Problem::validate($request);
-            Problem::create($request->except('tags'));
-            ProblemTag::create($request['tags'],$request);
+            $problem = Problem::create($request->except('tags'));
+            ProblemTag::create($request['tags'],$problem->id);
             return back();
         }
     }

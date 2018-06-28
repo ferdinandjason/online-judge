@@ -38,10 +38,10 @@ class ProblemTagEloquent implements ProblemTagRepository
             ->groupBy('name')->orderBy('name')->paginate($n);
     }
 
-    public function create($data, $request)
+    public function create($data, $problem_id)
     {
         foreach ($data as $tag) {
-            $this->model->create(Array('name' => $tag, 'problem_id' => Problem::last()->id));
+            $this->model->create(Array('name' => $tag, 'problem_id' => $problem_id));
         }
     }
 
